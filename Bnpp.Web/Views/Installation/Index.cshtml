@@ -1,0 +1,256 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.Commissioning>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b><a class="breadcumb2-link" href="/Equipments">Mechanical Equipments</a></b>
+					</td>
+					<td style="">
+						» @ViewBag.EquipName <b id="subTitle22a"></b>
+					</td>
+
+
+					<td style="">
+						» <label>
+							<select required="required" onchange="location = this.value;" name="EventLevel" aria-controls="myTable" class="">
+
+								<option value="/Installation/@ViewBag.MechanicalId">Installation & Commissioning</option>
+
+								<option value="/Technical/@ViewBag.MechanicalId">BasicData</option>
+								<option value="/Documents/@ViewBag.MechanicalId">Documents</option>
+								<option value="/AgeingMechanism/@ViewBag.MechanicalId">Ageing Mechanism</option>
+
+								<option value="/Operational/@ViewBag.MechanicalId">Operational Data</option>
+								<option value="/Events/@ViewBag.MechanicalId">Events</option>
+								<option value="/OnOffData/@ViewBag.MechanicalId">On-Off Data</option>
+								<option value="/Maintenance/@ViewBag.MechanicalId">Maintenance</option>
+								<option value="/Inspection/@ViewBag.MechanicalId">Inspection Data</option>
+							</select>
+						</label>
+					</td>
+					<td style="">
+						» Installation & Commissioning<b id="subTitle22a"></b>
+					</td>
+					<td>
+						<b style="color: #ff0000;" id="subTitle22"></b>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width: 48px;" class="imgHelp">
+		</a>
+	</div>
+
+	<h1 id="iH1">
+		Installation & Commissioning
+	</h1>
+	<div id="iContent">
+
+		<div id="tab1" class="tab-item" style="display: block;">
+
+			<div class="bevel-box">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<form method="post" asp-controller="Installation" asp-action="ExportInstallation" asp-route-id="@ViewBag.MechanicalId">
+									<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="submit" onclick="refreshPage()" value="Export Excel" />
+								</form>
+							</td>
+							<td>
+								<form method="post" asp-controller="Installation" asp-action="ImportInstallation" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="file" name="FormFile" />
+									<input type="submit" value="Import Excel" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="newPage">
+				<div>
+
+					<div id="iLoading22" style="display: none;">
+						<img src="/images/loading.gif">
+					</div>
+
+
+					<a class="btn-new-equip" style="cursor: pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+					<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+					@* <input type="button" id="Export" value="excel" class="butn-save" style="direction: ltr; text-align: left;">*@
+					<br />
+					@{
+						int rowCount = 1;
+					}
+					<table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+						<thead>
+							<tr role="row">
+								<th>
+									<input type="checkbox" id="checkAll" />
+								</th>
+								<th></th>
+								<th>
+									<b>Parameter1</b>
+								</th>
+								<th>
+									<b>Parameter2</b>
+								</th>
+								<th>
+									<b>Parameter3</b>
+								</th>
+								<th>
+									<b>Parameter4</b>
+								</th>
+								<th>
+									<b>Actions</b>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr role="row">
+									<td>
+										<input type="checkbox" class="checkBox" value="@item.CommissioningId" />
+									</td>
+									<td>
+										@rowCount
+									</td>
+									<td>
+										@item.Parameter1
+									</td>
+									<td>
+										@item.Parameter2
+									</td>
+									<td>
+										@item.Parameter3
+									</td>
+									<td>
+										@item.Parameter4
+									</td>
+									<td>
+
+										<a class="btn-edit-equip" onclick="Edit(@item.CommissioningId)">
+											Edit
+										</a>
+									</td>
+								</tr>
+								rowCount++;
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts
+	{
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+	<script src="/js/datatables.min.js"></script>
+
+
+	<script>
+		$(document).ready(function () {
+			$("#myTable").DataTable();
+		});
+	</script>
+	<script>
+
+		function Create(mechanicalId) {
+			$("#newPage").load("/Installation/CreateCommissioning/" + mechanicalId);
+		}
+
+		function Edit(id) {
+			$("#newPage").load("/Installation/EditCommissioning/" + id);
+		}
+
+
+		$("#checkAll").click(function () {
+			$(".checkBox").prop('checked',
+				$(this).prop('checked'));
+		});
+
+
+
+		$("#delete").click(function () {
+			var selectedIDs = new Array();
+
+			$('input:checkbox.checkBox').each(function () {
+				if ($(this).prop('checked')) {
+					selectedIDs.push($(this).val());
+				}
+			});
+
+			var result = confirm("are you sure you want to delete?");
+			if (result) {
+				$.ajax({
+					type: "POST",
+					url: "/Installation/DeleteCommissioning/@ViewBag.MechanicalId",
+					data: { "commissioningId": selectedIDs },
+
+					success: function (response) {
+						window.location.href = "/Installation/@ViewBag.MechanicalId";
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+
+				});
+			}
+		});
+
+
+
+		$('input:checkbox.checkBox').change(function () {
+			var selectedIDs = new Array();
+			$('input:checkbox.checkBox').each(function () {
+				if ($(this).prop('checked')) {
+					selectedIDs.push($(this).val());
+				}
+			});
+
+			$('#exportSelectedData').val(selectedIDs);
+
+		});
+
+		function refreshPage() {
+			// Your delay in milliseconds
+			var delay = 2000;
+			setTimeout(function () { window.location.href = "/Installation/@ViewBag.MechanicalId"; }, delay);
+		}
+	</script>
+
+}
+
+
+
+
+
+
+
+
+

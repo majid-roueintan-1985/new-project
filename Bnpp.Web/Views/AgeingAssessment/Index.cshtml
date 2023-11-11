@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+    {
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#Tabs").load("/AgeingAssessment/SACORReport/");
+        });
+
+        function showPage1() {
+            $("#Tabs").load("/AgeingAssessment/SACORReport/");
+        }
+
+        function showPage2() {
+            $("#Tabs").load("/AgeingAssessment/TransientsReport/");
+        }
+
+        function showPage3() {
+            $("#Tabs").load("/AgeingAssessment/WaterChemistryReport/");
+        }
+
+
+        function ShowList() {
+            $("#newPage").load("/Transients/TransientsList/");
+        }
+
+    </script>
+
+}
+
+

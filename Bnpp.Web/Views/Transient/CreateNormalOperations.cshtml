@@ -1,0 +1,264 @@
+﻿@model Bnpp.DataLayer.Entities.OperationalData
+
+@{
+    ViewData["Title"] = "CreateNormalOperations";
+    Layout = null;
+}
+
+<div id="normal">
+    <form id="normalForm" asp-controller="Transient" asp-action="CreateNormalOperations" method="post">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+
+                <tr>
+                    <td>
+                        Transient Code:
+                    </td>
+                    <td>
+                        <select name="code"  id="transientCode" asp-items="@ViewBag.transientCode as SelectList" aria-controls="myTable" class="">
+                            <option value="">Select</option>
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        Name of Conditions:
+                    </td>
+                    <td>
+                        <select asp-for="NameofConditions" id="transientName" asp-items="@ViewBag.nameOftransient as SelectList" aria-controls="myTable" class="">
+                            <option value="">Select</option>
+                        </select>
+                    </td>
+                    
+                </tr>
+                @*<tr>
+                    <td>
+                        Allowable Num.:
+                    </td>
+                    <td>
+                        <input asp-for="AllowableNumber" type="text" id="iAZK" required="" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="AllowableNumber"></span>
+                    </td>
+                </tr>*@
+               @* <tr>
+                    <td>
+                        Occurrances:
+                    </td>
+                    <td>
+                        <input asp-for="Occurrance" value="1" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Occurrance"></span>
+                    </td>
+                </tr>*@
+                <tr>
+                    <td>
+                        <input asp-for="Dates" type="text" id="txtdate" placeholder="Dates" style="width: auto; direction: ltr; text-align: left;">
+                        <input name="StartDates" id="Dates" @*type="date"*@>
+                    </td>
+                    <td>
+                        <input id="adding" value="" style="background-image: url(&quot;/images/new-folder2.png&quot;); background-repeat: no-repeat; background-position: 4px 4px; cursor: pointer; width: 30px; height: 30px; background-color: rgb(240, 240, 240); direction: ltr; text-align: left;" title="Add date" onclick="addDateToInput();" type="button">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="showPage1()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    // create DatePicker from input HTML element
+    $("#Dates").kendoDatePicker();
+</script>
+
+<script type="text/javascript">
+    function submitNormal() {
+        var data = $("#normalForm").serialize();
+        //console.log(data);
+        //alert(data);
+        $.ajax({
+            type: 'POST',
+            url: '/Transient/CreateNormalOperations',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function () {
+                $("#Tabs").load("/Transient/NormalOperations/");
+            },
+
+            error: function () {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+
+    //function addDateToInput() {
+
+    //    debugger;
+
+    //var date = $('#Dates').val();
+    //var input=$('#txtdate').val();
+
+    //if(input ==""){
+    //    $('#txtdate').attr('value', date );
+    //}
+
+    //else {
+    //    $('#txtdate').attr('value',   input + ", " + date  );
+    //}
+
+    //    $('#Dates').val("");
+    //}
+
+    function addDateToInput() {
+
+        //debugger;
+
+        var date = $('#Dates').val();
+        var input = $('#txtdate').val();
+
+        if (input == "") {
+            $('#txtdate').val(date)
+        }
+
+        else {
+            $('#txtdate').val(input + ", " + date);
+        }
+        //alert($('#txtdate').val());
+        $('#Dates').val("");
+    }
+
+    $("#transientCode").change(function () {
+        $("#transientName").empty();
+        $.getJSON("/Transient/GetSubGroups/" + $("#transientCode :selected").val(),
+            function (data) {
+
+                $.each(data,
+                    function () {
+                        $("#transientName").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                    });
+            });
+
+    });
+
+    function createNormalTransient() {
+       
+
+        var code = $('#transientCode').find(":selected").text();
+
+
+
+        if (code != "Select") {
+            $('#transientCode option').val(function () {
+                return $(this).text();
+            });
+        } else {
+            code = "";
+        }
+
+        var transientnames = $('#transientName').find(":selected").text();
+
+        if (transientnames != "Select") {
+            $('#transientName option').val(function () {
+                return $(this).text();
+            });
+        } else {
+            transientnames = "";
+        }
+
+        
+        var date = $('#txtdate').val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Transient/CreateNormalOperations",
+            data: {
+                "code": code,
+                "nameOftransient": transientnames,
+                "StartDates": date,
+            },
+            success:
+                function (response) {
+
+                    $("#Tabs").load("/Transient/NormalOperations/");
+                },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+
+    function AjaxdocumentFormSubmit() {
+
+        //debugger;
+
+        var code = $('#transientCode').find(":selected").text();
+
+        if (code != "Select") {
+            $('#transientCode option').val(function () {
+                return $(this).text();
+            });
+        } else {
+            code = "";
+        }
+
+        var transientnames = $('#transientName').find(":selected").text();
+
+        if (transientnames != "Select") {
+            $('#transientName option').val(function () {
+                return $(this).text();
+            });
+        } else {
+            transientnames = "";
+        }
+       
+        var url = $("#normalForm").attr("action");
+        
+        var formData = new FormData();
+        formData.append("code", $('#transientCode').find(":selected").text());
+        formData.append("NameofConditions", transientnames);
+        formData.append("Dates", $("#txtdate").val());
+
+        $.ajax({
+
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+
+
+            $("#Tabs").load("/Transient/NormalOperations/");
+        });
+
+    }
+
+</script>

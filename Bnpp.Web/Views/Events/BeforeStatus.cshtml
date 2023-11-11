@@ -1,0 +1,162 @@
+﻿@model Bnpp.DataLayer.ViewModels.BeforeStatusViewModel
+@{
+    ViewData["Title"] = "BeforeStatus";
+    Layout = null;
+}
+
+<h2>
+    Status before Event
+</h2>
+
+<div id="normal">
+    <form id="chemicalForm" asp-action="BeforeStatus" method="post">
+        <input type="hidden" asp-for="EventsId"/>
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Parameter (Unit)
+                    </td>
+                    <td>
+                        Value
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Operating Modes:
+                    </td>
+                    <td>
+                        <label>
+                            <select asp-for="BeforeOperatingModes" aria-controls="myTable" class="">
+                                <option value="">Select</option>
+                                <option value="Operation at power">Operation at power</option>
+                                <option value="Minimally Controlled Level of Power (MCL)">Minimally Controlled Level of Power (MCL)</option>
+                                <option value="Hot Condition">Hot Condition</option>
+                                <option value="Cold Condition">Cold Condition</option>
+                                <option value="Shutdown for Repair">Shutdown for Repair</option>
+                                <option value="Refueling">Refueling</option>
+                                <option value="Transient Mode">Transient Mode</option>
+                            </select>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Heat Power(MW):
+                    </td>
+                    <td>
+                        <input asp-for="BeforeHeatPower" type="number" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforeHeatPower"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Electrical Power(MW):
+                    </td>
+                    <td>
+                        <input asp-for="BeforeElectricalPower" type="number" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforeElectricalPower"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        No. of Effective Working Days(Days):
+                    </td>
+                    <td>
+                        <input asp-for="BeforeEffectiveWorkingDays" type="number" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforeEffectiveWorkingDays"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Level of Pressure Water(M):
+                    </td>
+                    <td>
+                        <input asp-for="BeforePressureWater" type="number" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforePressureWater"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pressure in First Circuit(MPa):
+                    </td>
+                    <td>
+                        <input asp-for="BeforePressureinFirstCircuit" type="number" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforePressureinFirstCircuit"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Pressure in Second Circuit(MPa):
+                    </td>
+                    <td>
+                        <input asp-for="BeforePressureinSecondCircuit" type="number" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforePressureinSecondCircuit"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Vaccum in Condensor(KPa):
+                    </td>
+                    <td>
+                        <input asp-for="BeforeVaccuminCondensor" type="number" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="BeforeVaccuminCondensor"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="submitChemical()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="location='/Events/InternalEvents'" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+    function submitChemical() {
+        var data = $("#chemicalForm").serialize();
+        //console.log(data);
+        //alert(data);
+        $.ajax({
+            type: 'POST',
+            url: '/Events/BeforeStatus/@ViewData["eventId"]',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function () {
+                window.location.href = "/Events/InternalEvents/@ViewBag.MechanicalId";
+            },
+
+            error: function () {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>

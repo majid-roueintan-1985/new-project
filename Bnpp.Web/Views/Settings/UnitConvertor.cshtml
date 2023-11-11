@@ -1,0 +1,49 @@
+﻿@{
+	ViewData["Title"] = "UnitConvertor";
+	Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+	{
+	<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			$("#Tabs").load("/Settings/LengthConverter/");
+		});
+
+		function showPage1() {
+			$("#Tabs").load("/Settings/LengthConverter/");
+		}
+
+		function showPage2() {
+			$("#Tabs").load("/Settings/TemperatureConverter/");
+		}
+
+		function showPage3() {
+			$("#Tabs").load("/Settings/WeightConverter/");
+		}
+
+		function showPage4() {
+			$("#Tabs").load("/Settings/SpeedConverter/");
+		}
+
+				// function showPage5() {
+				// 	$("#Tabs").load("/Maintenance/Measurements/@ViewBag.MechanicalId");
+				// }
+
+				// function showPage6() {
+				// 	$("#Tabs").load("/Maintenance/DefectsReport/@ViewBag.MechanicalId");
+				// }
+
+
+	</script>
+
+}
+
+

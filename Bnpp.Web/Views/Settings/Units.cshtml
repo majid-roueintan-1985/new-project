@@ -1,0 +1,229 @@
+﻿@using Bnpp.DataLayer.Entities
+@model IEnumerable<Bnpp.DataLayer.Entities.Units>
+@{
+	ViewData["Title"] = "Units";
+	Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@* <table cellpadding="3" cellspacing="0">
+	<tbody>
+		<tr>
+			<td>
+				Parameter:
+			</td>
+			<td>
+				<select name="codes" id="unitGroup" asp-items="@ViewBag.Groups as SelectList" aria-controls="myTable" class="">
+					<option value="">Select</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Units:
+			</td>
+			<td>
+				<select  id="unitSubGroup" asp-items="@ViewBag.SubGroups as SelectList" aria-controls="myTable" class="">
+					<option value="">Select</option>
+				</select>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="/js/jquery.min.js"></script>
+
+<script>
+
+	$("#unitGroup").change(function () {
+		$("#unitSubGroup").empty();
+		$.getJSON("/Settings/GetSubGroups/" + $("#unitGroup :selected").val(),
+			function (data) {
+
+				$.each(data,
+					function () {
+						$("#unitSubGroup").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+					});
+
+			});
+
+
+	});
+
+</script>
+
+ *@
+
+<div class="dcontent">
+	<div id="iContent">
+		<div id="newPage">
+
+			<div class="bevel-box">
+
+				<a class="btn-new-equip" onclick="Create()" style="cursor:pointer">Create Parameter</a>
+				<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+
+				@{
+					int rowCount = 1;
+					int rowCount1 = 1;
+				}
+
+				<table id="mySavedTable" @*cellpadding="3" cellspacing="0"*@ aria-describedby="example_info" class="cell-border">
+					<thead>
+						<tr role="row">
+
+							<th>
+								@* <input type="checkbox" id="checkAll" />*@
+							</th>
+
+							<th>
+								<b>
+									Parameter
+								</b>
+							</th>
+
+							<th>
+							</th>
+							<th>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						@{
+							List<Units> groups = ViewBag.Groups as List<Units>;
+						}
+
+						@foreach (var item in groups)
+						{
+							<tr>
+								<td>
+									<input type="checkbox" class="checkBox" value="@item.UnitId" />
+								</td>
+								@* <td>
+							@rowCount
+							</td>*@
+								<td>
+									@item.UnitTitle
+								</td>
+								<td>
+									@if (Model.Any(g => g.ParentId == item.UnitId))
+									{
+										<table id="nestedTable" aria-describedby="example_info" class="cell-border">
+											<thead>
+												<tr role="row">
+													<th>
+														@*<input type="checkbox" id="checkAll" />*@
+													</th>
+													<th data-orderable="false">
+														<b>
+															Unit
+														</b>
+													</th>
+													@*  <th data-orderable="false">
+											<b>
+											Allowable Number
+											</b>
+											</th> *@
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var subGroup in Model.Where(g => g.ParentId == item.UnitId))
+												{
+													<tr>
+														<td>
+															<input type="checkbox" class="checkBox" value="@subGroup.UnitId" />
+														</td>
+														<td>
+															@subGroup.UnitTitle
+														</td>
+														@*  <td>
+											@if (Model.Any(g => g.ParentId == subGroup.UnitId))
+											{
+
+											@foreach (var sub2 in Model.Where(g => g.ParentId == subGroup.UnitId))
+											{
+											@sub2.UnitTitle
+											}
+											}
+											else
+											{
+											<a onclick="CreateValue(@subGroup.UnitId)" class="btn-new-equip" style="cursor:pointer">
+											allowable number
+											</a>
+											}
+											</td> *@
+													</tr>
+													rowCount1++;
+												}
+											</tbody>
+										</table>
+									}
+								</td>
+								<td>
+									<a onclick="Create(@item.UnitId)" class="btn-new-equip" style="cursor:pointer">
+										Create Unit
+									</a>
+								</td>
+							</tr>
+							rowCount++;
+						}
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$("#mySavedTable").DataTable();
+	});
+
+	function Create(parentId) {
+		$("#newPage").load("/Settings/Create/" + parentId);
+	}
+
+	
+
+	
+
+	
+
+	$("#delete").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+				type: "POST",
+				url: "/Settings/DeleteGroup",
+				data: { "groupId": selectedIDs },
+
+
+
+				success: function (response) {
+					window.location = "/Units";
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+</script>

@@ -1,0 +1,96 @@
+﻿@model Bnpp.Core.ViewModels.ValvesListViewModel
+@{
+    ViewData["Title"] = "CreateNewValve";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cccccc; background-color: #f0f0f0;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Equip. Type:
+                    </td>
+                    <td style="width: 300px;">
+                        <b>
+                            Electrical Equipments
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1>Create New ElectroValve</h1>
+
+    <div id="iError"></div>
+    <form asp-action="CreateNewValve" method="post">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Valve Name:
+                    </td>
+                    <td>
+                        <input asp-for="Name" type="text" id="iName" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Name"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        AKZ:
+                    </td>
+                    <td>
+                        <input asp-for="Azk" type="text" id="iAZK" style="direction: ltr; text-align: left;">
+
+                    </td>
+                    <td>
+                        <span asp-validation-for="Azk"></span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Installation Position:
+                    </td>
+                    <td>
+                        <input asp-for="InstalationPosition" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="InstalationPosition"></span>
+                    </td>
+                </tr>
+                <tr style="display: none;">
+                    <td>
+                        Type:
+                    </td>
+                    <td>
+                        <select name="iType" id="iType" type="text">
+                            <option value="پمپ">پمپ</option>
+                            <option value="الکتروموتور">الکتروموتور</option>
+                            <option value="سیستم های جانبی">سیستم های جانبی</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="location='/Valves'" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.Events>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b><a class="breadcumb2-link" href="/Equipments">Mechanical Equipments</a></b>
+					</td>
+					<td style="">
+						» Events<b id="subTitle22a"></b>
+					</td>
+					<td style="">
+						» @ViewBag.EquipName <b id="subTitle22a"></b>
+					</td>
+
+
+					<td style="">
+						» <label>
+							<select required="required" onchange="location = this.value;" name="EventLevel" aria-controls="myTable" class="">
+
+								<option value="/Events/@ViewBag.MechanicalId">Events</option>
+
+								<option value="/Technical/@ViewBag.MechanicalId">BasicData</option>
+								<option value="/Documents/@ViewBag.MechanicalId">Documents</option>
+								<option value="/AgeingMechanism/@ViewBag.MechanicalId">Ageing Mechanism</option>
+								<option value="/Installation/@ViewBag.MechanicalId">Installation & Commissioning</option>
+								<option value="/Operational/@ViewBag.MechanicalId">Operational Data</option>
+
+								<option value="/OnOffData/@ViewBag.MechanicalId">On-Off Data</option>
+								<option value="/Maintenance/@ViewBag.MechanicalId">Maintenance</option>
+								<option value="/Inspection/@ViewBag.MechanicalId">Inspection Data</option>
+							</select>
+						</label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width: 48px;" class="imgHelp">
+		</a>
+	</div>
+
+	<table cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr>
+				<td>
+					<label style="margin:10px">
+						@* <input type="text" class="btn-default" value="@ViewBag.MechanicalId"> *@
+						<a class="btn-defaults-equip" href="/Events/InternalEvents/@ViewBag.MechanicalId">
+							Internal Events (BNPP-1)
+						</a>
+						<a class="btn-defaults-equip" href="/Events/ExternalEvents/@ViewBag.MechanicalId">
+							External Events(Other Countries)
+						</a>
+					</label>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div id="tabs">
+	</div>
+
+</div>
+
+
+
+@section Scripts
+	{
+
+	<script>
+		function ShowInternalEvents() {
+			$("#tabs").load("/Events/InternalEvents/@ViewBag.MechanicalId");
+		}
+	</script>
+
+}
+

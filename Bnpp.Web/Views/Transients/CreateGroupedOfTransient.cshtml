@@ -1,0 +1,106 @@
+﻿@model Bnpp.DataLayer.Entities.GroupedTransients
+
+@{
+    ViewData["Title"] = "CreateGroupedOfTransient";
+    Layout = null;
+}
+
+<div class="bevel-box">
+    <div id="normal">
+        <form id="designForm" asp-action="CreateGroupedOfTransient" method="post">
+
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            Code:
+                        </td>
+                        <td>
+                            <input asp-for="Code" required="required" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <input asp-for="Name" required="required" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Allowable Number:
+                        </td>
+                        <td>
+                            <input asp-for="AllowableNumber" required="required" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" id="btnGet" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="CancelCreate();" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+    $('#btnGet').click(function () {
+        debugger;
+
+        if ($("#designForm").valid()) {
+            AjaxdocumentFormSubmit();
+        }
+        else {
+            return false;
+        }
+    });
+
+    function AjaxdocumentFormSubmit() {
+
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+        var formData = new FormData();
+        formData.append("Code", $("#Code").val());
+        formData.append("Name", $("#Name").val());
+        formData.append("AllowableNumber", $("#AllowableNumber").val());
+
+       
+        $.ajax({
+
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+            ,
+
+            success: function (response) {
+
+                $("#newList").load("/Transients/GroupedOfTransient/");
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+               
+                alert(response.responseText);
+
+            }
+        });
+
+    }
+
+    function CancelCreate(){
+        $("#newList").load("/Transients/GroupedOfTransient/");
+    }
+</script>

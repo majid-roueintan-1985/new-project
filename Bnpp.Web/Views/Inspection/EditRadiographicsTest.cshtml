@@ -1,0 +1,211 @@
+﻿@model Bnpp.DataLayer.Entities.InspectionData.TestResults
+@{
+	ViewData["Title"] = "EditRadiographicsTest";
+	Layout = null;
+}
+
+<div id="normal">
+	<form id="normalForm" asp-action="EditRadiographicsTest" method="post">
+		<input type="hidden" asp-for="TestResultsId" />
+		<input type="hidden" asp-for="MechanicalId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td>
+						No:
+					</td>
+					<td>
+						<input asp-for="NO" type="text" id="iName" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NO"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Date:
+					</td>
+					<td>
+						<input name="TestDate" id="TestDate" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Weld No:
+					</td>
+					<td>
+						<input asp-for="WeldNo" type="text" id="iAZK" required="" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="WeldNo"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Weld Size:
+					</td>
+					<td>
+						<input asp-for="WeldSize" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="WeldSize"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Test Scope:
+					</td>
+					<td>
+						<input asp-for="TestScope" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="TestScope"></span>
+					</td>
+				</tr>
+
+
+
+				<tr>
+					<td>
+						Area No.:
+					</td>
+					<td>
+						<input asp-for="AreaNo" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="AreaNo"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Length of section:
+					</td>
+					<td>
+						<input asp-for="LengthofSection" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="LengthofSection"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Sensitivity:
+					</td>
+					<td>
+						<input asp-for="Sensitivity" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Sensitivity"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Revealed Defects:
+					</td>
+					<td>
+						<input asp-for="RevealedDefects" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="RevealedDefects"></span>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td>
+						Quality assessment:
+					</td>
+					<td>
+						<input asp-for="QualityAssessment" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="QualityAssessment"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Register No.:
+					</td>
+					<td>
+						<input asp-for="RegisterNo" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="RegisterNo"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						No. of log book:
+					</td>
+					<td>
+						<input asp-for="NooflogBook" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NooflogBook"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Notes:
+					</td>
+					<td>
+						<input asp-for="Notes" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Notes"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="button" onclick="submitNormal()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick=" showsubPage5()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+	// create DatePicker from input HTML element
+	$("#TestDate").kendoDatePicker();
+</script>
+
+<script type="text/javascript">
+	function submitNormal() {
+		var data = $("#normalForm").serialize();
+		var url = $("#normalForm").attr("action");
+
+		var result = confirm("Are You Sure ?");
+		if (result) {
+			$.ajax({
+				type: 'POST',
+				url: url,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+				data: data,
+				success: function () {
+
+					$("#submenu").load("/Inspection/RadiographicsTest/@Model.MechanicalId");
+				},
+
+				error: function () {
+					//alert('Failed to receive the Data');
+					//console.log('Failed ');
+				}
+			});
+		}
+
+	}
+
+</script>

@@ -1,0 +1,72 @@
+﻿@model Bnpp.DataLayer.Entities.JacketMaterial
+@{
+    ViewData["Title"] = "EditJacketMaterial";
+    Layout =null;
+}
+
+<h2>Edit Jacket Material</h2>
+
+<div id="related">
+    <div id="normal">
+        <form id="designForm" asp-action="EditJacketMaterial" method="post">
+            <input type="hidden" asp-for="JacketMaterialId"/>
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            Jacket Material Title:
+                        </td>
+                        <td>
+                            <input asp-for="JacketMaterialTitle" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="JacketMaterialTitle"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" id="btnGet" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="ShowJacketMaterial()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+
+    function ShowJacketMaterial() {
+        $("#newData").load("/Cables/JacketMaterial/");
+    }
+
+    function AjaxdocumentFormSubmit() {
+        var data = $("#designForm").serialize();
+        //console.log(data);
+        //alert(data);
+        $.ajax({
+            type: 'POST',
+            url: '/Cables/EditJacketMaterial/',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function () {
+                $("#newData").load("/Cables/JacketMaterial/");
+            },
+
+            error: function () {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>

@@ -1,0 +1,102 @@
+﻿@using Bnpp.DataLayer.Entities
+@model IEnumerable<Bnpp.DataLayer.Entities.TransientGroups>
+@{
+    ViewData["Title"] = "nameSearch";
+    Layout = null;
+}
+
+<h1 id="iH1">
+    Results For Name Search
+</h1>
+
+<table id="nameSearch" cellpadding="3" cellspacing="0" aria-describedby="example_info" class="display dataTable">
+    <thead>
+        <tr role="row">
+            <th>
+                <b>Code</b>
+            </th>
+            <th>
+                <b>Name</b>
+            </th>
+        </tr>
+    </thead>
+    <tbody id="searchForName">
+        @{
+            List<TransientGroups> codes = ViewBag.Codes as List<TransientGroups>;
+        }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (codes.Any(g => g.GroupId == item.ParentId))
+                {
+                    <td>
+                        @foreach (var code in codes.Where(g => g.GroupId == item.ParentId))
+                        {
+                            @code.GroupTitle
+                        }
+                    </td>
+                    <td>
+                        @item.GroupTitle
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#nameSearch").DataTable({
+            "info": false,
+            searching: false
+        });
+    });
+
+    //$("#searchForName td").click(function () {
+    //    var vlues = $(this).text();
+        
+    //    vlues = vlues.replace(/\s/g, '');
+
+    //    $("#transientCode").val("");
+    //    $("#transientCode").val(vlues);
+        
+    //    $('#transientCode').trigger('change');
+    //});
+
+    //$(function () {
+    //    $("#transientCode").on("change paste keyup", function () {
+    //        var groupTitle = $("#transientCode").val();
+           
+    //        $.ajax({
+    //            type: "POST",
+    //            url: "/Transients/GetSubGroups",
+    //            data: { "title": groupTitle },
+
+    //            success: function (response) {
+    //                $.each(response,
+    //                    function () {
+    //                        $("#Name").empty();
+    //                        $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+    //                    });
+
+    //            },
+    //            failure: function (response) {
+    //                alert(response.responseText);
+    //            },
+    //            error: function (response) {
+    //                alert(response.responseText);
+    //                $("#Name").empty();
+    //            }
+    //        });
+    //    });
+    //});
+
+</script>
+

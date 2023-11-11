@@ -1,0 +1,573 @@
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.csproj.AssemblyReference.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.AssemblyInfoInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.AssemblyInfo.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.csproj.CoreCompileInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorAssemblyInfo.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorAssemblyInfo.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\appsettings.Development.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\appsettings.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.exe
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.deps.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.runtimeconfig.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.runtimeconfig.dev.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ref\Bnpp.Web.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.Views.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.Views.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\CoreCompat.System.Drawing.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Humanizer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.Identity.Client.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Newtonsoft.Json.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Composition.AttributedModel.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Composition.Convention.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Composition.Hosting.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Composition.Runtime.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Composition.TypedParts.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Runtime.Caching.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Core.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.Core.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\bin\Release\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\scopedcss\bundle\Bnpp.Web.styles.css
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\staticwebassets\Bnpp.Web.StaticWebAssets.Manifest.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.TagHelpers.input.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.TagHelpers.output.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorCoreGenerate.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Error.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Account\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\DataEntry\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Equipments\CreateNewMechanicalEquipment.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Equipments\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorTargetAssemblyInfo.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorTargetAssemblyInfo.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.Views.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.csproj.CopyComplete
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\ref\Bnpp.Web.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.genruntimeconfig.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Cables\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Electrical\Index.cshtml.g.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Web\obj\Release\net5.0\Razor\Views\Equipments\EditEquipment.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\appsettings.Development.json
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\appsettings.json
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.exe
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.deps.json
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.runtimeconfig.json
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.runtimeconfig.dev.json
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.Views.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Web.Views.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ClosedXML.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\CoreCompat.System.Drawing.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\DocumentFormat.OpenXml.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ExcelNumberFormat.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Humanizer.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.Identity.Client.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Newtonsoft.Json.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Composition.AttributedModel.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Composition.Convention.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Composition.Hosting.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Composition.Runtime.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Composition.TypedParts.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.IO.Packaging.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Runtime.Caching.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Core.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.Core.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.csproj.AssemblyReference.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.AssemblyInfoInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.AssemblyInfo.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.csproj.CoreCompileInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorAssemblyInfo.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorAssemblyInfo.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\scopedcss\bundle\Bnpp.Web.styles.css
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\staticwebassets\Bnpp.Web.StaticWebAssets.Manifest.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.TagHelpers.input.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.TagHelpers.output.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorCoreGenerate.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Error.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Account\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\CreateMechanism.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\CreateMechanismDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\Documents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\EditMechanism.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\EditMechanismDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\AgeingMechanism\Mechanism.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Cables\CreateNewCables.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Cables\EditCables.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Cables\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\DataEntry\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Diesel\CreateNewDiesel.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Diesel\EditDiesel.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Diesel\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\AgeingDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CraeteDrawing.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CraeteInstallationDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CraeteStandards.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CreateAgeingDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CreateMaintenanceDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CreateManufacturerDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\CreateOperationalDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\Drawing.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditAgeingDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditDrawings.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditInstallationDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditMaintenanceDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditManufacturer.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditOperationalDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\EditStandard.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\InstallationDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\MaintenanceDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\ManufacturerDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\OperationalDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Documents\Standards.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Electrical\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Electromotor\CreateNewElectromotor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Electromotor\EditElectromotor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Electromotor\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Equipments\CreateNewMechanicalEquipment.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Equipments\EditEquipment.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Equipments\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Events\AfterStatus.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Events\BeforeStatus.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Events\CraeteEvents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Events\EditEvents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Events\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Generator\CreateNewGenerator.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Generator\EditGenerator.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Generator\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Home\Error404.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CraeteUltrasonicForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CraeteVisualControl.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CraeteWorkingPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateLeakageForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateLeakageTest.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateLiquidPenetrated.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateMagneticForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateMagneticPowder.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateMetalForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateMetalThickness.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreatePenetrationForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateRadiographicsForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateRadiographicsTest.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateTypicalPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateUltrasonicTests.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateVisualForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CretaeInspectionInstructions.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CretaeInspectionReports.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditInspectionInstructions.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditInspectionReports.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditLeakageForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditLeakageTest.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditLiquidPenetrated.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditMagneticForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditMagneticPowder.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditMetalForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditMetalThickness.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditPenetrationForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditRadiographicsForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditRadiographicsTest.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditTypicalPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditUltrasonicForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditUltrasonicTests.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditVisualControl.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditVisualForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditWorkingPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\InspectionInstructions.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\InspectionPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\InspectionReports.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\InspectionResults.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\LeakageForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\LeakageTest.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\LiquidPenetrated.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\MagneticForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\MagneticPowder.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\MetalForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\MetalThickness.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\PenetrationForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\RadiographicsForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\RadiographicsTest.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\SubMenu.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\TypicalPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\UltrasonicForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\UltrasonicTests.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\VisualForm.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\WorkingPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Installation\CreateCommissioning.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Installation\EditCommissioning.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Installation\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateDefections.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateDefectsReport.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateMaintenanceForms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateMaintenancePrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateMeasurements.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateSpareParts.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\Defections.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\DefectsReport.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditDefections.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditDefectsReport.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditMaintenanceForms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditMaintenancePrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditMeasurements.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditSpareParts.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\MaintenanceForms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\MaintenancePrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\Measurements.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\SpareParts.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\CreateAgeingDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\CreateManagementReviews.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\CreateMethodology.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\EditAgeingDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\EditManagementReviews.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\EditMethodology.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\ManagementReviews.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\Methodology.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\ManagementDocuments\OtherDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\OnOffData\CreateOnOffData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\OnOffData\EditOnOffData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\OnOffData\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\ChemicalWater.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\CraeteChemicalWater.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\CraeteEnvironmental.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\CraeteSensors.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EditChemicalWater.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EditEnvironmental.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EditSensors.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\Environmental.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\Sensors.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Shared\_Layout1.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Structure\CreateNewStructure.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Structure\EditStructure.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Structure\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\ChemicalComponent.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\ChemicalNorms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\Components.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\ControlPoints.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateChemicalComponent.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateChemicalNorms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateComponents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateControlPoints.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateDesignData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateDesignDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateGeneralData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateHeatTreatment.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateHForms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateMechanicalProperties.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreatePhysicalProperties.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateSensor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\CreateTechnicalInspectionProgram.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\DesignData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\Documents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditChemicalComponent.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditChemicalNorms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditComponents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditControlPoints.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditDesignData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditDesignDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditGeneralData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditHeatTreatment.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditHForms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditMechanicalProperties.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditPhysicalProperties.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditSensor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\EditTechnicalInspectionProgram.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\GeneralData.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\HeatTreatment.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\HForms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\MechanicalProperties.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\PhysicalProperties.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\Safety.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\Sensors.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Technical\TechnicalPrograms.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transformer\CreateNewTransformer.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transformer\EditTransformer.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transformer\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\CreateDesignBasisAccidents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\CreateNormalOperations.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\CreateOccurence.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\DesignBasisAccidents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\EditDesignBasisAccidents.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\EditNormalOperations.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\EditOccurence.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\NormalOperations.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\OperationalOccurence.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Valve\CreateNewValve.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Valve\EditValve.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Valve\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorTargetAssemblyInfo.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.RazorTargetAssemblyInfo.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.Views.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.csproj.CopyComplete
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\refint\Bnpp.Web.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Bnpp.Web.genruntimeconfig.cache
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\ref\Bnpp.Web.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Data.OleDb.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netstandard2.0\System.Data.OleDb.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\bin\Release\net5.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Backup\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Import\CreateDamageabilityReport.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Import\Index.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateTypicalDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\CreateWorkingDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditTypicalDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Inspection\EditWorkingDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\CreateProgramDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Maintenance\EditProgramDocuments.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\CreateEnvironmentalSensor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\CreateSensorDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\CreateWaterSensorDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EditEnvironmentalSensor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EditSensorDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EditWaterSensorDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\EnvironmentalSensor.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\SensorDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Operational\WaterSensorDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\CreateBasisDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\CreateNormalOperationsDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\CreateOccurenceDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\EditBasisDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\EditNormalOperationsDocument.cshtml.g.cs
+C:\Users\mohsen\source\New folder\Bnpp.Web\obj\Release\net5.0\Razor\Views\Transient\EditOccurenceDocument.cshtml.g.cs

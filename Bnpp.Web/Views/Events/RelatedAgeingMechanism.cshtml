@@ -1,0 +1,151 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.RelatedAgeingMechanism>
+
+@{
+    ViewData["Title"] = "RelatedAgeingMechanism";
+    Layout = null;
+}
+
+<h2>Related Ageing Mechanism</h2>
+
+<table cellpadding="3" cellspacing="0">
+    <tbody>
+        <tr>
+            <td>
+                <label style="margin:10px">
+
+                    <a class="btn-defaults-equip" onclick="CreatingEvents()">
+                       Back
+                    </a>
+
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="iContent">
+    <div id="tab1" class="tab-item" style="display: block;">
+        <div id="newPage">
+            <div id="newAgeingMechanism">
+                <div>
+
+
+                    <a class="btn-new-equip" style="cursor:pointer" onclick="CreateAgeingMechanism()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myAgeingMechanismTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th>
+                                    <b>Related Ageing Mechanism Title</b>
+                                </th>
+
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.AgeingMechanismId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.AgeingMechanismTitle
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditAgeingMechanism(@item.AgeingMechanismId)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    
+    $(document).ready(function () {
+        $("#myAgeingMechanismTable").DataTable();
+    });
+
+    
+
+    function CreatingEvents() {
+        $("#newPage").load("/Events/CraeteEvents/");
+    }
+
+    function CreateAgeingMechanism() {
+        $("#newAgeingMechanism").load("/Events/CreateRelatedAgeingMechanism/");
+    }
+
+    
+
+    function EditAgeingMechanism(id) {
+        $("#newAgeingMechanism").load("/Events/EditRelatedAgeingMechanism/" + id);
+       
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Events/DeleteAgeingMechanism",
+                data: { "mechanismId": selectedIDs },
+
+                success: function (response) {
+                    $("#related").load("/Events/RelatedAgeingMechanism/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+    });
+</script>

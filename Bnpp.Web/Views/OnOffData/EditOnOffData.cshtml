@@ -1,0 +1,76 @@
+﻿@model Bnpp.DataLayer.ViewModels.ONOFFViewModel
+@using Bnpp.DataLayer.Entities.ONOFF
+@{
+	ViewData["Title"] = "CreateOnOffData";
+	Layout = null;
+	List<States> statess = ViewData["States"] as List<States>;
+}
+
+<div id="normal">
+	<form id="designForm" asp-action="EditOnOffData" method="post">
+		<input type="hidden" asp-for="ChangeStateId" />
+		<input type="hidden" asp-for="@Model.MechanicalId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+
+
+				<tr>
+					<td>
+						Date of change state:
+					</td>
+					<td>
+						<input name="Dateofchangestate" id="Dateofchangestate" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+
+				<tr>
+					@foreach (var p in statess)
+					{
+
+						<label>
+							<input type="checkbox" name="SelectedStates" value="@p.StateId" @((Model.ChangingInStates.Any(r => r == p.StateId) ? "checked" : ""))>@p.StateTitle
+						</label>
+
+					}
+				</tr>
+
+				<tr>
+					<td>
+						Description:
+					</td>
+					<td>
+						<input asp-for="Description" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Description"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" onclick="if(confirm('Are You sure ?')){}else{return false;};" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick="location='/OnOffData/@Model.MechanicalId'" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+	$("#Dateofchangestate").kendoDateTimePicker(
+		{
+			format: "yyyy/MM/dd hh:mm:ss"
+		});
+
+</script>
+

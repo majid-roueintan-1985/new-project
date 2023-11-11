@@ -1,0 +1,74 @@
+﻿@model Bnpp.DataLayer.Entities.Units
+@{
+	ViewData["Title"] = "Create";
+	Layout = null;
+}
+
+<form id="designForm" method="post" asp-controller="Settings" asp-action="Create">
+	<input type="hidden" asp-for="ParentId" value="@Model.ParentId" />
+	<table cellpadding="3" cellspacing="0">
+		<tbody>
+			<tr>
+
+				@if (Model.ParentId == null)
+				{
+					<td id="modalTitle">
+						Parameter:
+					</td>
+				}
+				else
+				{
+					<td id="modalTitle">
+						Unit:
+					</td>
+				}
+			</tr>
+			<tr>
+				<td>
+					<input type="text" asp-for="UnitTitle" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" />
+					<input type="button" onclick="ShowUnit()" value="Cancel" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</form>
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script type="text/javascript">
+	function AjaxdocumentFormSubmit() {
+		var data = $("#designForm").serialize();
+		var url = $("#designForm").attr("action");
+		$.ajax({
+			type: 'POST',
+			url: url,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+			data: data,
+			success: function () {
+
+				window.location = "/Units";
+			},
+
+			error: function (response) {
+				alert(response.responseText);
+			}
+		});
+
+	}
+
+
+	function ShowUnit() {
+		window.location = "/Units";
+	}
+</script>

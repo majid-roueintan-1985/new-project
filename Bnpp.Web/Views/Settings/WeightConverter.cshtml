@@ -1,0 +1,176 @@
+﻿@{
+	ViewData["Title"] = "WeightConverter";
+	Layout = null;
+}
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b>Unit Converter</b>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div id="iContent">
+
+		<div class="tab-buttons">
+			<ul>
+				<li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a1"
+					   onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+						Length Converter
+					</a>
+				</li>
+				<li id="tab-button2" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Temperature Converter
+					</a>
+
+				</li>
+				<li id="tab-button3" class="tab-buttons-li"  style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+					<a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Weight Converter
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage4()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Speed Converter
+					</a>
+				</li>
+
+
+
+			</ul>
+
+			<div style="clear:both;"></div>
+		</div>
+
+		<div id="tab1" class="tab-item" style="display: block;">
+
+			<h1 id="iH1">
+				Temperature Converter
+			</h1>
+
+			<table cellpadding="3" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>
+							Pounds
+						</td>
+						<td>
+							<input type="number" id="inputPounds" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Kilograms
+						</td>
+						<td>
+							<input type="number" id="inputKilograms" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Ounces
+						</td>
+						<td>
+							<input type="number" id="inputOunces" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Grams
+						</td>
+						<td>
+							<input type="number" id="inputGrams" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Stones
+						</td>
+						<td>
+							<input type="number" id="inputStones" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script>
+
+	function showPage1() {
+		$("#Tabs").load("/Settings/LengthConverter/");
+	}
+
+	function showPage2() {
+		$("#Tabs").load("/Settings/TemperatureConverter/");
+	}
+
+	function showPage3() {
+		$("#Tabs").load("/Settings/WeightConverter/");
+	}
+
+	function showPage4() {
+		$("#Tabs").load("/Settings/SpeedConverter/");
+	}
+
+	function weightConverter(source, valNum) {
+		valNum = parseFloat(valNum);
+		var inputPounds = document.getElementById("inputPounds");
+		var inputKilograms = document.getElementById("inputKilograms");
+		var inputOunces = document.getElementById("inputOunces");
+		var inputGrams = document.getElementById("inputGrams");
+		var inputStones = document.getElementById("inputStones");
+		if (source == "inputPounds") {
+			inputKilograms.value = (valNum / 2.2046).toFixed(2);
+			inputOunces.value = (valNum * 16).toFixed(2);
+			inputGrams.value = (valNum / 0.0022046).toFixed();
+			inputStones.value = (valNum * 0.071429).toFixed(3);
+		}
+		if (source == "inputKilograms") {
+			inputPounds.value = (valNum * 2.2046).toFixed(2);
+			inputOunces.value = (valNum * 35.274).toFixed(2);
+			inputGrams.value = (valNum * 1000).toFixed();
+			inputStones.value = (valNum * 0.1574).toFixed(3);
+		}
+		if (source == "inputOunces") {
+			inputPounds.value = (valNum * 0.062500).toFixed(4);
+			inputKilograms.value = (valNum / 35.274).toFixed(4);
+			inputGrams.value = (valNum / 0.035274).toFixed(1);
+			inputStones.value = (valNum * 0.0044643).toFixed(4);
+		}
+		if (source == "inputGrams") {
+			inputPounds.value = (valNum * 0.0022046).toFixed(4);
+			inputKilograms.value = (valNum / 1000).toFixed(4);
+			inputOunces.value = (valNum * 0.035274).toFixed(3);
+			inputStones.value = (valNum * 0.00015747).toFixed(5);
+		}
+		if (source == "inputStones") {
+			inputPounds.value = (valNum * 14).toFixed(1);
+			inputKilograms.value = (valNum / 0.15747).toFixed(1);
+			inputOunces.value = (valNum * 224).toFixed();
+			inputGrams.value = (valNum / 0.00015747).toFixed();
+		}
+
+	}
+</script>
+

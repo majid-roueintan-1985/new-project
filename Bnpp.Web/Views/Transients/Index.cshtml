@@ -1,0 +1,44 @@
+﻿@*@using Bnpp.DataLayer.Entities
+@model IEnumerable<Bnpp.DataLayer.Entities.TransientGroups>*@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+    {
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            //$("#Tabs").load("/Transients/CreateTransientGroups/");
+            $("#Tabs").load("/Transients/Results/");
+        });
+
+
+       
+
+        function showPage1() {
+            $("#Tabs").load("/Transients/CreateTransientGroups/");
+        }
+
+        function showPage2() {
+            $("#Tabs").load("/Transients/SaveTransients/");
+        }
+
+        function showPage3() {
+            $("#Tabs").load("/Transients/Results/");
+        }
+
+        //function ShowList() {
+        //    $("#newPage").load("/Transients/TransientsList/");
+        //}
+
+    </script>
+
+}
+
+

@@ -1,0 +1,531 @@
+﻿@using Bnpp.DataLayer.Entities.InspectionData
+@model IEnumerable<Bnpp.DataLayer.Entities.BasicData.GeneralData>
+@{
+	ViewData["Title"] = "GeneralData";
+	Layout = null;
+}
+
+
+
+<style>
+	.demo {
+		width: 600px;
+	}
+</style>
+
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b><a class="breadcumb2-link" href="/Equipments">Mechanical Equipments</a></b>
+					</td>
+					<td style="">
+						» @ViewBag.EquipName <b id="subTitle22a"></b>
+					</td>
+					<td style="">
+						» <label>
+							<select required="required" onchange="location = this.value;" name="EventLevel" aria-controls="myTable" class="">
+
+								<option value="/Technical/@ViewBag.MechanicalId">BasicData</option>
+								<option value="/Documents/@ViewBag.MechanicalId">Documents</option>
+								<option value="/AgeingMechanism/@ViewBag.MechanicalId">Ageing Mechanism</option>
+								<option value="/Installation/@ViewBag.MechanicalId">Installation & Commissioning</option>
+								<option value="/Operational/@ViewBag.MechanicalId">Operational Data</option>
+								<option value="/Events/@ViewBag.MechanicalId">Events</option>
+								<option value="/OnOffData/@ViewBag.MechanicalId">On-Off Data</option>
+								<option value="/Maintenance/@ViewBag.MechanicalId">Maintenance</option>
+								<option value="/Inspection/@ViewBag.MechanicalId">Inspection Data</option>
+							</select>
+						</label>
+					</td>
+					<td>
+						» <b style="color: #ff0000;" id="subTitle22">
+							General Data
+						</b>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width: 48px;" class="imgHelp">
+		</a>
+	</div>
+
+	<h1 id="iH1">
+		Basic Data
+	</h1>
+	<div id="iContent">
+
+		<div class="tab-buttons">
+			<ul>
+				<li id="tab-button1" class="tab-buttons-li" @*style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;"*@ style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+					<a id="tab-button-a1"
+					   onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+						General Data
+					</a>
+				</li>
+				<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Design Data
+					</a>
+
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Documents
+
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage4()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Safety class & Seismic category
+
+					</a>
+				</li>
+
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage5()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Components
+
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage6()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Chemical Norms
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage7()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Technical Programs
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage8()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Sensors
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage9()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Control Points
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage10()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						H-Forms
+					</a>
+				</li>
+
+			</ul>
+
+			<div style="clear:both;"></div>
+		</div>
+
+		<div id="tab1" class="tab-item" style="display: block;">
+
+			<h1 id="iH1">
+				General Data
+			</h1>
+
+			<div class="bevel-box">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<form method="post" asp-controller="Technical" asp-action="ExportGeneralData" asp-route-id="@ViewBag.MechanicalId">
+									<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="submit" onclick="refreshPage()" value="Export Excel" />
+								</form>
+							</td>
+							<td>
+								<form method="post" asp-controller="Technical" asp-action="ImportGeneralData" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="file" name="FormFile" />
+									<input type="submit" value="Import Excel" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="newPage">
+				<div>
+					<div class="bevel-box">
+						<a class="btn-new-equip" style="cursor: pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+						<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+						<br />
+						@{
+							int rowCount = 1;
+						}
+						<table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+							<thead>
+								<tr role="row">
+									<th>
+										<input type="checkbox" id="checkAll" />
+									</th>
+									<th></th>
+									<th style="width: 150px">
+										<b>Designation of parameters</b>
+									</th>
+									<th style="width: 250px">
+										<b>Value</b>
+									</th>
+
+									<th style="width: 120px">
+										<b>Actions</b>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr role="row">
+										<td>
+											<input type="checkbox" class="checkBox" value="@item.GeneralId" />
+										</td>
+										<td>
+											@rowCount
+										</td>
+
+										<td>
+											@item.DesignationOfParameters
+										</td>
+										<td>
+											@item.Value
+										</td>
+										<td>
+											<a class="btn-edit-equip" onclick="Edit(@item.GeneralId)">
+												Edit
+											</a>
+										</td>
+									</tr>
+									rowCount++;
+								}
+							</tbody>
+						</table>
+					</div>
+
+					@* Hide General Document List *@
+					<table cellpadding="3" cellspacing="0">
+						<tbody>
+							<tr>
+								<td>
+									<label style="margin:10px">
+										<input type="button" id="graph" onclick="ShowList();" class="btn-default" value="Upload Document">
+										@* <input type="button" onclick="HideList();" class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;"> *@
+										<input type="button" value="Back" onclick="HideList();" class="butn-cancel" style="direction: ltr; text-align: left;">
+									</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					@{
+						List<InspectionDocument> GeneralDocument = ViewBag.GeneralDataDocument as List<InspectionDocument>;
+					}
+
+					<div class="bevel-box">
+						<div id="uploadGeneralDocument" class="tab-item" style="display: none;">
+
+							<h1 id="iH1">Documents</h1>
+
+							<div>
+
+								<a class="btn-new-equip" style="cursor: pointer" onclick="CreateGeneralDocument(@ViewBag.MechanicalId)">New</a>
+								<input type="button" id="deleteGeneralDocument" class="btn-delete-equip" value="Delete">
+
+								@{
+									int rowCount1 = 1;
+								}
+								<table id="myTableDocument" cellpadding="3" cellspacing="0" class="show-table">
+									<thead>
+										<tr role="row">
+											<th>
+												<input type="checkbox" id="checkAll_GeneralDocument" />
+											</th>
+											<th>
+
+											</th>
+											@* <th style="width: 150px">
+												<b>Code</b>
+											</th> *@
+											<th style="width: 250px">
+												<b>File Name</b>
+											</th>
+											@* <th style="width: 120px">
+												<b>Doc. Name </b>
+											</th> *@
+										</tr>
+									</thead>
+									<tbody>
+										@foreach (var item in GeneralDocument)
+										{
+											<tr role="row">
+												<td>
+													<input type="checkbox" name="item_GeneralDocument" class="checkBox" value="@item.InspectionId" />
+												</td>
+												<td>
+													@rowCount1
+												</td>
+
+												 @* <td>
+													@item.Code
+												</td> *@ 
+												<td>
+													@item.Filename
+												</td>
+												@* <td>
+													@item.DocumentName
+												</td> *@
+
+											</tr>
+											rowCount1++;
+										}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="bevel-box">
+						<div class="demo" style="margin:0 auto;">
+							<ul id="lightSlider" style="list-style: none outside none;padding-left: 0;margin-bottom: 0;">
+								@foreach (var item in GeneralDocument)
+								{
+									<li data-thumb="/DocumentImage/@item.InspectionImage" style="display: block;float: left;margin-right: 6px;cursor: pointer;">
+										<img src="/DocumentImage/@item.InspectionImage" style="display: block;height: auto;max-width: 100%;" />
+									</li>
+								}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<link type="text/css" rel="stylesheet" href="/css/lightslider.css" />
+
+<script src="/js/jquery.min.js"></script>
+@* <script src="/js/bootstrap.min.js"></script> *@
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+<script src="/js/lightslider.js"></script>
+
+<script>
+	$(document).ready(function () {
+		$("#myTable").DataTable();
+	});
+
+
+
+	//Gallery
+	$('#lightSlider').lightSlider({
+		gallery: true,
+		item: 1,
+		loop: true,
+		slideMargin: 0,
+		thumbItem: 9
+	});
+</script>
+<script>
+
+	function Create(mechanicalId) {
+		$("#newPage").load("/Technical/CreateGeneralData/" + mechanicalId);
+	}
+
+	function Edit(id) {
+		$("#newPage").load("/Technical/EditGeneralData/" + id);
+	}
+
+
+	function showPage1() {
+
+		$("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId");
+	}
+
+	function showPage2() {
+		$("#Tabs").load("/Technical/DesignData/@ViewBag.MechanicalId");
+	}
+
+	function showPage3() {
+		$("#Tabs").load("/Technical/Documents/@ViewBag.MechanicalId");
+	}
+
+	function showPage4() {
+		$("#Tabs").load("/Technical/Safety/@ViewBag.MechanicalId");
+	}
+
+	function showPage5() {
+		$("#Tabs").load("/Technical/Components/@ViewBag.MechanicalId");
+	}
+
+	function showPage6() {
+		$("#Tabs").load("/Technical/ChemicalNorms/@ViewBag.MechanicalId");
+	}
+
+	function showPage7() {
+		$("#Tabs").load("/Technical/TechnicalPrograms/@ViewBag.MechanicalId");
+	}
+
+	function showPage8() {
+		$("#Tabs").load("/Technical/Sensors/@ViewBag.MechanicalId");
+	}
+
+	function showPage9() {
+		$("#Tabs").load("/Technical/ControlPoints/@ViewBag.MechanicalId");
+	}
+
+	function showPage10() {
+		$("#Tabs").load("/Technical/HForms/@ViewBag.MechanicalId");
+	}
+
+
+	$("#checkAll").click(function () {
+		$(".checkBox").prop('checked',
+			$(this).prop('checked'));
+	});
+
+	$("#delete").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+		debugger;
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+
+				type: "POST",
+				url: "/Technical/DeleteGeneralData/@ViewBag.MechanicalId",
+				data: { "generalId": selectedIDs },
+
+				success: function (response) {
+					$("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId");
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+
+	function readURL(input) {
+
+
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#imgGeneral').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgGeneralUp").change(function () {
+		readURL(this);
+	});
+
+	function HideImage() {
+		$("#imgGeneral").hide();
+	}
+
+	$('input:checkbox.checkBox').change(function () {
+		var selectedIDs = new Array();
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		$('#exportSelectedData').val(selectedIDs);
+
+	});
+
+	function refreshPage() {
+		// Your delay in milliseconds
+		var delay = 2000;
+		setTimeout(function () { $("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId"); }, delay);
+	}
+
+
+	//GALLERY
+
+	function CreateGeneralDocument(mechanicalId) {
+		$("#newPage").load("/Technical/CreateGeneralDocument/" + mechanicalId);
+	}
+
+
+	$("#checkAll_GeneralDocument").click(function () {
+
+
+		$("input[name='item_GeneralDocument']").prop('checked',
+			$(this).prop('checked'));
+	});
+
+
+	$("#deleteGeneralDocument").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+
+				type: "POST",
+				url: "/Technical/DeleteGeneralDataDocument/@ViewBag.MechanicalId",
+				data: { "generalDocumentId": selectedIDs },
+
+				success: function (response) {
+					$("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId");
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+
+	function ShowList() {
+		$("#uploadGeneralDocument").show();
+	}
+	function HideList() {
+		$("#uploadGeneralDocument").hide();
+	}
+</script>
+
+
+
+

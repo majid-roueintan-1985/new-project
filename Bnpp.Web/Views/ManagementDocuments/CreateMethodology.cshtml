@@ -1,0 +1,121 @@
+﻿@model Bnpp.DataLayer.Entities.AgeingManagementDocuments.Methodology
+@{
+    ViewData["Title"] = "CreateMethodology";
+    Layout = null;
+}
+
+<div id="normal">
+    <form id="myForm" asp-action="CreateMethodology" method="post" enctype="multipart/form-data">
+
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+            <tr>
+                <td>
+                    Code:
+                </td>
+                <td>
+                    <input asp-for="Code" type="text" id="txtCode" style="direction: ltr; text-align: left;">
+                </td>
+                <td>
+                    <span asp-validation-for="Code"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    File Name:
+                </td>
+                
+                <td>
+                    <input asp-for="Filename"  type="text" id="fileName" value="" required="" style="direction: ltr; text-align: left;">
+                </td>
+                <td>
+                    <span asp-validation-for="Filename"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Select File:
+                </td>
+                <td>
+                    <input type="file" name="imgMetholodyUp" id="imgMetholodyUp" style="direction: ltr; text-align: left;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Doc. Name:
+                </td>
+                <td>
+                    <input asp-for="DocumentName" type="text"  id="txtDoc" style="direction: ltr; text-align: left;">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="button" onclick="AjaxFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                    <input type="button" onclick="showPage1()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+       function AjaxFormSubmit() {
+            //Set the URL.
+            var url = $("#myForm").attr("action");
+            //Add the Field values to FormData object.
+            var formData = new FormData();
+            formData.append("code", $("#txtCode").val());
+            formData.append("Filename", $("#fileName").val());
+            formData.append("DocumentName", $("#txtDoc").val());
+
+            //formData.append("doc. name", $("#txtDoc").val());
+            debugger;
+            
+            //formData.append("file name", $("#fileName").val());
+            formData.append("filemetholody", $("#imgMetholodyUp")[0].files[0]);
+            
+ 
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function() {
+               $("#Tabs").load("/ManagementDocuments/Methodology/");
+            });
+        }
+
+
+
+          function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgCourse').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgCourseUp").change(function () {
+            readURL(this);
+        });
+
+            $('input[type=file]').change(function () {
+
+        $('#fileName').attr('value', this.files[0].name);
+    });
+</script>
+

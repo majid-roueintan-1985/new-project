@@ -1,0 +1,226 @@
+﻿
+<h2>Craete External Events</h2>
+
+@model Bnpp.DataLayer.Entities.ExternalEvents
+@{
+    ViewData["Title"] = "CraeteEvents";
+    Layout = null;
+}
+
+<div id="normal">
+    <form id="designForm" asp-action="CraeteExternalEvents" method="post">
+        <input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        NPP Name:
+                    </td>
+                    <td>
+                        <input asp-for="NPPName" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="NPPName"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Reactor Type:
+                    </td>
+                    <td>
+                        <input asp-for="ReactorType" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="ReactorType"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Report Code:
+                    </td>
+                    <td>
+                        <input asp-for="ReportCode" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="ReportCode"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Event Name:
+                    </td>
+                    <td>
+                        <input asp-for="EventName" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="EventName"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Event Date:
+                    </td>
+                    <td>
+                        <input name="EventDate" id="EventDate" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Report Date:
+                    </td>
+                    <td>
+                        <input name="ReportDate" id="ReportDate" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+               
+                <tr>
+                    <td>
+                        Related Ageing Mechanism:
+                    </td>
+                    <td>
+                        <input asp-for="RelatedAgeingMechanism" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="RelatedAgeingMechanism"></span>
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td>
+                        Description:
+                    </td>
+                    <td>
+                        <input asp-for="Description" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Description"></span>
+                    </td>
+                </tr>
+                @*<tr>
+                    <td>
+                        File Name:
+                    </td>
+
+                    <td>
+                        <input asp-for="Filename" type="text" value="" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Filename"></span>
+                    </td>
+                </tr>*@
+                <tr>
+                    <td>
+                        Select File:
+                    </td>
+                    <td>
+                        <input type="file" name="imgEventUp" id="imgEventUp" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="location='/Events/ExternalEvents/@Model.MechanicalId'" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+@*<link href="/css/kendo.rtl.min.css" rel="stylesheet" />*@
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+@*<script src="/js/kendo.web.min.js"></script>*@
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script>
+    // create DatePicker from input HTML element
+    $("#EventDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("#ReportDate").kendoDatePicker(
+        {
+            format: "yyyy/MM"
+        });
+
+</script>
+
+<script type="text/javascript">
+    function AjaxdocumentFormSubmit() {
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+
+        
+
+
+        var formData = new FormData();
+        formData.append("NPPName", $("#NPPName").val());
+        
+        formData.append("ReactorType", $("#ReactorType").val());
+
+        formData.append("ReportCode", $("#ReportCode").val());
+
+        formData.append("EventName", $("#EventName").val());
+
+        formData.append("EventDate", $("#EventDate").val());
+        
+        formData.append("ReportDate", $("#ReportDate").val());
+
+        formData.append("RelatedAgeingMechanism", $("#RelatedAgeingMechanism").val());
+
+        formData.append("Description", $("#Description").val());
+
+        formData.append("fileEvents", $("#imgEventUp")[0].files[0]);
+
+        formData.append("MechanicalId", $("#MechanicalId").val());
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+            window.location.href = "/Events/ExternalEvents/@ViewBag.MechanicalId";
+        });
+    }
+
+    function showMechanicalPage() {
+        $("#newPage").load("/Technical/HeatTreatment/");
+    }
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgCourse').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgCourseUp").change(function () {
+        readURL(this);
+    });
+
+    $('input[type=file]').change(function () {
+
+        $('#Filename').attr('value', this.files[0].name);
+    });
+</script>

@@ -1,0 +1,53 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+	{
+	<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			$("#Tabs").load("/Documents/OperationalDocuments/@ViewBag.MechanicalId");
+		});
+
+		function showPage1() {
+			$("#Tabs").load("/Documents/OperationalDocuments/@ViewBag.MechanicalId");
+		}
+
+		function showPage2() {
+			$("#Tabs").load("/Documents/Drawing/@ViewBag.MechanicalId");
+		}
+
+		function showPage3() {
+			$("#Tabs").load("/Documents/Standards/@ViewBag.MechanicalId");
+		}
+
+		function showPage4() {
+			$("#Tabs").load("/Documents/ManufacturerDocuments/@ViewBag.MechanicalId");
+		}
+
+		function showPage5() {
+			$("#Tabs").load("/Documents/InstallationDocuments/@ViewBag.MechanicalId");
+		}
+
+		function showPage6() {
+			$("#Tabs").load("/Documents/MaintenanceDocuments/@ViewBag.MechanicalId");
+		}
+
+		function showPage7() {
+			$("#Tabs").load("/Documents/AgeingDocuments/@ViewBag.MechanicalId");
+		}
+
+	</script>
+
+}
+
+
+
+

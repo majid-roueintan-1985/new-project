@@ -1,0 +1,78 @@
+﻿@model Bnpp.DataLayer.Entities.Owner
+@{
+    ViewData["Title"] = "EditOwner";
+    Layout = null;
+}
+
+<h2>EditOwner</h2>
+
+<div id="related">
+    <div id="normal">
+        <form id="designForm" asp-action="EditOwner" method="post">
+           <input type="hidden" asp-for="OwnerId"/>
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            Responsible Unit Title:
+                        </td>
+                        <td>
+                            <input asp-for="OwnerTitle" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="OwnerTitle"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" id="btnGet" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="ShowOwner()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+
+    function ShowOwner() {
+        //alert(@ViewBag.Code);
+        $("#newData").load("/Cables/Owner/");
+    }
+
+    function AjaxdocumentFormSubmit() {
+        var data = $("#designForm").serialize();
+        //console.log(data);
+        //alert(data);
+        $.ajax({
+            type: 'POST',
+            url: '/Cables/EditOwner/',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function () {
+                $("#newData").load("/Cables/Owner/");
+            },
+
+            error: function () {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>
+
+
+
+
+

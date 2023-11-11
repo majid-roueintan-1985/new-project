@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewData["Title"] = "TemperatureConverter";
+    Layout = null;
+}
+
+
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b>Unit Converter</b>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<div id="iContent">
+
+		<div class="tab-buttons">
+			<ul>
+				<li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;" >
+					<a id="tab-button-a1"
+					   onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+						Length Converter
+					</a>
+				</li>
+				<li id="tab-button2" class="tab-buttons-li" style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+					<a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Temperature Converter
+					</a>
+
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Weight Converter
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage4()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Speed Converter
+					</a>
+				</li>
+
+
+
+			</ul>
+
+			<div style="clear:both;"></div>
+		</div>
+
+		<div id="tab1" class="tab-item" style="display: block;">
+
+			<h1 id="iH1">
+				Temperature Converter
+			</h1>
+
+			<table cellpadding="3" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>
+							Fahrenheit
+						</td>
+						<td>
+							<input type="number" id="inputFahrenheit" min="-459.66999999999996" oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Celsius
+						</td>
+						<td>
+							<input type="number" id="inputCelsius" min="-273.15" oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Kelvin
+						</td>
+						<td>
+							<input type="number" id="inputKelvin" min="0" oninput="temperatureConverter(this.id,this.value)" onchange="temperatureConverter(this.id,this.value)" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+
+<script>
+
+	function showPage1() {
+		$("#Tabs").load("/Settings/LengthConverter/");
+	}
+
+	function showPage2() {
+		$("#Tabs").load("/Settings/TemperatureConverter/");
+	}
+
+	function showPage3() {
+		$("#Tabs").load("/Settings/WeightConverter/");
+	}
+
+	function showPage4() {
+		$("#Tabs").load("/Settings/SpeedConverter/");
+	}
+
+	// function showPage5() {
+	// 	$("#Tabs").load("/Maintenance/Measurements/@ViewBag.MechanicalId");
+	// }
+
+	// function showPage6() {
+	// 	$("#Tabs").load("/Maintenance/DefectsReport/@ViewBag.MechanicalId");
+	// }
+
+
+	function temperatureConverter(source, valNum) {
+		valNum = parseFloat(valNum);
+		var inputFahrenheit = document.getElementById("inputFahrenheit");
+		var inputCelsius = document.getElementById("inputCelsius");
+		var inputKelvin = document.getElementById("inputKelvin");
+		if (source == "inputFahrenheit") {
+			inputCelsius.value = ((valNum - 32) / 1.8).toFixed(2);
+			inputKelvin.value = (((valNum - 32) / 1.8) + 273.15).toFixed(2);
+		}
+		if (source == "inputCelsius") {
+			inputFahrenheit.value = ((valNum * 1.8) + 32).toFixed(2);
+			inputKelvin.value = ((valNum) + 273.15).toFixed(2);
+		}
+		if (source == "inputKelvin") {
+			inputFahrenheit.value = (((valNum - 273.15) * 1.8) + 32).toFixed(2);
+			inputCelsius.value = ((valNum) - 273.15).toFixed(2);
+		}
+	}
+</script>

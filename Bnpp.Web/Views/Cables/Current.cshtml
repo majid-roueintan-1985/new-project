@@ -1,0 +1,162 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.CableCurrent>
+@{
+    ViewData["Title"] = "Current";
+    Layout =null;
+}
+
+<h2>Current</h2>
+<table cellpadding="3" cellspacing="0">
+    <tbody>
+        <tr>
+            <td>
+                <label style="margin:10px">
+
+                    <a class="btn-defaults-equip" onclick="CreatingOwner()">
+                        Back
+                    </a>
+
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="iContent">
+    <div id="tab1" class="tab-item" style="display: block;">
+        <div id="newPage">
+            <div id="newAgeingMechanism">
+                <div>
+
+
+                    <a class="btn-new-equip" style="cursor:pointer" onclick="CreateNewCurrent()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myOwnerTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th>
+                                    <b>Current Title</b>
+                                </th>
+
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.ID" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.CurrentTitle
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditCurrent(@item.ID)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#myOwnerTable").DataTable();
+    });
+
+
+
+    function CreatingOwner() {
+        if (@ViewBag.Code== 1) {
+            $("#newPage").load("/Cables/CreateGeneralCables/");
+        }
+        if (@ViewBag.Code== 2) {
+            $("#newPage").load("/Cables/CreateOperatingData/");
+        }
+        if (@ViewBag.Code== 3) {
+            $("#newPage").load("/Cables/CreateMaintenanceData/");
+        }
+        if (@ViewBag.Code== 4) {
+            $("#newPage").load("/Cables/CreateCablereport/");
+        }
+    }
+
+    function CreateNewCurrent() {
+        $("#newAgeingMechanism").load("/Cables/CreateCurrent/");
+    }
+
+
+
+    function EditCurrent(id) {
+        $("#newAgeingMechanism").load("/Cables/EditCurrent/" + id);
+
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Cables/DeleteCurrent",
+                data: { "currentId": selectedIDs },
+
+                success: function (response) {
+                    $("#newData").load("/Cables/Current/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+    });
+</script>
+
+

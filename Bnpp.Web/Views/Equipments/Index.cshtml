@@ -1,0 +1,337 @@
+﻿@model IEnumerable<Bnpp.Core.ViewModels.MechanicalListViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .navigationClass {
+        background-color: yellow;
+    }
+</style>
+
+<style>
+
+
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: rgb(128, 128, 128);
+        color: black;
+        /*padding: 10px;*/
+        font-size: 12px;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #ffcf00;
+        min-width: 260px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border: solid 1px #db0;
+        top: -300px;
+        left: 85px;
+    }
+
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: solid 1px #d4ac03;
+        }
+
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1
+            }
+
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+        border: none;
+    }
+</style>
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+    </div>
+    <div style="border-radius:5px; margin-top:5px;margin-bottom:5px; padding:15px; border:solid 1px #cea001; background-color:#ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="">
+                        <b>
+                            <a class="breadcumb2-link" href="/DataEntry">Main</a>
+                        </b>
+                    </td>
+                    <td style="">
+                        » <b style="color: #ff0000;">
+                            <a class="breadcumb2-link" href="#">Mechanical Equipments</a>
+                        </b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a id="iHelp" style="float:right;position:relative; top:-32px;" href="javascript:;" onclick="showHelp();"><img src="/images/help.png" style="width:48px;" class="imgHelp"></a>
+    </div>
+
+    <h1>Mechanical Equipments</h1>
+
+    <div class="bevel-box">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+
+                    <td>
+                        <form method="post" asp-controller="Equipments" asp-action="ExportEquipments">
+                            <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                            <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                        </form>
+                    </td>
+
+                    <td>
+                        <form method="post" asp-controller="Equipments" asp-action="ImportEquipments" enctype="multipart/form-data">
+                            <input type="file" name="FormFile" />
+                            <input type="submit" value="Import Excel" />
+                        </form>
+                    </td>
+
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="btn-new-equip" href="/Equipments/CreateNewMechanicalEquipment">New</a>
+    <input type="button" value="Back" onclick="location='/DataEntry'" class="butn-cancel" style="direction: ltr; text-align: left;">
+    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+    <br />
+    @{
+        int rowCount = 1;
+    }
+    <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+        <thead>
+            <tr role="row">
+                <th>
+                    <input type="checkbox" id="checkAll" />
+                </th>
+                <th>
+
+                </th>
+                <th>
+                    <b>Date</b>
+                </th>
+                <th>
+                    <b>Equip. Name</b>
+                </th>
+                <th>
+                    <b>AKZ Serial</b>
+                </th>
+                <th>
+                    <b>Actions</b>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="copy_(@item.MechanicalId)" role="row">
+                    <td>
+                        <input type="checkbox" class="checkBox" value="@item.MechanicalId" />
+                    </td>
+                    <td>
+                        @rowCount
+                    </td>
+                    <td>
+                        @item.CreateDate.ToString("yyyy/MM/dd")
+                    </td>
+                    <td id="name_@(item.MechanicalId)">
+                        @item.Name
+                    </td>
+                    <td id="azk_@(item.MechanicalId)">
+                        @item.Azk
+                    </td>
+                    <td>
+                        <a class="btn-edit-equip" href="/Equipments/EditEquipment/@item.MechanicalId">Edit</a>
+                        <a onclick="CopyRow(@item.MechanicalId)" style="cursor: pointer" id="copy"><img title="copy" src="/images/copy.png" style="width:20px;cursor: pointer;"></a>
+                        <div class="dropdown">
+                            <button class="dropbtn">Values & Data</button>
+                            <div class="dropdown-content">
+                                <a href="/Technical/@item.MechanicalId">Basic Data</a>
+                                <a href="/Documents/@item.MechanicalId">Documents</a>
+                                <a href="/AgeingMechanism/@item.MechanicalId">Ageing Mechanism</a>
+                                <a href="/Installation/@item.MechanicalId">Installation & Commissioning</a>
+                                <a href="/Operational/@item.MechanicalId">Operational Data</a>
+                                <a href="/Events/@item.MechanicalId">Events</a>
+                                <a href="/OnOffData/@item.MechanicalId">On-Off data</a>
+                                <a href="/Maintenance/@item.MechanicalId">Maintenance</a>
+                                <a href="/Inspection/@item.MechanicalId">Inspection Data</a>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+                rowCount++;
+            }
+
+        </tbody>
+    </table>
+    <br>
+</div>
+
+
+@section Scripts
+	{
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+</script>
+
+<script>
+                $("#checkAll").click(function () {
+                    $(".checkBox").prop('checked',
+                        $(this).prop('checked'));
+                });
+
+                $("#delete").click(function () {
+                    //debugger;
+                    var selectedIDs = new Array();
+
+
+
+                    $('input:checkbox.checkBox').each(function () {
+                        if ($(this).prop('checked')) {
+                            selectedIDs.push($(this).val());
+                        }
+                    });
+
+
+                    var result = confirm("are you sure you want to delete?");
+                    if (result) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/Equipments/DeleteEquipment",
+                            data: { "mechanicalId": selectedIDs },
+
+
+
+                            success: function (response) {
+                                window.location.href = "/Equipments";
+                            },
+                            failure: function (response) {
+                                alert(response.responseText);
+                            },
+                            error: function (response) {
+                                alert(response.responseText);
+                            }
+
+                        });
+                    }
+
+                });
+
+                //$("#copy").click(function() {
+                function CopyRow(id) {
+
+                    var Name = $("#name_" + id).text();
+                    var AZK = $("#azk_" + id).text();
+
+
+                    debugger;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Equipments/CreateNewMechanicalEquipment",
+                        data: { "Name": Name, "Azk": AZK },
+
+                        success: function (response) {
+                            window.location.href = "/Equipments";
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        }
+
+                    });
+
+                }
+
+
+
+
+    //      $(document).ready(function() {
+
+    //          var Name = $("#name_4").html();
+    //          var AZK = $("#azk_4").html();
+    //          if(Name>AZK)
+
+    //$('#azk_4').addClass('navigationClass');
+
+    //});
+
+    //$(document).ready(function()
+    //{
+    //    $for{(i=1;i<8;i++)}
+
+        
+    //    {
+
+    //        function() {
+    //             var Name = $("#name_i").html();
+    //          var AZK = $("#azk_i").html();
+
+    //          if(Name>AZK){
+    //              $('#azk_i').addClass('navigationClass');
+    //          }
+    //        });
+    //    }
+        
+    // });
+
+        $('input:checkbox.checkBox').change(function () {
+            var selectedIDs = new Array();
+            $('input:checkbox.checkBox').each(function () {
+                if ($(this).prop('checked')) {
+                    selectedIDs.push($(this).val());
+                }
+            });
+
+            $('#exportSelectedData').val(selectedIDs);
+
+
+           
+        });
+
+        function refreshPage() {
+            // Your delay in milliseconds
+            var delay = 2000;
+            setTimeout(function () { window.location.href = "/Equipments"; }, delay);
+        }
+
+</script>
+}

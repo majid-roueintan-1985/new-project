@@ -1,0 +1,143 @@
+﻿@model Bnpp.DataLayer.Entities.BasicData.InspectionProgram
+@{
+    ViewData["Title"] = "CreateTechnicalInspectionProgram";
+    Layout = null;
+}
+
+<div id="normal">
+    <form id="chemicalForm" asp-action="CreateTechnicalInspectionProgram" method="post">
+        <input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Code:
+                    </td>
+                    <td>
+                        <input asp-for="Code" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Code"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Equipment & Component:
+                    </td>
+                    <td>
+                        <input asp-for="EquipmentDocument" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="EquipmentDocument"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Test Method:
+                    </td>
+                    <td>
+                        <input asp-for="TestMethod" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="TestMethod"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Technical Documents:
+                    </td>
+                    <td>
+                        <input asp-for="TechnicalDocuments" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="TechnicalDocuments"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Scope of Inspection %:
+                    </td>
+                    <td>
+                        <input asp-for="ScopeofInspection" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="ScopeofInspection"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Period of Inspection:
+                    </td>
+                    <td>
+                        <input asp-for="PeriodofInspection" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="PeriodofInspection"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Category of Welded joints:
+                    </td>
+                    <td>
+                        <input asp-for="CategoryofWeldedjoints" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="CategoryofWeldedjoints"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Note:
+                    </td>
+                    <td>
+                        <input asp-for="Note" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Note"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="submitChemical()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="showPage7()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+    function submitChemical() {
+        var data = $("#chemicalForm").serialize();
+        var url = $("#chemicalForm").attr("action");
+        $.ajax({
+            type: 'POST',
+            url: url,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function() {
+                $("#Tabs").load("/Technical/TechnicalPrograms/@ViewBag.MechanicalId");
+            },
+
+            error: function() {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>

@@ -1,0 +1,123 @@
+﻿@model Bnpp.DataLayer.Entities.Occurance
+@{
+    ViewData["Title"] = "CreateNormalOperations";
+    Layout = null;
+}
+
+<div id="normal">
+    <form id="occurenceForm" asp-action="EditOccurence" method="post">
+        <input type="hidden" asp-for="OccuranceId"/>
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+            <tr>
+                <td>
+                    Name of Conditions:
+                </td>
+                <td>
+                    <input asp-for="NameofConditions" type="text" id="iName" style="direction: ltr; text-align: left;">
+                </td>
+                <td>
+                    <span asp-validation-for="NameofConditions"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Allowable Num.:
+                </td>
+                <td>
+                    <input asp-for="AllowableNumber" type="text" id="iAZK" required="" style="direction: ltr; text-align: left;">
+                </td>
+                <td>
+                    <span asp-validation-for="AllowableNumber"></span>
+                </td>
+            </tr>
+
+            
+            <tr>
+                <td>
+                    Occurrances:
+                </td>
+                <td>
+                    <input asp-for="Occurrances" value="1" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+                </td>
+                <td>
+                    <span asp-validation-for="Occurrances"></span>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <input asp-for="Dates" type="text" id="txtdate" placeholder="Dates" style="width: auto; direction: ltr; text-align: left;">
+                    <input name="StartDates" id="Dates" @*type="date"*@>
+                </td>
+                <td>
+                    <input id="adding" value="" style="background-image: url(&quot;/images/new-folder2.png&quot;); background-repeat: no-repeat; background-position: 4px 4px; cursor: pointer; width: 30px; height: 30px; background-color: rgb(240, 240, 240); direction: ltr; text-align: left;" title="Add date" onclick="addDateToInput();" type="button">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="submitNormal()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                    <input type="button" onclick="showPage1()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    // create DatePicker from input HTML element
+    $("#Dates").kendoDatePicker();
+</script>
+
+<script type="text/javascript">
+    function submitNormal() {
+        var data = $("#occurenceForm").serialize();
+        //console.log(data);
+        //alert(data);
+
+        var result = confirm("Are You Sure ?");
+        if (result) {
+        $.ajax({
+            type: 'POST',
+            url: '/Transient/EditOccurence',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function() {
+               $("#Tabs").load("/Transient/OperationalOccurence/");
+            },
+
+            error: function() {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+        }
+
+    }
+
+     function addDateToInput() {
+
+         //debugger;
+
+     var date = $('#Dates').val();
+     var input=$('#txtdate').val();
+
+     if(input ==""){
+         $('#txtdate').val(date)
+     }
+
+     else {
+         $('#txtdate').val(input + ", " + date);
+     }
+     //alert($('#txtdate').val());
+         $('#Dates').val("");
+     }
+
+</script>

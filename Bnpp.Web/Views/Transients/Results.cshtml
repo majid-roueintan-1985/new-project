@@ -1,0 +1,194 @@
+﻿@model IEnumerable<Bnpp.DataLayer.ViewModels.TransientsListViewModel>
+@{
+    ViewData["Title"] = "Results";
+    Layout = null;
+}
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="">
+                        <b><a class="breadcumb2-link" href="/Admin">Main</a></b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+            <img src="/images/help.png" style="width: 48px;" class="imgHelp">
+        </a>
+    </div>
+    <h1 id="iH1"></h1>
+    <div id="iContent">
+        <div class="tab-buttons">
+            <ul>
+                <li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a1"
+                       onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                        Create Transients
+                    </a>
+                </li>
+                <li id="tab-button2" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Save Transients
+                    </a>
+                </li>
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                    <a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Results
+                    </a>
+                </li>
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="transientResult">
+            <div class="bevel-box">
+                @{
+                    int rowCount = 1;
+                }
+                <table id="myResultsTable" cellpadding="3" cellspacing="0" class="show-table">
+                    <thead>
+                        <tr role="row">
+                            <th>
+                                <b>Transient Code </b>
+                            </th>
+                            <th>
+                                <b>Transient Name</b>
+                            </th>
+                            <th>
+                                <b>Allowable No. of Transients</b>
+                            </th>
+                            <th>
+                                <b>Actual No. of Transients</b>
+                            </th>
+                            <th>
+                                <b>Remaining No. of Transients</b>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="searchByCodes">
+                        @foreach (var item in Model)
+                        {
+                            <tr role="row">
+                                <td >
+                                    <a @*onclick="showAllTransient(@item.Code)"*@>
+                                        @item.Code
+                                    </a>
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Values
+                                </td>
+                                <td>
+                                    @item.Count
+                                </td>
+                                <td>
+                                    @{
+                                        int res = Convert.ToInt32(item.Values) - item.Count;
+                                    }
+                                    @res
+                                </td>
+                            </tr>
+                            rowCount++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="/css/bootstrap-modal1.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/datatables.min.css" rel="stylesheet" />
+<link href="/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="/css/select.dataTables.min.css" rel="stylesheet" />
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script src="/js/dataTables.buttons.min.js"></script>
+<script src="/js/jszip.min.js"></script>
+<script src="/js/pdfmake.min.js"></script>
+<script src="/js/vfs_fonts.js"></script>
+<script src="/js/buttons.html5.min.js"></script>
+<script src="/js/buttons.print.min.js"></script>
+
+
+<script src="/js/dataTables.select.min.js.download.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+
+<script>
+
+    function showPage1() {
+        $("#Tabs").load("/Transients/CreateTransientGroups/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Transients/SaveTransients/");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Transients/Results/");
+    }
+
+    //function showAllTransient() {
+
+    //    var codes = $("#savedCode").text();
+
+    //    codes = codes.trim();
+    //    alert(codes);
+    //}
+
+
+    //$(document).ready(function () {
+    //    $("#myResultsTable").DataTable();
+    //});
+
+
+    $(document).ready(function () {
+        $('#myResultsTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+
+                'excel',
+
+            ],
+            select: true
+        });
+    });
+
+    $("#searchByCodes td:first-child").click(function () {
+        var codes=$(this).text();
+        codes = codes.trim();
+        $.ajax({
+            type: "POST",
+            url: "/Transients/GetTransientByCode",
+            data: { "title": codes },
+
+            success: function (response) {
+
+                $("#transientResult").html(response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    
+
+</script>

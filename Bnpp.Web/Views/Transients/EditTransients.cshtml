@@ -1,0 +1,166 @@
+﻿@model Bnpp.DataLayer.Entities.Transients
+@{
+    ViewData["Title"] = "EditTransients";
+    Layout = null;
+}
+<div class="bevel-box">
+    <h1>
+        Edit Transients
+    </h1>
+    <div id="hgn"></div>
+    <div id="normal">
+        <form id="designForm" asp-action="EditTransients" method="post">
+            <input type="hidden" asp-for="TransientsId" />
+            <input type="hidden" asp-for="AllowableNumber" />
+            
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            Code:
+                        </td>
+                        <td>
+                            <input asp-for="Code" value="@Model.Code" style="direction: ltr; text-align: left;" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <input asp-for="Name" value="@Model.Name" style="direction: ltr; text-align: left;" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Transient Date:
+                        </td>
+                        <td>
+                            <input asp-for="TransientDate" name="TransientDate" id="TransientDate" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Transient Time:
+                        </td>
+                        <td>
+                            <input asp-for="TransientTime" type="time" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Description:
+                        </td>
+                        <td>
+                            <input asp-for="Description" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                   @* <tr>
+                        <td>
+                            <div>
+                                <input type="button" onclick="EditDocuments()" class="btn-edit-equip" value="Edit Documents">
+                            </div>
+                        </td>
+                        <td>
+                            <a class="btn-edit-equip" href="/Transients/EditDocument/@Model.TransientsId" target="_blank">
+                                Edit Documents
+                            </a>
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <td>
+                            <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="CancelCreate();" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+   
+    $("#datepicker").kendoDateTimePicker({
+        format: "MM/dd/yyyy HH:mm", parseFormats: ["MM/dd/yyyy", "HH:mm"], timeFormat: "HH:mm"
+    });
+
+    $("#TransientDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+  
+</script>
+
+<script type="text/javascript">
+    function AjaxdocumentFormSubmit() {
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+        var formData = new FormData();
+        formData.append("Code", $("#Code").val());
+
+        formData.append("Name", $("#Name").val());
+
+        formData.append("Description", $("#Description").val());
+
+        formData.append("TransientsId", $("#TransientsId").val());
+
+        formData.append("AllowableNumber", $("#AllowableNumber").val());
+
+        formData.append("TransientDate", $("#TransientDate").val());
+
+        formData.append("TransientTime", $("#TransientTime").val());
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+            $("#Tabs").load("/Transients/SaveTransients/");
+        });
+
+    }
+
+   
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgCourse').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgTrnsientUp").change(function () {
+        readURL(this);
+    });
+
+    $('input[type=file]').change(function () {
+
+        $('#Filename').attr('value', this.files[0].name);
+    });
+
+    function EditDocuments() {
+        $("#hgn").load("/Transients/EditDocument/" + @Model.TransientsId);
+        //alert(@Model.TransientsId);
+    }
+   
+</script>
+
+

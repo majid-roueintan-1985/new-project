@@ -1,0 +1,876 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.ChemistryTable>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div class="dcontent">
+
+
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+
+                <tr>
+                    <td style="">
+                        <b>
+                            <a class="breadcumb2-link" href="/Admin">Main</a>
+                        </b>
+                    </td>
+                    @*<td style=""> » <b style="color: #ff0000;"><a class="breadcumb2-link" href="#">Structures</a></b></td>*@
+                </tr>
+            </tbody>
+        </table><a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();"><img src="/images/help.png" style="width: 48px;" class="imgHelp"></a>
+    </div>
+
+    <div class="bevel-box">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <form method="post" asp-controller="Chemistry" asp-action="Export">
+                            <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                            <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" asp-controller="Chemistry" asp-action="ImportChemistryExcelFile" enctype="multipart/form-data">
+                            <input type="file" name="FormFile" />
+                            <input type="submit" value="Import Excel" />
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bevel-box">
+        <form action="/Chemistry" method="get" id="searchFilter">
+
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            @if (ViewBag.System != "")
+                            {
+                                <label style="margin:10px">
+                                    System:
+                                    <select aria-controls="myTable" class="">
+                                        <option value="">@ViewBag.System</option>
+                                    </select>
+                                </label>
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    System:
+                                    @*<select name="system" asp-items="@(new SelectList(ViewBag.SearchSystem,"System","System"))" aria-controls="myTable" class="">*@
+                                    <select name="system" id="searchSystem" asp-items="@ViewBag.SearchSystem as SelectList" aria-controls="myTable" class="">
+                                        <option value="">Select</option>
+                                    </select>
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.SampleePoints != "")
+                            {
+                                <label style="margin:10px">
+                                    Sampling Point:
+                                    <select aria-controls="myTable" class="">
+                                        <option value="">@ViewBag.SampleePoints</option>
+                                    </select>
+                                </label>
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    Sampling Point:
+                                    <select id="searchSamplepoint" name="samplePoint" asp-items="@ViewBag.SamplePoint as SelectList" aria-controls="myTable" class="">
+                                        <option value="">Select</option>
+                                    </select>
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.SystemState != "")
+                            {
+                                <label style="margin:10px">
+                                    System State:
+                                    <select aria-controls="myTable" class="">
+                                        <option value="">@ViewBag.SystemState</option>
+                                    </select>
+                                </label>
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    System State:
+                                    <select name="systemState" aria-controls="myTable" class="">
+                                        <option value="">Select</option>
+                                        <option value="<30%"> 30%> </option>
+                                        <option value=">50%"> >50% </option>
+                                        <option value="30%-50%"> 30%-50% </option>
+                                        <option value="Change fuel">Change fuel</option>
+                                        <option value="Cold run">Cold run</option>
+                                        <option value="Hot run">Hot run</option>
+                                        <option value="MLC">MLC</option>
+                                        <option value="Conservation-Passivation">Conservation-Passivation</option>
+                                    </select>
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.Cycle != "")
+                            {
+                                <label style="margin:10px">
+                                    Cycle:
+                                    <select aria-controls="myTable" class="">
+                                        <option value="">@ViewBag.Cycle</option>
+                                    </select>
+                                </label>
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    Cycle:
+                                    <select name="cycle" aria-controls="myTable" class="">
+                                        <option value="">Select</option>
+                                        <option value="1st Cycle">1st Cycle</option>
+                                        <option value="2nd Cycle">2nd Cycle</option>
+                                    </select>
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.DateAndTime != "")
+                            {
+                                <label style="margin:10px">
+                                    Date And Time:
+                                </label>
+                                <input value="@ViewBag.DateAndTime" type="text" style="direction: ltr; text-align: left;">
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    Date And Time:
+                                </label>
+                                <input name="dateAndTime" id="dateAndTime" type="text" style="direction: ltr; text-align: left;">
+                                <input @*name="schDate"*@ id="schDate" onchange="GetSearchfromDate();">
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.Parameters != "")
+                            {
+                                <label style="margin:10px">
+                                    Parameter:
+                                    <select aria-controls="myTable" class="">
+                                        <option value="">@ViewBag.Parameters</option>
+                                    </select>
+                                </label>
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    Parameter:
+                                    <select id="parameter" name="parameter" asp-items="@ViewBag.Parameter as SelectList" aria-controls="myTable" class="">
+                                        <option value="">Select</option>
+                                        <option value="pH">pH</option>
+                                        <option value="CL">CL</option>
+                                        <option value="Na">Na</option>
+                                        <option value="So4">So4</option>
+                                        <option value="PH">PH</option>
+
+                                    </select>
+                                </label>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (ViewBag.DateFrom != "" && ViewBag.DateTo != "")
+                            {
+                                <label style="margin:10px">
+                                    Date From:
+                                </label>
+                                <input value="@ViewBag.DateFrom" type="text" style="direction: ltr; text-align: left;">
+
+                                <label style="margin:10px">
+                                    TO:
+                                </label>
+                                <input value="@ViewBag.DateTo" type="text" style="direction: ltr; text-align: left;">
+                            }
+                            else
+                            {
+                                <label style="margin:10px">
+                                    Date From:
+                                </label>
+                                <input name="dateFrom" id="dateFrom" type="text" style="direction: ltr; text-align: left;">
+                                <input @*name="schDateFrom"*@ id="schDateFrom" onchange="GetSearchStartDate();">
+
+                                <label style="margin:10px">
+                                    TO:
+                                </label>
+                                <input name="dateTo" id="dateTo" type="text" style="direction: ltr; text-align: left;">
+                                <input @*name="schDateTo"*@ id="schDateTo" onchange="GetSearchEndDate();">
+                            }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label style="margin:10px">
+                                <input type="submit" value="Search" style="direction: ltr; text-align: left;">
+                                <input type="button" onclick="location='/Chemistry'" class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;">
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label style="margin:10px">
+                                <input type="button" id="graph" onclick="ShowGraph();" class="btn-default" value="Graph">
+                            </label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <h1>Chemistry</h1>
+
+
+    @{
+        int rowCount = 1;
+    }
+
+    <table id="myTable" @*cellpadding="3" cellspacing="0"*@ aria-describedby="example_info" class="display dataTable">
+
+
+        <thead>
+            <tr role="row">
+                <th>
+                    <input type="checkbox" id="checkAll" />
+                </th>
+                <th>
+
+                </th>
+                <th>
+                    <b>
+                        System
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Sampling Point
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Building
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        System State Caption
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Circuit Caption
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Experiment DateTime
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Parameter Caption
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Value
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Unit Caption
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Comparison WithNormal Value Symbol
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Max. Value
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Comparison WithNormal Value Symbol
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Min. Value
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Executing Schedule Caption
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Note Caption
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Deviation
+                    </b>
+                </th>
+                @* <th>
+                <b>
+
+                </b>
+                </th>*@
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                string bozorg = ">";
+                string bozorgMosavi = ">=";
+                string kouchak = "<";
+                string kouchakMosavi = "<=";
+
+
+
+                <tr style="background-color:green;" role="row">
+                    <td>
+                        <input type="checkbox" class="checkBox" value="@item.ID" />
+                    </td>
+                    <td>
+                        @rowCount
+                    </td>
+                    <td>
+                        @item.System
+                    </td>
+                    <td>
+                        @item.SamplingPoint
+                    </td>
+                    <td>
+                        @item.Building
+                    </td>
+                    <td>
+                        @item.SystemStateCaption
+                    </td>
+                    <td>
+                        @item.CircuitCaption
+                    </td>
+
+                    <td>
+                        @item.ExperimentDateTime
+                    </td>
+
+                    <td>
+                        @item.ParameterCaption
+                    </td>
+                    <td>
+                        @item.Value
+                    </td>
+                    <td>
+                        @item.UnitCaption
+                    </td>
+                    <td>
+                        @item.ComparisonWithNormalValueSymbol
+                    </td>
+                    <td>
+                        @item.NormalValue
+                    </td>
+                    <td>
+                        @item.ComparisonWithNormalValueSymbol2
+                    </td>
+                    <td>
+                        @item.NormalValue2
+                    </td>
+                    <td>
+                        @item.ExecutingScheduleCaption
+                    </td>
+                    <td>
+                        @item.NoteCaption
+                    </td>
+                    @if (item.ComparisonWithNormalValueSymbol == null)
+                    {
+                        @if (item.ComparisonWithNormalValueSymbol2 != null && item.NormalValue2 != null)
+                        {
+                            @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else if (item.ComparisonWithNormalValueSymbol2 == null)
+                    {
+                        @if (item.ComparisonWithNormalValueSymbol != null && item.NormalValue != null)
+                        {
+                            @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else if (item.NormalValue == null)
+                    {
+                        @if (item.ComparisonWithNormalValueSymbol2 != null && item.NormalValue2 != null)
+                        {
+                            @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else if (item.NormalValue2 == null)
+                    {
+                        @if (item.ComparisonWithNormalValueSymbol != null && item.NormalValue != null)
+                        {
+
+                            @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                            {
+
+                                <td style="background-color:green">
+                                </td>
+                            }
+                            else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                            {
+                                <td style="background-color:red">
+                                </td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else
+                    {
+                        @if (Convert.ToDecimal(item.NormalValue2) < Convert.ToDecimal(item.Value) && Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue))
+                        {
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                    }
+                </tr>
+
+                rowCount++;
+            }
+
+        </tbody>
+    </table>
+
+    <table class="columns">
+        <tr>
+            <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+            <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+        </tr>
+    </table>
+
+
+
+    <canvas id="myChart" style="width:100%;max-width:900px;background-color:white;display:none;"></canvas>
+
+</div>
+
+
+@section Scripts
+    {
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+    <script>
+        //var xValues = [1,2,3,4,5,6,7,8,9,10];
+        var xValues = @ViewBag.Data04;
+
+        new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    data: @ViewBag.Data01,
+                    label: "Value",
+                    borderColor: "red",
+                    fill: false
+                }, {
+                    data: @ViewBag.Data02,
+                    label: "Max. Value",
+                    borderColor: "yellow",
+                    fill: false
+                }, {
+                    data: @ViewBag.Data03,
+                    label: "Min. Value",
+                    borderColor: "blue",
+                    fill: false
+                }]
+            },
+            options: {
+                legend: { display: true }
+                ,
+                title: {
+                    display: true,
+                    text: 'Deviation'
+                }
+
+            }
+        });
+    </script>
+
+
+
+    <link href="/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="/css/kendo.default.min.css" rel="stylesheet" />
+    <link href="/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/kendo.all.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/js/datatables.min.js"></script>
+
+    <script>
+        // create DatePicker from input HTML element
+        $("#reportDate").kendoDatePicker();
+        $("#searchDate").kendoDatePicker();
+        $("#searchfileDate").kendoDatePicker(
+            {
+                format: "yyyy/MM/dd"
+            }
+        );
+
+        $("#schDate").kendoDatePicker(
+
+            {
+                format: "MM/dd/yyyy"
+            }
+        );
+
+        $("#schDateTo").kendoDatePicker(
+            {
+                format: "MM/dd/yyyy"
+            }
+        );
+
+        $("#schDateFrom").kendoDatePicker(
+            {
+                format: "MM/dd/yyyy"
+            }
+        );
+
+
+        function ShowGraph() {
+            $("#myChart").toggle();
+        }
+
+    </script>
+
+
+    @* <script src="/js/jquery.min.js"></script>*@
+
+
+
+
+
+    <script>
+        //$(document).ready(function () {
+        //    $("#myTable").DataTable();
+        //});
+
+        $('input:checkbox.checkBox').change(function () {
+            var selectedIDs = new Array();
+            $('input:checkbox.checkBox').each(function () {
+                if ($(this).prop('checked')) {
+                    selectedIDs.push($(this).val());
+                }
+            });
+
+            $('#exportSelectedData').val(selectedIDs);
+
+
+            //alert(selectedIDs);
+        });
+
+        function refreshPage() {
+            // Your delay in milliseconds
+            var delay = 3000;
+            setTimeout(function () { window.location = "/Chemistry"; }, delay);
+        }
+
+        function GetSearchfromDate() {
+            var date = $('#schDate').val();
+
+            $('#dateAndTime').val(date);
+
+            $('#schDate').val("");
+
+        };
+
+
+        function GetSearchStartDate() {
+            var date = $('#schDateFrom').val();
+
+            $('#dateFrom').val(date);
+
+            $('#schDateFrom').val("");
+
+        };
+
+        function GetSearchEndDate() {
+            var date = $('#schDateTo').val();
+
+            $('#dateTo').val(date);
+
+            $('#schDateTo').val("");
+
+        };
+    </script>
+    <script>
+
+        $("#searchSystem").change(function () {
+            $("#searchSamplepoint").empty();
+            $.getJSON("/Chemistry/GetSubGroups/" + $("#searchSystem :selected").val(),
+                function (data) {
+
+                    $.each(data,
+                        function () {
+                            $("#searchSamplepoint").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+                });
+
+        });
+
+
+        $("#searchSamplepoint").change(function () {
+            $("#parameter").empty();
+            $.getJSON("/Chemistry/GetSecondSubGroups/" + $("#searchSamplepoint :selected").val(),
+                function (data) {
+
+                    $.each(data,
+                        function () {
+                            $("#parameter").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+                });
+
+        });
+
+
+        $('#searchFilter').submit(function () {
+
+            var selected = $('#searchSystem').find(":selected").text();
+
+            if (selected != "Select") {
+                $('#searchSystem option').val(function () {
+                    return $(this).text();
+                });
+            }
+
+            var selectedPoint = $('#searchSamplepoint').find(":selected").text();
+
+            if (selectedPoint != "Select") {
+                $('#searchSamplepoint option').val(function () {
+                    return $(this).text();
+                });
+            }
+
+            var parametr = $('#parameter').find(":selected").text();
+
+            if (selectedPoint != "Select") {
+                $('#parameter option').val(function () {
+                    return $(this).text();
+                });
+            }
+        });
+
+        $(document).ready(function () {
+            $('tbody tr[role="row"]').hide();
+        });
+
+        $(document).ready(function () {
+            var groupColumn = 2;
+            var table = $('#myTable').DataTable({
+
+
+                columnDefs: [{ visible: false, targets: groupColumn }],
+                order: [[groupColumn, 'asc']],
+
+                // hide "Showing 1 of N Entries" with the dataTables.js library
+                "info": false,
+
+                //colReorder: {
+                //    order: [ 5,6]
+                //},
+
+                //"ordering": true,
+                //columnDefs: [{
+                //    orderable: false,
+                //    targets: "no-sort"
+                //}],
+                //displayLength: 1000,
+
+                //paging: false,
+
+                //lengthMenu: [
+                //    [-1, 10, 25, 50,75],
+                //    ['All', 10, 25, 50,75],
+                //],
+
+
+                drawCallback: function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+
+                    var last = null;
+
+                    api
+                        .column(groupColumn, { page: 'current' })
+                        .data()
+                        .each(function (group, i) {
+                            if (last !== group) {
+                                $(rows)
+                                    .eq(i)
+                                    .before('<tr class="group" id="' + i + '" style="background-color: rgba(0, 0, 0, 0.15);"><td class="dt-control"></td><td colspan="16">' + group + '</td></tr>');
+
+                                last = group;
+
+                            }
+                        });
+                },
+            });
+
+
+            //Add parameter to class  class="group'+i+'"
+            // Order by the grouping
+            $('#myTable tbody').on('click', 'tr.group', function () {
+
+                $($(this)).nextUntil(".group").filter('tr[role="row"]').toggle();
+
+            });
+
+        });
+
+    </script>
+
+    }
+

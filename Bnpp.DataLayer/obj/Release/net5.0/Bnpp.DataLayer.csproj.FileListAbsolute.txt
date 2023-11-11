@@ -1,0 +1,30 @@
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Release\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Release\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\refint\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Release\net5.0\ref\Bnpp.DataLayer.dll

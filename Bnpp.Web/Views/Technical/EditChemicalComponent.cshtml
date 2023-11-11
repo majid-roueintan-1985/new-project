@@ -1,0 +1,219 @@
+﻿@model Bnpp.DataLayer.Entities.BasicData.ChemicalComponent
+@{
+	ViewData["Title"] = "CreateChemicalComponent";
+	Layout = null;
+}
+
+<div id="normal">
+	<form id="designForm" asp-action="EditChemicalComponent" method="post">
+		<input type="hidden" asp-for="ComponentId" />
+		<input type="hidden" asp-for="ChemicalComponentId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td>
+						C:
+					</td>
+					<td>
+						<input asp-for="C" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="C"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Si:
+					</td>
+					<td>
+						<input asp-for="Si" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Si"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Mn:
+					</td>
+					<td>
+						<input asp-for="Mn" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Mn"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Cr:
+					</td>
+					<td>
+						<input asp-for="Cr" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Cr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Ni:
+					</td>
+					<td>
+						<input asp-for="Ni" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Ni"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Mo:
+					</td>
+					<td>
+						<input asp-for="Mo" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Mo"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						V:
+					</td>
+					<td>
+						<input asp-for="V" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="V"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Ti:
+					</td>
+					<td>
+						<input asp-for="Ti" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Ti"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Cu:
+					</td>
+					<td>
+						<input asp-for="Cu" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Cu"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						S:
+					</td>
+					<td>
+						<input asp-for="S" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="S"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						P:
+					</td>
+					<td>
+						<input asp-for="P" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="P"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AS :
+					</td>
+					<td>
+						<input asp-for="As" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="As"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Co:
+					</td>
+					<td>
+						<input asp-for="Co" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Co"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						NB:
+					</td>
+					<td>
+						<input asp-for="NB" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NB"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="button" onclick="submitdesignNormal()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick="showChemicalPage()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script type="text/javascript">
+	function submitdesignNormal() {
+		var data = $("#designForm").serialize();
+		var url = $("#designForm").attr("action");
+
+		var result = confirm("Are You Sure ?");
+		if (result) {
+			$.ajax({
+				type: 'POST',
+				url: url,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+				data: data,
+				success: function () {
+					$("#newPage").load("/Technical/ChemicalComponent/@Model.ComponentId" + "?mechanicalId=" + @ViewBag.MechanicalId);
+				},
+
+				error: function () {
+					//alert('Failed to receive the Data');
+					//console.log('Failed ');
+				}
+			});
+		}
+
+	}
+
+	function showChemicalPage() {
+		$("#newPage").load("/Technical/ChemicalComponent/@Model.ComponentId" + "?mechanicalId=" + @ViewBag.MechanicalId);
+	}
+
+</script>

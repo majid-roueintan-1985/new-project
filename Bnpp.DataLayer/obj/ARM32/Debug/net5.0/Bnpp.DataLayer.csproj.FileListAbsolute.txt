@@ -1,0 +1,15 @@
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\ARM32\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\ARM32\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\ARM32\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\ARM32\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\ARM32\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\refint\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\ARM32\Debug\net5.0\ref\Bnpp.DataLayer.dll

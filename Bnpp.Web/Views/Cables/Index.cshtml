@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+    {
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#Tabs").load("/Cables/GeneralData/");
+        });
+
+        function showPage1() {
+            $("#Tabs").load("/Cables/GeneralData/");
+        }
+
+        function showPage2() {
+            $("#Tabs").load("/Cables/OperatingData/");
+        }
+
+        function showPage3() {
+            $("#Tabs").load("/Cables/MaintenanceData/");
+        }
+
+        function showPage4() {
+            $("#Tabs").load("/Cables/CableReport/");
+        }
+
+        function showPage5() {
+            $("#Tabs").load("/Cables/CableDeposits/");
+        }
+        
+    </script>
+
+}

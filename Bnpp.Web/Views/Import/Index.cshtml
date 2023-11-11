@@ -1,0 +1,1035 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.DamageabilityReport>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+
+				<tr>
+					<td style="">
+						<b>
+							<a class="breadcumb2-link" href="/Admin">Main</a>
+						</b>
+					</td>
+					@*<td style=""> » <b style="color: #ff0000;"><a class="breadcumb2-link" href="#">Structures</a></b></td>*@
+				</tr>
+			</tbody>
+		</table><a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();"><img src="/images/help.png" style="width: 48px;" class="imgHelp"></a>
+	</div>
+
+	<h1>SACOR Reports</h1>
+
+	<input type="text" id="akzText" name="reportId" style="display:none" />
+	<input type="text" id="akzLocation" name="reportId" style="display:none" />
+
+
+	<div class="bevel-box">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					@* <td>
+					<input type="file" name="uploadedFile" id="uploadedFile" style="direction: ltr; text-align: left;">
+					<input onclick="__doPostBack('upload','')" name="upload" type="button" id="upload" value="Import Excel" style="direction: ltr; text-align: left;">
+					</td>*@
+
+					<td>
+						<form method="post" asp-controller="Import" asp-action="Export">
+							<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+							<input type="submit" onclick="refreshPage()" value="Export Excel" />
+						</form>
+					</td>
+					<td style="width: 200px;">
+						<span id="message">
+						</span>
+					</td>
+					<td>
+						<a href="#" target="_blank">
+							<img src="/images/print_printer.png" title="Print">
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<div class="bevel-box">
+		<h1>Import New Report</h1>
+
+		<form id="DesignDocumentForm" asp-action="CreateDamageabilityReport" method="post" enctype="multipart/form-data">
+
+			<table cellpadding="3" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>
+							Allowable CUF:
+						</td>
+						<td>
+							<input name="allowablecuf" type="text" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Allowable Life Time:
+						</td>
+						<td>
+							<input name="allowablelifetime" type="text" style="direction: ltr; text-align: left;">
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							Allowable Changing Ratio:
+						</td>
+						<td>
+							<input name="allowableChangingratio" type="text" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input name="reportDates" id="reportDates" type="text" style="display:none">
+						</td>
+					</tr>
+					<tr>
+						<td>
+
+							<input type="file" name="fileReport" style="direction: ltr; text-align: left;">
+							<input type="submit" id="upload" value="Import Report Text" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			@if (ViewBag.IsExistReport == true)
+			{
+				<div class="alert alert-danger">
+					<p class="text-danger" style="background-color:red;color:white;text-align:center">
+						This report has already been uploaded
+					</p>
+				</div>
+				<script>
+					// Your delay in milliseconds
+					var delay = 5000;
+					setTimeout(function () { window.location = "/SACOR-446"; }, delay);
+				</script>
+			}
+		</form>
+	</div>
+
+	<div id="newPage">
+
+		<div class="bevel-box">
+			<form action="/SACOR-446" method="get">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								AKZ:
+							</td>
+							<td>
+								<input name="filter" id="filter" type="text" style="direction: ltr; text-align: left;">
+							</td>
+						</tr>
+						@* <tr>
+						<td>
+						Date:
+						</td>
+						<td>
+						<input name="date" id="srchDate" type="text" style="direction: ltr; text-align: left;">
+						<input name="schDate" id="schDate" onchange="GetSearchfromDate();">
+						</td>
+						</tr>*@
+						<tr>
+							<td>
+								Date From:
+							</td>
+							<td>
+
+								<input name="dateFrom" id="dateFromTxt" type="text" style="direction: ltr; text-align: left;">
+								<input name="searchDateFrom" id="searchDateFrom" onchange="GetDateFrom();" style="direction: ltr; text-align: left;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								To:
+							</td>
+							<td>
+
+								<input name="dateTo" id="dateToTxt" type="text" style="direction: ltr; text-align: left;">
+								<input name="searchDateTo" id="searchDateTo" onchange="GetDateTo();" style="direction: ltr; text-align: left;">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								File Date:
+							</td>
+							<td>
+								<input name="fileDate" id="schfileDate" type="text" style="direction: ltr; text-align: left;">
+								<input name="searchfileDate" id="searchfileDate" onchange="GetSearchhDate();">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Allowable Life Time:
+							</td>
+							<td>
+								<input name="allowablelifetime" id="allowablelifetime" type="text" style="direction: ltr; text-align: left;">
+							</td>
+
+						</tr>
+						<tr>
+							<td>
+								@* <input type="file" name="fileReport" style="direction: ltr; text-align: left;">*@
+								<input type="button" onclick="Search();" value="Search" style="direction: ltr; text-align: left;">
+								<input type="button" onclick="location='/SACOR-446'" class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+		<br />
+
+		@*<div class="bevel-box">
+		<form action="/SACOR-446" method="get">
+		<table cellpadding="3" cellspacing="0">
+		<tbody>
+		<tr>
+		<td>
+		Date From:
+		</td>
+		<td>
+
+		<input name="dateFrom" id="dateFromTxt" type="text" style="direction: ltr; text-align: left;">
+		<input name="searchDateFrom" id="searchDateFrom" onchange="GetDateFrom();" style="direction: ltr; text-align: left;">
+		</td>
+		</tr>
+		<tr>
+		<td>
+		To:
+		</td>
+		<td>
+
+		<input name="dateTo" id="dateToTxt" type="text" style="direction: ltr; text-align: left;">
+		<input name="searchDateTo" id="searchDateTo" onchange="GetDateTo();" style="direction: ltr; text-align: left;">
+		</td>
+		</tr>
+		<tr>
+		<td>
+
+		<input type="button" onclick="SearchDateFromFileDate();" value="Search" style="direction: ltr; text-align: left;">
+		<input type="button" onclick="location='/SACOR-446'" class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;">
+		</td>
+		</tr>
+		</tbody>
+		</table>
+		</form>
+		</div>*@
+
+		<input type="button" value="Back" onclick="location='/Admin'" class="butn-cancel" style="direction: ltr; text-align: left;">
+		<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+
+		<br />
+
+		<div id="myTable_filter" class="dataTables_filter">
+			@* <label>
+			Date From: <input name="searchDate" id="searchDate" onchange="GetDate();" style="direction: ltr; text-align: left;">
+			To: <input name="searchDate" id="searchDate" onchange="GetDate();" style="direction: ltr; text-align: left;">
+			</label>*@
+			<label style="margin:10px">
+				Show: @*<input id="ShowEntries" onchange="ShowSelectedRecords();" style="direction: ltr; text-align: left;">*@
+				<select onchange="ShowSelectedRecords();" name="lenghtOfTable" aria-controls="myTable" class="">
+					<option value="98">All</option>
+					<option value="10">10</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+					<option value="75">75</option>
+				</select> AKZ
+			</label>
+
+			<label style="margin:10px">
+				Sort By:
+				<select onchange="SortByByActionperiodofequipment();" name="SortBySelectedColumns" aria-controls="myTable" class="">
+					<option value="1">Date</option>
+					<option value="2">Location of the checkpoint</option>
+					<option value="3">Action period of equipment (years)</option>
+					<option value="4">Life time of equipment in design (years)</option>
+					<option value="5">Life time of equipment per RALDS (years)</option>
+					<option value="6">Damageability per coiled cycles</option>
+					<option value="7">Damageability per uncoiled cycles</option>
+					<option value="8">Total damageability of equipment</option>
+					<option value="9">Allowable CUF</option>
+					<option value="10">Allowable Remaining Life Time</option>
+					<option value="11">Changing Ratio</option>
+					<option value="12">Allowable Changing Ratio</option>
+					<option value="13">File Date</option>
+				</select>
+			</label>
+
+			<label style="margin:10px">
+				Order By:
+				<select @*onchange="OrderByAscendingDate();"*@ name="SortByAscendingSelectedColumns" id="kindOfSorting" aria-controls="myTable" class="">
+					<option value="1"> Descending</option>
+					<option value="2">Ascending</option>
+				</select>
+			</label>
+
+			@* <label style="margin:10px">
+			Show:
+			<select onchange="ShowRecords();" id="lenghtOfAkz" aria-controls="myTable" class="">
+			<option value="All">All</option>
+			<option value="5">5</option>
+			<option value="15">15</option>
+			<option value="25">25</option>
+			<option value="45">45</option>
+			<option value="75">75</option>
+			</select> records
+			</label>*@
+
+		</div>
+
+		<br />
+
+		<div id="newColumnSort">
+
+			@{
+				int rowCount = 1;
+			}
+
+			<table id="myTable" @*cellpadding="3" cellspacing="0"*@ aria-describedby="example_info" class="display dataTable">
+
+				<thead id="myThead">
+					<tr role="row">
+						<th data-orderable="false">
+							<input type="checkbox" id="checkAll" />
+						</th>
+						<th data-orderable="false">
+
+						</th>
+						<th>
+							<b>AKZ</b>
+						</th>
+						<th data-orderable="false">
+							<b>Date</b>
+						</th>
+						<th data-orderable="false">
+							<b>Location of the checkpoint</b>
+						</th>
+						<th data-orderable="false">
+							<b>Action period of equipment (years)</b>
+						</th>
+						<th data-orderable="false">
+							<b>Life time of equipment in design (years)</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Life time of equipment per RALDS (years)
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Damageability per coiled cycles
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Damageability per uncoiled cycles
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Total damageability of equipment
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Allowable CUF
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Allowable Remaining Life Time
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Changing Ratio
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								Allowable Changing Ratio
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+								File Date
+							</b>
+						</th>
+						<th data-orderable="false">
+							<b>
+
+							</b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					@foreach (var item in Model)
+					{
+						<tr role="row">
+							<td>
+								<input type="checkbox" class="checkBox" value="@item.ID" />
+							</td>
+							<td>
+								@rowCount
+							</td>
+							<td>
+								@item.Akz
+							</td>
+							<td>
+								@item.ReportDate.ToString("yyyy/MM/dd")
+							</td>
+							<td>
+								@* @item.Locationofthecheckpoint *@
+							</td>
+							<td>
+								@item.Actionperiodofequipment
+							</td>
+							<td>
+								@item.Lifetimeofequipmentindesign
+							</td>
+
+							@if ((Convert.ToDecimal(item.LifetimeofequipmentperRALDS)) <= (Convert.ToDecimal(item.AllowableLifeTime)))
+							{
+								<td style="background-color:red;">
+									@item.LifetimeofequipmentperRALDS
+								</td>
+							}
+							else
+							{
+								<td>
+									@item.LifetimeofequipmentperRALDS
+								</td>
+							}
+
+							<td>
+								@item.Damageabilitypercoiledcycles
+							</td>
+							<td>
+								@item.Damageabilityperuncoiledcycles
+							</td>
+
+							@if ((Convert.ToDecimal(item.Totaldamageabilityofequipment)) >= (Convert.ToDecimal(item.AllowableCUF)))
+							{
+								<td style="background-color:red;">
+									@item.Totaldamageabilityofequipment
+								</td>
+							}
+							else
+							{
+								<td>
+									@item.Totaldamageabilityofequipment
+								</td>
+							}
+
+							<td>
+								@item.AllowableCUF
+							</td>
+
+							<td>
+								@item.AllowableLifeTime
+							</td>
+
+							@if ((Convert.ToDecimal(item.AllowableChangingRatio)) <= (Convert.ToDecimal(item.ChangingRatio)))
+							{
+								<td style="background-color:red;">
+									@item.ChangingRatio
+								</td>
+							}
+							else
+							{
+								<td>
+									@item.ChangingRatio
+								</td>
+							}
+
+
+							<td>
+								@item.AllowableChangingRatio
+							</td>
+
+							<td>
+								@item.CreateDate.ToString("yyyy/MM/dd")
+							</td>
+							<td>
+								<a class="btn-edit-equip" href="/Import/EditDamageabilityReport/@item.ID">
+									Edit
+								</a>
+							</td>
+						</tr>
+						rowCount++;
+					}
+
+				</tbody>
+			</table>
+			<br>
+
+		</div>
+
+	</div>
+</div>
+
+
+@section Scripts
+	{
+
+
+	@* <link href="/css/kendo.common.min.css" rel="stylesheet" />
+    <link href="/css/kendo.default.min.css" rel="stylesheet" />
+    <link href="/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/js/kendo.all.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/js/datatables.min.js"></script>
+*@
+
+	<script>
+		// create DatePicker from input HTML element
+		$("#reportDate").kendoDatePicker();
+
+		$("#searchfileDate").kendoDatePicker(
+			{
+				format: "yyyy/MM/dd"
+			});
+
+		$("#schDate").kendoDatePicker(
+			{
+				format: "yyyy/MM/dd"
+			});
+		$("#searchDateFrom").kendoDatePicker(
+			{
+				format: "yyyy/MM/dd"
+			});
+		$("#searchDateTo").kendoDatePicker(
+			{
+				format: "yyyy/MM/dd"
+			});
+
+
+	</script>
+
+
+
+
+	@* <script >
+
+        function GetSortColmunByActionperiodofequipment() {
+            $("#newColumnSort").load("/Import/SortByByActionperiodofequipment/");
+        }
+    </script>*@
+	<script>
+		$(document).ready(function () {
+			$("#mySecondTable").DataTable();
+		});
+	</script>
+
+
+	<script>
+
+		function Edit(id) {
+			$("#newPage").load("/Import/EditDamageabilityReport/" + id);
+		}
+
+		//function GetGroupByDate() {
+		//    $("#GroupBy").load("/Import/GroupByDatessss/");
+		//}
+
+
+
+		function refreshPage() {
+			// Your delay in milliseconds
+			var delay = 3000;
+			setTimeout(function () { window.location = "/SACOR-446"; }, delay);
+		}
+
+		function ShowAllRecords() {
+			window.location = "/SACOR-446";
+		}
+
+		//$('input:checkbox.checkBox').change(function () {
+
+		//    var selectedIDs = new Array();
+		//    $('input:checkbox.checkBox').each(function () {
+		//        if ($(this).prop('checked')) {
+		//            selectedIDs.push($(this).val());
+		//        }
+		//    });
+
+		//    $('#exportSelectedData').val(selectedIDs);
+
+		//});
+
+		function selected() {
+
+			var arr = [];
+			$('input.checkBox:checkbox:checked').each(function () {
+				arr.push($(this).val());
+			});
+
+			$('#exportSelectedData').val(arr);
+		};
+
+
+		$("#checkAll").click(function () {
+
+			debugger;
+			$(".checkBox").prop('checked',
+				$(this).prop('checked'));
+		});
+
+		$("#delete").click(function () {
+			var selectedIDs = new Array();
+			$('input:checkbox.checkBox').each(function () {
+				if ($(this).prop('checked')) {
+					selectedIDs.push($(this).val());
+				}
+			});
+			var result = confirm("are you sure you want to delete?");
+			if (result) {
+				$.ajax({
+					type: "POST",
+					url: "/Import/DeleteDamageabilityReport",
+					data: { "damagingId": selectedIDs },
+					success: function (response) {
+						window.location.href = "/SACOR-446";
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+			}
+		});
+
+
+		function GetDate() {
+			var date = $('#searchDate').val();
+
+			$('input[type=search]').val(date);
+
+			$('input[type=search]').focus();
+
+			//$('searchDate').on('change', function () {
+			//table.draw();
+
+
+			$('#searchDate').val("");
+
+		};
+
+		function GetDateFrom() {
+			var date = $('#searchDateFrom').val();
+
+			$('#dateFromTxt').val(date);
+
+			$('#searchDateFrom').val("");
+
+		};
+
+		function GetDateTo() {
+			var date = $('#searchDateTo').val();
+
+			$('#dateToTxt').val(date);
+
+			$('#searchDateTo').val("");
+
+		};
+
+		function GetSearchhDate() {
+			var date = $('#searchfileDate').val();
+
+			$('#schfileDate').val(date);
+
+			$('#searchfileDate').val("");
+
+		};
+
+		function GetSearchfromDate() {
+			var date = $('#schDate').val();
+
+			$('#srchDate').val(date);
+
+			$('#schDate').val("");
+
+		};
+
+		//<------ Sort By Selected Items ----->
+
+		function SortByByActionperiodofequipment() {
+
+			var selectInput = $('select[name=SortBySelectedColumns] option').filter(':selected').val();
+
+			if (selectInput == 2) {
+				$("#newColumnSort").load("/Import/SortByByLocationofthecheckpoint/");
+			}
+
+			if (selectInput == 3) {
+				$("#newColumnSort").load("/Import/SortByByActionperiodofequipment/");
+			}
+
+			if (selectInput == 4) {
+				$("#newColumnSort").load("/Import/SortByByLifetimeofequipmentindesign/");
+			}
+
+			if (selectInput == 5) {
+				$("#newColumnSort").load("/Import/SortByByLifetimeofequipmentperRALDS/");
+			}
+
+			if (selectInput == 6) {
+				$("#newColumnSort").load("/Import/SortByByDamageabilitypercoiledcycles/");
+			}
+
+			if (selectInput == 7) {
+				$("#newColumnSort").load("/Import/SortByByDamageabilityperuncoiledcycles/");
+			}
+
+			if (selectInput == 8) {
+				$("#newColumnSort").load("/Import/SortByByTotaldamageabilityofequipment/");
+			}
+
+			if (selectInput == 9) {
+				$("#newColumnSort").load("/Import/SortByByAllowableCUF/");
+			}
+
+			if (selectInput == 10) {
+				$("#newColumnSort").load("/Import/SortByByAllowableRemainingLifeTime/");
+			}
+
+			if (selectInput == 11) {
+				$("#newColumnSort").load("/Import/SortByByChangingRatio/");
+			}
+
+			if (selectInput == 12) {
+				$("#newColumnSort").load("/Import/SortByByAllowableChangingRatio/");
+			}
+
+			if (selectInput == 13) {
+				$("#newColumnSort").load("/Import/SortByByByFileDate/");
+			}
+
+		}
+
+		//<------End Sort By Ascending Selected Items ----->
+
+		//<------ Sort By Selected Items ----->
+
+		function OrderByAscendingDate() {
+
+			var selectInput = $('select[name=SortByAscendingSelectedColumns] option').filter(':selected').val();
+
+			if (selectInput == 1) {
+				window.location.href = "/SACOR-446";
+			}
+
+			if (selectInput == 2) {
+				$("#newColumnSort").load("/Import/OrderByAscendingReportDate/");
+			}
+		}
+
+		//<------End Sort By Ascending Selected Items ----->
+
+		//<------ Show Selected Items ----->
+
+		function ShowSelectedRecords() {
+
+			debugger;
+
+			var selectInput = $('select[name=lenghtOfTable] option').filter(':selected').val();
+			//var numberOfShownRecords = $("#ShowEntries").val();
+
+			var steps = $(".group").eq(1).attr('id');
+			var end = $(".group").eq(97).attr('id');
+
+			for (i = 0; i <= end; i += +steps) {
+				$("#" + i).hide();
+
+			}
+
+			//var start = numberOfShownRecords * steps;
+			var start = selectInput * steps;
+
+
+			for (i = 0; i < start; i += +steps) {
+				$("#" + i).show();
+
+			}
+
+			//for (i = start; i <= end; i += +steps) {
+			//    $("#" + i).hide();
+
+			//}
+
+		}
+
+		//<------End Show Selected Items ----->
+
+		function SearchDateFromFileDate() {
+			var dateFrom = $('#dateFromTxt').val();
+			var dateTo = $('#dateToTxt').val();
+			$.ajax({
+				type: "POST",
+				url: "/Import/SearchDatesFromTo",
+				data: {
+
+					"dateFrom": dateFrom,
+					"dateTo": dateTo,
+				},
+				success:
+					function (response) {
+						$("#newColumnSort").html(response);
+						//selectedRow.after(response);
+					},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		}
+
+		function Search() {
+			var akz = $('#filter').val();
+
+			var fileDate = $('#searchfileDate').val();
+
+			var dateFrom = $('#dateFromTxt').val();
+			var dateTo = $('#dateToTxt').val();
+
+			var allowableLifetime = $('#allowablelifetime').val();
+
+			$.ajax({
+
+				type: "POST",
+				url: "/Import/Search",
+				data: {
+					"filter": akz,
+					"fileDate": fileDate,
+					"allowablelifetime": allowableLifetime,
+					"dateFrom": dateFrom,
+					"dateTo": dateTo,
+				},
+				success:
+					function (response) {
+
+						$("#newColumnSort").html(response);
+						//selectedRow.after(response);
+					},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+			});
+		}
+
+		function ShowRecords() {
+			//debugger;
+			var akz = $("#akzText").val();
+
+			if (akz != "") {
+
+				var numberOfUploadedList = '@ViewBag.NumberOfUploadedList';
+
+				var lenghtOfAkz = $('#lenghtOfAkz option:selected').val();
+
+				var kind = $('#kindOfSorting option:selected').val();
+
+				var rowId = $("#akzLocation").val();
+
+				if (lenghtOfAkz == "All") {
+					lenghtOfAkz = numberOfUploadedList;
+				}
+				//var rowTable = $("#" + rowId).nextUntil(".group").filter("#myTable");
+				var rowTable = $("#" + rowId).nextUntil(".group").not('tr[style="display: none;"]');
+
+				$.ajax({
+					type: "POST",
+					url: "/Import/OrderByDescendingDataByNumberOfAKZ",
+					data: {
+						"akz": akz,
+						"take": numberOfUploadedList,
+						"kind": kind
+					},
+					success:
+						function (response) {
+							rowTable.remove();
+							//if (rowTable.length == 0) {
+							//selectedRow.after(response);
+							$("#" + rowId).after(response);
+							$("#myThead").remove();
+							//$("#akzText").val("");
+							//}
+						},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+			}
+		}
+
+		$(document).ready(function () {
+			$('tbody tr[role="row"]').hide();
+		});
+
+		//Group By Akz
+
+		//group
+		$(document).ready(function () {
+
+			var groupColumn = 2;
+			var table = $('#myTable').DataTable({
+
+				columnDefs: [{ visible: false, targets: groupColumn }],
+				order: [[groupColumn, 'asc']],
+
+
+				// hide "Showing 1 of N Entries" with the dataTables.js library
+				"info": false,
+				searching: false,
+
+				//colReorder: {
+				//    order: [ 5,6]
+				//},
+
+				//"ordering": true,
+				//columnDefs: [{
+				//    orderable: false,
+				//    targets: "no-sort"
+				//}],
+				//displayLength: 1000,
+
+				paging: false,
+
+				//lengthMenu: [
+				//    [-1, 10, 25, 50,75],
+				//    ['All', 10, 25, 50,75],
+				//],
+
+
+				drawCallback: function (settings) {
+
+					var api = this.api();
+					var rows = api.rows({ page: 'current' }).nodes();
+
+					var last = null;
+
+					api
+						.column(groupColumn, { page: 'current' })
+						.data()
+						.each(function (group, i) {
+
+							if (last !== group) {
+								$(rows)
+									.eq(i)
+									.before('<tr class="group" id="' + i + '" style="background-color: rgba(0, 0, 0, 0.15);"><td class="dt-control"></td><td colspan="16">' + group + '</td></tr>');
+
+								last = group;
+
+							}
+						});
+				},
+			});
+
+
+			//Add parameter to class  class="group'+i+'"
+			// Order by the grouping
+			$('#myTable tbody').on('click', 'tr.group', function () {
+
+				var akz = $($(this)).text();
+				var numberOfUploadedList = '@ViewBag.NumberOfUploadedList';
+
+				//send value for show selected records
+				//$("#akzText").val(akz);
+				var rowId = $($(this)).attr('id');
+				$("#akzLocation").val(rowId);
+
+				var lenghtOfAkz = $('#lenghtOfAkz option:selected').val();
+
+				var kind = $('#kindOfSorting option:selected').val();
+
+				if (lenghtOfAkz == "All") {
+					lenghtOfAkz = numberOfUploadedList;
+				}
+
+				var selectedRow = $($(this)).nextUntil(".group");
+
+
+				//var rowTable = $($(this)).nextUntil(".group").filter("#myTable");
+				//var rowTable = $("#" + rowId).nextUntil(".group").filter("#myTable");
+
+				var rowTable1 = $("#" + rowId).nextUntil(".group").not('tr[style="display: none;"]');
+				//console.log(rowTable1);
+
+				$.ajax({
+
+					type: "POST",
+					url: "/Import/OrderByDescendingDataByNumberOfAKZ",
+					data: {
+						"akz": akz,
+						"take": numberOfUploadedList,
+						"kind": kind
+					},
+					success:
+						function (response) {
+							$("#akzText").val("");
+							rowTable1.remove();
+							if (rowTable1.length == 0) {
+
+								//selectedRow.after(response);
+								$("#" + rowId).after(response);
+								$("#myThead").remove();
+								$("#akzText").val(akz);
+							}
+						},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+				});
+
+			});
+		});
+
+		$('input[type=file]').change(function () {
+
+			$('#reportDates').attr('value', this.files[0].name);
+		});
+	</script>
+    }
+
+
+
+
+

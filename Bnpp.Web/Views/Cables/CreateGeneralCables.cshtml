@@ -1,0 +1,641 @@
+﻿@model Bnpp.DataLayer.Entities.GeneralCables
+@{
+    ViewData["Title"] = "CreateGeneralCables";
+    Layout = null;
+}
+
+<h2>Create General Cables</h2>
+
+<div id="newData">
+    <div id="normal">
+        <form id="designForm" asp-action="CreateGeneralCables" method="post">
+
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            Cable ID Group:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="CableIDGroup" asp-items="@ViewBag.CableGroup as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowCableGroup(1)">
+                                    Cable ID Group
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cable ID:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="CableID" asp-items="@ViewBag.CableID as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowCableID(1)">
+                                    Cable ID
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Owner:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="Owner" asp-items="@ViewBag.Owner as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowOwner(1)">
+                                    Owner
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Current(AC/DC):
+                        </td>
+                        <td>
+                            <select name="system" asp-for="Current" asp-items="@ViewBag.Current as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowCurrent(1)">
+                                    Current
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    @* <tr>
+                    <td>
+                    Log Time:
+                    </td>
+                    <td>
+                    <input name="EventDate" id="EventDate" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                    </td>
+                    </tr>*@
+                    <tr>
+                        <td>
+                            Type of Cable:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="TypeofCable" asp-items="@ViewBag.TypeofCables as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowTypeofCable()">
+                                    Type of Cable
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Classification of cable on the basis of Voltage:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="ClassificationofCable" asp-items="@ViewBag.ClassificationVoltage as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowClassification()">
+                                    Classification of cable on the basis of Voltage
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            List of Cable:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="ListofCable" asp-items="@ViewBag.ListofCable as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowListofCable()">
+                                    List of Cable
+                                </a>
+                            </label>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Insulation material:
+                        </td>
+                        <td>
+                            <select  asp-for="InsulationMaterial" asp-items="@ViewBag.InsulationMaterial as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowInsulationmaterial()">
+                                    Insulation material
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Jacket material:
+                        </td>
+                        <td>
+                            <select  asp-for="JacketMaterial" asp-items="@ViewBag.JacketMaterial as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowJacketmaterial()">
+                                    Jacket material
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Manufacturer:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="Manufacturer" asp-items="@ViewBag.CableManufacturer as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowManufacturer()">
+                                    Manufacturer
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Manufacturing Year:
+                        </td>
+                        <td>
+                            <label>
+                                <select id="ManufacturingYear" name="ManufacturingYear" aria-controls="myTable" class="">
+                                    @for (int i = 1970; i <= 2050; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Location:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="Location" asp-items="@ViewBag.Location as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowLocation()">
+                                    Location
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            From:
+                        </td>
+                        <td>
+                            <input asp-for="From" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="From"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            To:
+                        </td>
+                        <td>
+                            <input asp-for="To" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="To"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Intermediate Locations:
+                        </td>
+                        <td>
+                            <input asp-for="IntermediateLocations" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="IntermediateLocations"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cable Length:
+                        </td>
+                        <td>
+                            <input asp-for="CableLength" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="CableLength"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Number of similar cables :
+                        </td>
+                        <td>
+                            <input asp-for="NumberofSimilarCables" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="NumberofSimilarCables"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            total length  of similar cables:
+                        </td>
+                        <td>
+                            <input asp-for="TotalLengthofSimilarCables" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="TotalLengthofSimilarCables"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Expected degradation mechanisms:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="ExpectedDegradationMechanisms" asp-items="@ViewBag.DegradationMechanisms as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowDegradationMechanisms()">
+                                    Expected degradation mechanisms
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            installation Date:
+                        </td>
+                        <td>
+                            <input name="installationDate" id="installationDate" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            design life:
+                        </td>
+                        <td>
+                            <label>
+                                <select asp-for="DesignLife" aria-controls="myTable" class="">
+                                    @for (int i = 0; i <= 60; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+                    @*<tr>
+                    <td>
+                    Service Life:
+                    </td>
+                    <td>
+                    <input asp-for="ServiceLife" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                    <span asp-validation-for="ServiceLife"></span>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
+                    Remaining design life time:
+                    </td>
+                    <td>
+                    <input asp-for="RemainingDesignLifeTime" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                    <span asp-validation-for="RemainingDesignLifeTime"></span>
+                    </td>
+                    </tr>*@
+                    <tr>
+                        <td>
+                            Nominal Voltage (V):
+                        </td>
+                        <td>
+                            <input asp-for="NominalVoltage" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="NominalVoltage"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Nominal Current(A):
+                        </td>
+                        <td>
+                            <input asp-for="NominalCurrent" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="NominalCurrent"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Operating ambient Temperature (˚C):
+                        </td>
+                        <td>
+                            <label>
+                                <select asp-for="OperatingAmbientTemperature" aria-controls="myTable" class="">
+                                    @for (int i = 0; i <= 350; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Resistance to DBA Condition:
+                        </td>
+                        <td>
+                            Select File:
+                        </td>
+                        <td>
+                            <input type="file" name="imgResistanceDBA" id="imgResistanceDBA" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Resistance to BDBA Condition:
+                        </td>
+                        <td>
+                            Select File:
+                        </td>
+                        <td>
+                            <input type="file" name="imgResistanceBDBA" id="imgResistanceBDBA" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Result of factory tests:
+                        </td>
+                        <td>
+                            Select File:
+                        </td>
+                        <td>
+                            <input type="file" name="imgResultFactory" id="imgResultFactory" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Result of tests at the end of installation:
+                        </td>
+                        <td>
+                            Select File:
+                        </td>
+                        <td>
+                            <input type="file" name="imgInstallation" id="imgInstallation" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="Cancel()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+@*<link href="/css/kendo.rtl.min.css" rel="stylesheet" />*@
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+@*<script src="/js/kendo.web.min.js"></script>*@
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script>
+    // create DatePicker from input HTML element
+    $("#installationDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    //$("#installationDate").kendoDatePicker(
+    //    {
+    //        format: "yyyy/MM"
+    //    });
+
+    function Cancel() {
+        $("#Tabs").load("/Cables/GeneralData/");
+    }
+
+    //function ShowOwner(codes) {
+       
+    //    $("#newData").load("/Cables/Owner/", { codes: codes });
+    //}
+
+    function ShowOwner(codes) {
+
+        $("#newData").load("/Cables/Owner/" + "?codes=" + codes);
+    }
+
+    function ShowCableGroup(codes) {
+        $("#newData").load("/Cables/CableGroup/" + "?codes=" + codes);
+
+    }
+
+    function ShowCableID(codes) {
+        $("#newData").load("/Cables/CableID/" + "?codes=" + codes);
+    }
+
+    function ShowCurrent(codes) {
+        $("#newData").load("/Cables/Current/" + "?codes=" + codes);
+    }
+
+    function ShowTypeofCable() {
+        $("#newData").load("/Cables/TypeofCable/");
+    }
+
+    function ShowClassification() {
+        $("#newData").load("/Cables/ClassificationVoltage/");
+    }
+
+    function ShowListofCable() {
+        $("#newData").load("/Cables/ListofCable/");
+    }
+
+    function ShowInsulationmaterial() {
+        $("#newData").load("/Cables/InsulationMaterial/");
+    }
+
+    function ShowJacketmaterial() {
+        $("#newData").load("/Cables/JacketMaterial/");
+    }
+
+    function ShowManufacturer() {
+        $("#newData").load("/Cables/CableManufacturer/");
+    }
+
+    function ShowLocation() {
+        $("#newData").load("/Cables/Location/");
+    }
+
+    function ShowDegradationMechanisms() {
+        $("#newData").load("/Cables/DegradationMechanisms/");
+    }
+
+    
+
+    
+
+   
+</script>
+
+<script type="text/javascript">
+    function AjaxdocumentFormSubmit() {
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+
+
+
+
+        var formData = new FormData();
+
+        //Cable id & cable group
+
+       
+        //
+        formData.append("CableIDGroup", $("#CableIDGroup").val());
+
+        formData.append("CableID", $("#CableID").val());
+
+        formData.append("Owner", $("#Owner").val());
+
+        formData.append("Current", $("#Current").val());
+
+        formData.append("TypeofCable", $("#TypeofCable").val());
+
+        formData.append("ClassificationofCable", $("#ClassificationofCable").val());
+
+        formData.append("ListofCable", $("#ListofCable").val());
+        //
+        formData.append("JacketMaterial", $("#JacketMaterial").val());
+
+        formData.append("InsulationMaterial", $("#InsulationMaterial").val());
+
+        formData.append("Manufacturer", $("#Manufacturer").val());
+        formData.append("ManufacturingYear", $("#ManufacturingYear").val());
+        formData.append("Location", $("#Location").val());
+        formData.append("From", $("#From").val());
+        formData.append("To", $("#To").val());
+        formData.append("IntermediateLocations", $("#IntermediateLocations").val());
+        formData.append("CableLength", $("#CableLength").val());
+        formData.append("NumberofSimilarCables", $("#NumberofSimilarCables").val());
+        formData.append("TotalLengthofSimilarCables", $("#TotalLengthofSimilarCables").val());
+        formData.append("ExpectedDegradationMechanisms", $("#ExpectedDegradationMechanisms").val());
+        formData.append("installationDate", $("#installationDate").val());
+        formData.append("DesignLife", $("#DesignLife").val());
+        formData.append("ServiceLife", $("#ServiceLife").val());
+        formData.append("RemainingDesignLifeTime", $("#RemainingDesignLifeTime").val());
+        formData.append("NominalVoltage", $("#NominalVoltage").val());
+        formData.append("NominalCurrent", $("#NominalCurrent").val());
+        formData.append("OperatingAmbientTemperature", $("#OperatingAmbientTemperature").val());
+
+
+        formData.append("fileResistanceDBA", $("#imgResistanceDBA")[0].files[0]);
+        formData.append("fileResistanceBDBA", $("#imgResistanceBDBA")[0].files[0]);
+        formData.append("fileResultFactory", $("#imgResultFactory")[0].files[0]);
+        formData.append("fileInstallation", $("#imgInstallation")[0].files[0]);
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+            $("#Tabs").load("/Cables/GeneralData/");
+        });
+    }
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgCourse').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgCourseUp").change(function () {
+        readURL(this);
+    });
+
+    $('input[type=file]').change(function () {
+
+        $('#Filename').attr('value', this.files[0].name);
+    });
+
+
+        //$("#CableIDGroup").change(function () {
+
+        //    debugger;
+        //    $("#CableID").empty();
+        //    $.getJSON("/Cables/GetSubGroups/" + $("#CableIDGroup :selected").val(),
+        //        function (data) {
+
+        //            $.each(data,
+        //                function () {
+        //                    $("#CableID").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+        //                });
+
+        //        });
+
+
+        //});
+
+</script>

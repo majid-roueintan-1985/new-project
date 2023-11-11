@@ -1,0 +1,192 @@
+﻿@model IEnumerable<Bnpp.Core.ViewModels.DieselListViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+            <tr>
+                <td style="">
+                    <b>
+                        <a class="breadcumb2-link" href="/DataEntry">Main</a>
+                    </b>
+                </td>
+                <td style=""> » <b style="color: #ff0000;"><a class="breadcumb2-link" href="/Electrical">Electrical Equipments</a></b></td>
+            </tr>
+            </tbody>
+        </table><a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();"><img src="/images/help.png" style="width: 48px;" class="imgHelp"></a>
+    </div>
+
+    <h1>Diesel Generators</h1>
+
+    <div class="bevel-box">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <form method="post" asp-controller="Diesel" asp-action="ExportDiesel">
+                            <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                            <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post" asp-controller="Diesel" asp-action="ImportDieselExcelFile" enctype="multipart/form-data">
+                            <input type="file" name="FormFile" />
+                            <input type="submit" value="Import Excel" />
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a class="btn-new-equip" href="/Diesel/CreateNewDiesel" >New</a>
+    <input type="button" value="Back" onclick="location='/Electrical'" class="butn-cancel" style="direction: ltr; text-align: left;">
+    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+    <br />
+    @{
+        int rowCount = 1;
+    }
+    <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+        <thead>
+        <tr role="row">
+            <th>
+                <input type="checkbox" id="checkAll" />
+            </th>
+            <th></th>
+            <th style="width: 150px">
+                <b>Date</b>
+            </th>
+            <th style="width: 250px">
+                <b>Diesel Generator Name</b>
+            </th>
+            <th style="width: 120px">
+                <b>AKZ Serial</b>
+            </th>
+            <th style="width: 120px">
+                <b>Instalation Position</b>
+            </th>
+            <th style="width: 120px">
+                <b>Actions</b>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr role="row">
+                <td>
+                    <input type="checkbox" class="checkBox" value="@item.DieselId" />
+                </td>
+                <td>
+                    @rowCount
+                </td>
+                <td>
+                    @item.CreateDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Azk
+                </td>
+                <td>
+                    @item.InstalationPosition
+                </td>
+                <td>
+                    <a class="btn-edit-equip" href="/Diesel/EditDiesel/@item.DieselId">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            rowCount++;
+        }
+        </tbody>
+    </table>
+    <br>
+</div>
+
+
+@section Scripts
+{
+
+
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+</script>
+
+<script>
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+         var result = confirm("are you sure you want to delete?");
+        if (result) {
+        $.ajax({
+            type: "POST",
+            url: "/Diesel/DeleteDiesel",
+            data: { "dieselId": selectedIDs },
+
+            success: function (response) {
+                window.location.href = "/Diesel";
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+
+        });
+        }
+
+    });
+
+        $('input:checkbox.checkBox').change(function () {
+            var selectedIDs = new Array();
+            $('input:checkbox.checkBox').each(function () {
+                if ($(this).prop('checked')) {
+                    selectedIDs.push($(this).val());
+                }
+            });
+
+            $('#exportSelectedData').val(selectedIDs);
+
+
+            //alert(selectedIDs);
+        });
+
+        function refreshPage() {
+            // Your delay in milliseconds
+            var delay = 2000;
+            setTimeout(function () { $("#Tabs").load("/Cables/CableReport/"); }, delay);
+        }
+
+</script>
+    }
+

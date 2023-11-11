@@ -1,0 +1,111 @@
+﻿@model Bnpp.DataLayer.Entities.AgeingMechanism.Mechanism
+@{
+    ViewData["Title"] = "CreateMechanism";
+    Layout = null;
+}
+
+
+<div id="normal">
+    <form id="designForm" asp-action="CreateMechanism" method="post">
+        <input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Degradation Mechanism:
+                    </td>
+                    <td>
+                        <input asp-for="DegradationMechanism" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="DegradationMechanism"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Component:
+                    </td>
+                    <td>
+                        <input asp-for="Component" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Component"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Region:
+                    </td>
+                    <td>
+                        <input asp-for="Region" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Region"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Critical point:
+                    </td>
+                    <td>
+                        <input asp-for="CriticalPoint" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="CriticalPoint"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Consequences:
+                    </td>
+                    <td>
+                        <input asp-for="Consequences" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Consequences"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="submitdesignNormal()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="showPage1()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script type="text/javascript">
+    function submitdesignNormal() {
+        var data = $("#designForm").serialize();
+        var url = $("#designForm").attr("action");
+        $.ajax({
+            type: 'POST',
+            url: url,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function() {
+                $("#Tabs").load("/AgeingMechanism/Mechanism/@ViewBag.MechanicalId");
+            },
+
+            error: function() {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>

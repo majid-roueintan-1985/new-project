@@ -1,0 +1,72 @@
+﻿@model Bnpp.DataLayer.Entities.CableGroup
+@{
+    ViewData["Title"] = "EditCableGroup";
+    Layout = null;
+}
+
+<h2>Edit Cable Group</h2>
+
+<div id="related">
+    <div id="normal">
+        <form id="designForm" asp-action="EditCableGroup" method="post">
+             <input type="hidden" asp-for="GroupId"/>
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            CableGroup Title:
+                        </td>
+                        <td>
+                            <input asp-for="GroupTitle" type="text" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="GroupTitle"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" id="btnGet" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="ShowCableGroup()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+
+    function ShowCableGroup() {
+        $("#newData").load("/Cables/CableGroup/");
+    }
+
+    function AjaxdocumentFormSubmit() {
+        var data = $("#designForm").serialize();
+        //console.log(data);
+        //alert(data);
+        $.ajax({
+            type: 'POST',
+            url: '/Cables/EditCableGroup/',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function () {
+                $("#newData").load("/Cables/CableGroup/");
+            },
+
+            error: function () {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>

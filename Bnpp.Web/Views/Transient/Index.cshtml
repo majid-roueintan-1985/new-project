@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="Tabs">
+
+</div>
+
+@section Scripts
+{
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+<script>
+
+    $( document ).ready(function() {
+        $("#Tabs").load("/Transient/NormalOperations/");
+    });
+
+    function showPage1() {
+        $("#Tabs").load("/Transient/NormalOperations/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Transient/OperationalOccurence/");
+        //$('#tab-button2').css({ 'font-weight': 'bold'});
+        $("li").css({"background-color": "yellow", "padding": "25px", "width": "200px"});
+       
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Transient/DesignBasisAccidents/");
+    }
+
+</script>
+
+}

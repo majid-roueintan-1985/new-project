@@ -1,0 +1,658 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.DamageabilityReport>
+@{
+    ViewData["Title"] = "SortByByLifetimeofequipmentindesign";
+    Layout = null;
+}
+
+
+
+@{
+    int rowCount = 1;
+}
+
+<table id="myTable" @*cellpadding="3" cellspacing="0"*@ aria-describedby="example_info" class="display dataTable">
+   
+    <thead id="myThead">
+        <tr role="row">
+            <th data-orderable="false">
+                <input type="checkbox" id="checkAll" />
+            </th>
+            <th data-orderable="false">
+
+            </th>
+            <th>
+                <b>AKZ</b>
+            </th>
+            <th data-orderable="false">
+                <b>Date</b>
+            </th>
+            <th data-orderable="false">
+                <b>Location of the checkpoint</b>
+            </th>
+            <th data-orderable="false">
+                <b>Action period of equipment (years)</b>
+            </th>
+            <th data-orderable="false">
+                <b>Life time of equipment in design (years)</b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Life time of equipment per RALDS (years)
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Damageability per coiled cycles
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Damageability per uncoiled cycles
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Total damageability of equipment
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable CUF
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable Remaining Life Time
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Changing Ratio
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable Changing Ratio
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    File Date
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+
+                </b>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr role="row">
+                <td>
+                    <input type="checkbox" class="checkBox" value="@item.ID" />
+                </td>
+                <td>
+                    @rowCount
+                </td>
+                <td>
+                    @item.Akz
+                </td>
+                <td>
+                    @item.ReportDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    @item.Locationofthecheckpoint
+                </td>
+                <td>
+                    @item.Actionperiodofequipment
+                </td>
+                <td>
+                    @item.Lifetimeofequipmentindesign
+                </td>
+
+                @if ((Convert.ToDecimal(item.LifetimeofequipmentperRALDS)) <= (Convert.ToDecimal(item.AllowableLifeTime)))
+                {
+                    <td style="background-color:red;">
+                        @item.LifetimeofequipmentperRALDS
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.LifetimeofequipmentperRALDS
+                    </td>
+                }
+
+
+                <td>
+                    @item.Damageabilitypercoiledcycles
+                </td>
+                <td>
+                    @item.Damageabilityperuncoiledcycles
+                </td>
+
+                @if ((Convert.ToDecimal(item.Totaldamageabilityofequipment)) >= (Convert.ToDecimal(item.AllowableCUF)))
+                {
+                    <td style="background-color:red;">
+                        @item.Totaldamageabilityofequipment
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.Totaldamageabilityofequipment
+                    </td>
+                }
+
+                <td>
+                    @item.AllowableCUF
+                </td>
+
+                <td>
+                    @item.AllowableLifeTime
+                </td>
+
+                @if ((Convert.ToDecimal(item.AllowableChangingRatio)) <= (Convert.ToDecimal(item.ChangingRatio)))
+                {
+                    <td style="background-color:red;">
+                        @item.ChangingRatio
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.ChangingRatio
+                    </td>
+                }
+
+                <td>
+                    @item.AllowableChangingRatio
+                </td>
+
+                <td>
+                    @item.CreateDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    <a class="btn-edit-equip" href="/Import/EditDamageabilityReport/@item.ID">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            rowCount++;
+        }
+
+    </tbody>
+</table>
+<br>
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+<link href="/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+@*<script>
+    // create DatePicker from input HTML element
+    $("#reportDate").kendoDatePicker();
+    $("#searchDate").kendoDatePicker();
+    $("#searchfileDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("#schDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+
+</script>*@
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#mySecondTable").DataTable();
+    });
+</script>
+
+
+<script>
+
+    function Edit(id) {
+        $("#newPage").load("/Import/EditDamageabilityReport/" + id);
+    }
+
+    //function GetGroupByDate() {
+    //    $("#GroupBy").load("/Import/GroupByDatessss/");
+    //}
+
+
+
+    function refreshPage() {
+        // Your delay in milliseconds
+        var delay = 3000;
+        setTimeout(function () { window.location = "/SACOR-446"; }, delay);
+    }
+
+    function ShowAllRecords() {
+        window.location = "/SACOR-446";
+    }
+
+    $('input:checkbox.checkBox').change(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        $('#exportSelectedData').val(selectedIDs);
+
+
+        //alert(selectedIDs);
+    });
+
+
+    function selected() {
+
+        var arr = [];
+        $('input.checkBox:checkbox:checked').each(function () {
+            arr.push($(this).val());
+        });
+
+        $('#exportSelectedData').val(arr);
+    };
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Import/DeleteDamageabilityReport",
+                data: { "damagingId": selectedIDs },
+                success: function (response) {
+                    window.location.href = "/SACOR-446";
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    });
+
+
+    function GetDate() {
+        var date = $('#searchDate').val();
+
+        $('input[type=search]').val(date);
+
+        $('input[type=search]').focus();
+
+        //$('searchDate').on('change', function () {
+        //table.draw();
+
+
+        $('#searchDate').val("");
+
+    };
+
+    function GetSearchhDate() {
+        var date = $('#searchfileDate').val();
+
+        $('#schfileDate').val(date);
+
+        $('#searchfileDate').val("");
+
+    };
+
+    function GetSearchfromDate() {
+        var date = $('#schDate').val();
+
+        $('#srchDate').val(date);
+
+        $('#schDate').val("");
+
+    };
+
+    //<------ Sort By Selected Items ----->
+
+    function SortByByActionperiodofequipment() {
+
+        var selectInput = $('select[name=SortBySelectedColumns] option').filter(':selected').val();
+
+        if (selectInput == 1) {
+            window.location.href = "/SACOR-446";
+        }
+
+        if (selectInput == 2) {
+            $("#newColumnSort").load("/Import/SortByByLocationofthecheckpoint/");
+        }
+
+        if (selectInput == 3) {
+            $("#newColumnSort").load("/Import/SortByByActionperiodofequipment/");
+        }
+
+        if (selectInput == 4) {
+            $("#newColumnSort").load("/Import/SortByByLifetimeofequipmentindesign/");
+        }
+
+        if (selectInput == 5) {
+            $("#newColumnSort").load("/Import/SortByByLifetimeofequipmentperRALDS/");
+        }
+
+        if (selectInput == 6) {
+            $("#newColumnSort").load("/Import/SortByByDamageabilitypercoiledcycles/");
+        }
+
+        if (selectInput == 7) {
+            $("#newColumnSort").load("/Import/SortByByDamageabilityperuncoiledcycles/");
+        }
+
+        if (selectInput == 8) {
+            $("#newColumnSort").load("/Import/SortByByTotaldamageabilityofequipment/");
+        }
+
+        if (selectInput == 9) {
+            $("#newColumnSort").load("/Import/SortByByAllowableCUF/");
+        }
+
+        if (selectInput == 10) {
+            $("#newColumnSort").load("/Import/SortByByAllowableRemainingLifeTime/");
+        }
+
+        if (selectInput == 11) {
+            $("#newColumnSort").load("/Import/SortByByChangingRatio/");
+        }
+
+        if (selectInput == 12) {
+            $("#newColumnSort").load("/Import/SortByByAllowableChangingRatio/");
+        }
+
+        if (selectInput == 13) {
+            $("#newColumnSort").load("/Import/SortByByByFileDate/");
+        }
+    }
+
+    //<------End Sort By Selected Items ----->
+
+    //<----- ----->
+    function ShowRecords() {
+        //debugger;
+        var akz = $("#akzText").val();
+
+        if (akz != "") {
+
+            var numberOfUploadedList = '@ViewBag.NumberOfUploadedList';
+
+            var lenghtOfAkz = $('#lenghtOfAkz option:selected').val();
+
+            var kind = $('#kindOfSorting option:selected').val();
+
+            var rowId = $("#akzLocation").val();
+
+            if (lenghtOfAkz == "All") {
+                lenghtOfAkz = numberOfUploadedList;
+            }
+
+            //var rowTable = $("#" + rowId).nextUntil(".group").filter("#myTable");
+            var rowTable = $("#" + rowId).nextUntil(".group").not('tr[style="display: none;"]');
+
+            $.ajax({
+
+                type: "POST",
+                url: "/Import/OrderByDescendingLifetimeofequipmentindesignByNumberOfAKZ",
+                data: {
+                    "akz": akz,
+
+                    "take": lenghtOfAkz,
+                    "kind": kind
+                },
+                success:
+                    function (response) {
+
+
+                        rowTable.remove();
+                        //if (rowTable.length == 0) {
+
+                        //selectedRow.after(response);
+                        $("#" + rowId).after(response);
+                        $("#myThead").remove();
+                        //}
+                    },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    }
+
+    
+
+    function OrderByAscendingDate() {
+
+        var selectInput = $('select[name=SortByAscendingSelectedColumns] option').filter(':selected').val();
+
+        if (selectInput == 8) {
+            $("#newColumnSort").load("/Import/OrderByAscendingLifetimeofequipmentindesign/");
+        }
+
+        if (selectInput == 7) {
+            $("#newColumnSort").load("/Import/SortByByLifetimeofequipmentindesign/");
+        }
+    }
+
+    //<------End Sort By Ascending Selected Items ----->
+
+    //<------ Show Selected Items ----->
+
+    function ShowSelectedRecords() {
+
+        var selectInput = $('select[name=lenghtOfTable] option').filter(':selected').val();
+        //var numberOfShownRecords = $("#ShowEntries").val();
+
+        var steps = $(".group").eq(1).attr('id');
+        var end = $(".group").eq(97).attr('id');
+
+        for (i = 0; i <= end; i += +steps) {
+            $("#" + i).hide();
+
+        }
+
+        //var start = numberOfShownRecords * steps;
+        var start = selectInput * steps;
+
+
+
+
+        for (i = 0; i < start; i += +steps) {
+            $("#" + i).show();
+
+        }
+
+        //for (i = start; i <= end; i += +steps) {
+        //    $("#" + i).hide();
+
+        //}
+
+    }
+
+    //<------End Show Selected Items ----->
+
+    $(document).ready(function () {
+        $('tbody tr[role="row"]').hide();
+    });
+
+    //Group By Akz
+
+
+    //group
+    $(document).ready(function () {
+        var groupColumn = 2;
+        var table = $('#myTable').DataTable({
+
+
+            columnDefs: [{ visible: false, targets: groupColumn }],
+            order: [[groupColumn, 'asc']],
+
+
+            // hide "Showing 1 of N Entries" with the dataTables.js library
+            "info": false,
+
+
+
+            //colReorder: {
+            //    order: [ 5,6]
+            //},
+
+            //"ordering": true,
+            //columnDefs: [{
+            //    orderable: false,
+            //    targets: "no-sort"
+            //}],
+            //displayLength: 1000,
+            paging: false,
+
+            //lengthMenu: [
+            //    [-1, 10, 25, 50,75],
+            //    ['All', 10, 25, 50,75],
+            //],
+
+
+            drawCallback: function (settings) {
+                var api = this.api();
+                var rows = api.rows({ page: 'current' }).nodes();
+
+                var last = null;
+
+                api
+                    .column(groupColumn, { page: 'current' })
+                    .data()
+                    .each(function (group, i) {
+                        if (last !== group) {
+                            $(rows)
+                                .eq(i)
+                                .before('<tr class="group" id="' + i + '" style="background-color: rgba(0, 0, 0, 0.15);"><td class="dt-control"></td><td colspan="16">' + group + '</td></tr>');
+
+                            last = group;
+
+                        }
+                    });
+            },
+        });
+
+
+
+        //Add parameter to class  class="group'+i+'"
+        // Order by the grouping
+        $('#myTable tbody').on('click', 'tr.group', function () {
+
+
+
+            var akz = $($(this)).text();
+            var numberOfUploadedList = '@ViewBag.NumberOfUploadedList';
+
+            //send value for show selected records
+            $("#akzText").val(akz);
+            var rowId = $($(this)).attr('id');
+            $("#akzLocation").val(rowId);
+
+            var lenghtOfAkz = $('#lenghtOfAkz option:selected').val();
+
+            var kind = $('#kindOfSorting option:selected').val();
+
+
+
+            if (lenghtOfAkz == "All") {
+                lenghtOfAkz = numberOfUploadedList;
+            }
+
+            var selectedRow = $($(this)).nextUntil(".group");
+
+
+            //var rowTable = $($(this)).nextUntil(".group").filter("#myTable");
+            //var rowTable = $("#" + rowId).nextUntil(".group").filter("#myTable");
+
+            var rowTable1 = $("#" + rowId).nextUntil(".group").not('tr[style="display: none;"]');
+            //console.log(rowTable1);
+
+            $.ajax({
+
+
+
+                type: "POST",
+                url: "/Import/OrderByDescendingLifetimeofequipmentindesignByNumberOfAKZ",
+                data: {
+                    "akz": akz,
+
+                    "take": numberOfUploadedList,
+                    "kind": kind
+                },
+                success:
+                    function (response) {
+
+
+
+                        rowTable1.remove();
+                        if (rowTable1.length == 0) {
+
+                            //selectedRow.after(response);
+                            $("#" + rowId).after(response);
+                            $("#myThead").remove();
+                        }
+                    },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+
+        });
+
+       
+
+    });
+
+
+    $('input[type=file]').change(function () {
+
+        $('#reportDates').attr('value', this.files[0].name);
+    });
+
+
+
+</script>
+
+
+
+
+

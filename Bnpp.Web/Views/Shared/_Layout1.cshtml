@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+
+<html xml:lang="en-gb" lang="en-gb">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>
+		EDB
+	</title>
+	<link href="/css/main.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/CustomCss.css" rel="stylesheet" />
+
+	<link href="/css/kendo.common.min.css" rel="stylesheet" />
+	<link href="/css/kendo.default.min.css" rel="stylesheet" />
+	<link href="/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+	<link href="/css/datatables.min.css" rel="stylesheet" type="text/css" />
+
+	
+
+</head>
+<body style="background-image: url(/images/Picture1.png);
+             background-size: 100% 100%; background-position: center;
+             background-repeat: no-repeat; min-height: 768px;">
+
+	<div id="iHeader" style="background-image:url(/images/header2.gif);
+                            /* background-repeat:no-repeat;*/
+                             background-position:center center;
+                             border-bottom:solid 3px #fc6868;min-height:107px;">
+		<img src="/images/bnpp-logo.png" width="100" style="float:left;
+                                                            margin:3px; margin-left:100px;margin-top:19px;" />
+		<img src="/images/logo/logo-english.jpg" width="100" style="border: solid 1px #d0dede;float:right; margin:3px;margin-top:15px;width:85px;background-color: #f3fbf8;border-radius: 5px;" />
+
+
+		<img src="/images/tavana.png" width="100" style="border: solid 1px #d0dede;float:right; margin:3px; margin-right:3px;margin-top:15px;width:65px;background-color: #f3fbf8;border-radius: 5px;" />
+
+		<div style="width:500px;float:left; margin:0px; padding:0px;margin-left:20px;color:#ffffff;">
+			<h2 style="margin-bottom:0px;color:#ffe535;">
+				Bushehr Nuclear Power Plant - 1
+			</h2>
+			<span style="font-size:16px;">
+				Ageing Management Data Bank
+			</span>
+		</div>
+		<div id="help" style="display: none;">
+		</div>
+		<div style="clear:both;">
+		</div>
+	</div>
+	<div id="full-wrapper">
+		<div class="dcenter">
+			<div id="dsidebar">
+				<h3 class="box-title">
+					Equipments
+				</h3>
+				<div class="box-menu">
+					<ul id="menu-sidebar">
+						<li style="background-color:#f1f6fc;">
+							<a href="/Equipments">
+								Mechanical Equipments
+							</a>
+						</li>
+						<li>
+							<a href="/Electrical">
+								Electrical Equipments
+							</a>
+						</li>
+						<li>
+							<a href="/Structure">
+								Structures
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="/Transients">
+								Transients
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="/ManagementDocuments">
+								Ageing Management Documents
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="/Ageing Assessment">
+								Ageing Assessment
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="Logout">
+								Logout
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				@* <h3 class="box-title">Technical Specifications</h3>
+				<div class="box-menu">
+					<ul id="menu-sidebar">
+						<li>
+							<a href="/Technical">Basic Data</a>
+						</li>
+						<li style="background-color: #eaf0f6;">
+							<a href="/Documents">Documents</a>
+						</li>
+						<li>
+							<a href="/AgeingMechanism">Ageing Mechanism</a>
+						</li>
+						<li style="background-color: #eaf0f6;">
+							<a href="/Installation">Installation &amp; Commissioning</a>
+						</li>
+						<li style="background-color: #eaf0f6;">
+							<a href="/Operational">Operational Data</a>
+						</li>
+						<li>
+							<a href="/Events">Events</a>
+						</li>
+						<li style="background-color: #eaf0f6;">
+							<a href="/OnOffData">On / Off Data</a>
+						</li>
+						<li>
+							<a href="/Maintenance">Maintenance</a>
+						</li>
+
+						<li style="background-color: #eaf0f6;">
+							<a href="/Inspection">Inspection Data</a>
+						</li>
+					</ul>
+				</div> *@
+
+				<h3 class="box-title">Reports</h3>
+				<div class="box-menu">
+					<ul id="menu-sidebar">
+						<li><a href="#">Reports</a></li>
+					</ul>
+				</div>
+				<h3 class="box-title">
+					Navigation
+				</h3>
+				<div class="box-menu">
+					<ul id="menu-sidebar">
+						<li style="background-color:#f1f6fc;">
+							<a href="/Admin">
+								Home
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="/Units">
+								Settings
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="/UnitConvertor">
+								Unit Convertor
+							</a>
+						</li>
+						<li style="background-color:#f1f6fc;">
+							<a href="#">
+								Logs
+							</a>
+						</li>
+					</ul>
+				</div>
+
+
+
+				@*<h3 class="box-title">
+				Reports
+				</h3>
+				<div class="box-menu">
+				<ul id="menu-sidebar">
+				<li>
+				<a href="#">
+				Reports
+				</a>
+				</li>
+				</ul>
+				</div>*@
+			</div>
+			@*<div class="dcontent">
+			<div style="margin-top: 10px;background-color: #6b8d9e;padding-top: 5px;padding-bottom: 5px;padding-right: 10px;border-radius: 5px;border: solid 1px #cccccc;background: repeating-linear-gradient( -45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px );">
+			&nbsp;
+			</div>
+			<div style="border-radius:5px; margin-top:5px;margin-bottom:5px; padding:15px; border:solid 1px #cea001; background-color:#ffe100;">
+			<table cellpadding="3" cellspacing="0">
+			<tbody>
+			<tr>
+			<td style="">
+			<b>
+			<a class="breadcumb2-link" href="#">
+			Main
+			</a>
+			</b>
+			</td>
+			<td style="">
+			»
+			<b style="color:#ff0000;">
+			<a class="breadcumb2-link" href="#">
+			Electrical Equipments - Cabels
+			</a>
+			</b>
+			</td>
+			</tr>
+			</tbody>
+			</table>
+			<a id="iHelp" style="float:right;position:relative; top:-32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width:48px;" class="imgHelp" />
+			</a>
+			</div>
+			<h1>
+			Electrical Equipments - Cabels
+			</h1>
+			<script>
+			show_help('#item6');
+			</script>
+			<div class="shadow" style="background-color:#f7f7f7; border:solid 1px #cccccc; padding:15px; margin-bottom:15px; border-radius:5px;">
+			<table cellpadding="3" cellspacing="0">
+			<tbody>
+			<tr>
+			<td>
+			Cabel Name:
+			</td>
+			<td>
+			<input name="iEquipName" type="text" id="iEquipName" style="direction: ltr; text-align: left;" />
+			</td>
+			<td>
+			&nbsp;
+			</td>
+			<td>
+			&nbsp;
+			</td>
+			</tr>
+			<tr>
+			<td>
+			AKZ Serial:
+			</td>
+			<td>
+			<input name="iAZK" type="text" id="iAZK" style="direction: ltr; text-align: left;" />
+			</td>
+			<td>
+			<input type="submit" name="Button1" value="Search" id="Button1" class="butn-search" style="direction: ltr; text-align: left;" />
+			</td>
+			</tr>
+			</tbody>
+			</table>
+			</div>
+			<table cellpadding="3" cellspacing="0" class="show-table">
+			<tbody>
+			<tr>
+			<td style="width:150px">
+			<b>
+			Date
+			</b>
+			</td>
+			<td style="width:150px">
+			<b>
+			Cabel Name
+			</b>
+			</td>
+			<td style="width:120px">
+			<b>
+			Installation position
+			</b>
+			</td>
+			<td style="width:120px">
+			<b>
+			AKZ Serial
+			</b>
+			</td>
+			<td style="width:30px">
+			<b>
+			&nbsp;
+			</b>
+			</td>
+			<td style="width:30px">
+			<b>
+			&nbsp;
+			</b>
+			</td>
+			<td style="width:60px">
+			<b>
+			&nbsp;
+			</b>
+			</td>
+			<td style="width:40px">
+			<b>
+			&nbsp;
+			</b>
+			</td>
+			<td style="width:40px">
+			<b>
+			&nbsp;
+			</b>
+			</td>
+			<td style="width:40px">
+			<b>
+			&nbsp;
+			</b>
+			</td>
+			</tr>
+			</tbody>
+			</table>
+			<br />
+			<input type="button" value="New" onclick="#" class="butn-new" style="direction: ltr; text-align: left;" />&nbsp;
+			<input type="button" value="Back" onclick="#" class="butn-cancel" style="direction: ltr; text-align: left;" />&nbsp;
+			</div>*@
+
+			@RenderBody()
+
+			<div style="clear: both;">
+			</div>
+		</div>
+	</div>
+
+	<div style="clear:both;">
+	</div>
+	<div id="footer" style="background-image:url(/images/footer2.gif); background-repeat:no-repeat; background-position:center center;border:none;background-color:Transparent;margin-right:auto; margin-left:auto;width:1314px;border-top:solid 5px #ff2626;width: 96%;background-size: cover;">
+		<a href="Login">
+			Login
+		</a> |
+		<a href="#">
+			Control Panel
+		</a> |
+		<a href="#">
+			Predefined Data
+		</a> |
+		<a href="#">
+			Search &amp; Reports
+		</a> |
+		<a href="#">
+			Charts &amp; Curves
+		</a> |
+		<a href="#">
+			Equipments
+		</a>
+		<br />Copyright (c) 2017, Bushehr Nuclear Power Plant. All rights Reserved
+	</div>
+	@*</form>*@
+
+
+
+
+	<script src="~/js/jquery.min.js"></script>
+	<script src="~/js/script.js"></script>
+	<script src="~/js/bootstrap.min.js"></script>
+	<script src="~/js/jquery.validate.min.js"></script>
+	<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+	<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+	<script src="/js/kendo.all.min.js"></script>
+	<script src="/js/datatables.min.js"></script>
+	@RenderSection("Scripts", false)
+</body>
+</html>

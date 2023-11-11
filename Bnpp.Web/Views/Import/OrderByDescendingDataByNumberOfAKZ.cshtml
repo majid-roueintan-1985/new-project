@@ -1,0 +1,233 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.DamageabilityReport>
+@{
+    ViewData["Title"] = "OrderByDescendingDataByNumberOfAKZ";
+    Layout = null;
+}
+
+@{
+    int rowCount = 1;
+}
+
+<div class="bevel-box">
+    <table cellpadding="3" cellspacing="0">
+        <tbody>
+            <tr>
+                <td>
+                    <form method="post" asp-controller="Import" asp-action="ExportAkz">
+                        <input type="text" value="@ViewBag.AKZ" name="akz" style="display:none" />
+                        <input type="submit" value="Export @ViewBag.AKZ" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<table id="@ViewBag.AKZ" cellpadding="3" cellspacing="0" aria-describedby="example_info" class="display dataTable">
+    <thead>
+        <tr role="row">
+            <th data-orderable="false">
+                <input type="checkbox" id="checkAll_@ViewBag.AKZ"  />
+            </th>
+            <th data-orderable="false">
+
+            </th>
+            @* <th>
+            <b>AKZ</b>
+            </th>*@
+            <th data-orderable="false">
+                <b>Date</b>
+            </th>
+            <th data-orderable="false">
+                <b>Location of the checkpoint</b>
+            </th>
+            <th data-orderable="false">
+                <b>Action period of equipment (years)</b>
+            </th>
+            <th data-orderable="false">
+                <b>Life time of equipment in design (years)</b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Life time of equipment per RALDS (years)
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Damageability per coiled cycles
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Damageability per uncoiled cycles
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Total damageability of equipment
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable CUF
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable Remaining Life Time
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Changing Ratio
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable Changing Ratio
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    File Date
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+
+                </b>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody id="myBody">
+
+        @foreach (var item in Model)
+        {
+            <tr role="row">
+                <td>
+                    <input type="checkbox" class="checkBox" name="item_@ViewBag.AKZ"  value="@item.ID" />
+                </td>
+                <td>
+                    @rowCount
+                </td>
+                @* <td>
+            @item.Akz
+            </td>*@
+                <td>
+                    @item.ReportDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    @item.Locationofthecheckpoint
+                </td>
+                <td>
+                    @item.Actionperiodofequipment
+                </td>
+                <td>
+                    @item.Lifetimeofequipmentindesign
+                </td>
+
+                @if ((Convert.ToDecimal(item.LifetimeofequipmentperRALDS)) <= (Convert.ToDecimal(item.AllowableLifeTime)))
+                {
+                    <td style="background-color:red;">
+                        @item.LifetimeofequipmentperRALDS
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.LifetimeofequipmentperRALDS
+                    </td>
+                }
+
+                <td>
+                    @item.Damageabilitypercoiledcycles
+                </td>
+                <td>
+                    @item.Damageabilityperuncoiledcycles
+                </td>
+
+                @if ((Convert.ToDecimal(item.Totaldamageabilityofequipment)) >= (Convert.ToDecimal(item.AllowableCUF)))
+                {
+                    <td style="background-color:red;">
+                        @item.Totaldamageabilityofequipment
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.Totaldamageabilityofequipment
+                    </td>
+                }
+
+                <td>
+                    @item.AllowableCUF
+                </td>
+
+                <td>
+                    @item.AllowableLifeTime
+                </td>
+
+                @if ((Convert.ToDecimal(item.AllowableChangingRatio)) <= (Convert.ToDecimal(item.ChangingRatio)))
+                {
+                    <td style="background-color:red;">
+                        @item.ChangingRatio
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.ChangingRatio
+                    </td>
+                }
+
+                <td>
+                    @item.AllowableChangingRatio
+                </td>
+
+                <td>
+                    @item.CreateDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    <a class="btn-edit-equip" href="/Import/EditDamageabilityReport/@item.ID">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            rowCount++;
+        }
+    </tbody>
+
+</table>
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#@ViewBag.AKZ").DataTable(
+            {
+                //searching: false,
+            }
+        );
+    });
+
+    //function selectAll() {
+
+    //    $('#YA11PD001').prop('checked', true);
+
+    //};
+
+    
+    $("#checkAll_@ViewBag.AKZ").click(function () {
+
+       
+        $("input[name='item_@ViewBag.AKZ']").prop('checked',
+            $(this).prop('checked'));
+    });
+
+   
+</script>
+

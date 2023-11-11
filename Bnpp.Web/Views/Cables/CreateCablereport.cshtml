@@ -1,0 +1,339 @@
+﻿@model Bnpp.DataLayer.Entities.CableReport
+@{
+    ViewData["Title"] = "CreateCablereport";
+    Layout = null;
+}
+
+<h2>Create Cable Report</h2>
+<div id="newData">
+    <div id="normal">
+        <form id="designForm" asp-action="CreateCablereport" method="post">
+
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>
+                            Cable ID Group:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="CableIDGroup" asp-items="@ViewBag.CableGroup as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowCableGroup(4)">
+                                    Cable ID Group
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cable ID:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="CableID" asp-items="@ViewBag.CableID as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowCableID(4)">
+                                    Cable ID
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Owner:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="Owner" asp-items="@ViewBag.Owner as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowOwner(4)">
+                                    Owner
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date from:
+                        </td>
+                        <td>
+                            <input asp-for="Datefrom" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date To:
+                        </td>
+                        <td>
+
+                            <input asp-for="DateTo" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                   @* <tr>
+                        <td>
+                            Remaining design life time:
+                        </td>
+                        <td>
+                            <input asp-for="RemainingDesignLifeTime" type="number" style="direction: ltr; text-align: left;">
+                        </td>
+                        <td>
+                            <span asp-validation-for="RemainingDesignLifeTime"></span>
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <td>
+                            Mode of operation:
+                        </td>
+                        <td>
+                            <select name="system" asp-for="ModeofOperation" asp-items="@ViewBag.OperationMode as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowModeofoperation(4)">
+                                    Mode of operation
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Failure Detction Date:
+                        </td>
+                        <td>
+                            <input asp-for="FailureDetctionDate" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Failed parts:
+                        </td>
+                        <td>
+                            <select  asp-for="FailedParts" asp-items="@ViewBag.FailedParts as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowFailedParts(4)">
+                                    Failed parts
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Start date of maintenance:
+                        </td>
+                        <td>
+
+                            <input asp-for="StartDateMaintenance" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            End date of maintenance:
+                        </td>
+                        <td>
+
+                            <input asp-for="EndDateMaintenance" onkeydown="return false;" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Type of Maintenance work:
+                        </td>
+                        <td>
+                            <select  asp-for="TypeofMaintenancework" asp-items="@ViewBag.TypeofMaintenance as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowTypeofMaintenance(4)">
+                                    Type of Maintenance work
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Type of Tests:
+                        </td>
+                        <td>
+                            <select  asp-for="TypeofTests" asp-items="@ViewBag.TestType as SelectList" aria-controls="myTable" class="">
+                            </select>
+                        </td>
+                        <td>
+                            <label>
+                                <a class="btn-defaults-equip" onclick="ShowTestType(4)">
+                                    Type Tests
+                                </a>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                            <input type="button" onclick="Cancel()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+@*<link href="/css/kendo.rtl.min.css" rel="stylesheet" />*@
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+@*<script src="/js/kendo.web.min.js"></script>*@
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script>
+    // create DatePicker from input HTML element
+    $("#Datefrom").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("#DateTo").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("#FailureDetctionDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("#StartDateMaintenance").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+    $("#EndDateMaintenance").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+
+    function Cancel() {
+        $("#Tabs").load("/Cables/CableReport/");
+    }
+
+    function ShowCableGroup(codes) {
+        $("#newData").load("/Cables/CableGroup/" + "?codes=" + codes);
+    }
+
+    function ShowCableID(codes) {
+        $("#newData").load("/Cables/CableID/" + "?codes=" + codes);
+    }
+
+    function ShowOwner(codes) {
+        $("#newData").load("/Cables/Owner/" + "?codes=" + codes);
+    }
+
+    function ShowModeofoperation(codes) {
+        $("#newData").load("/Cables/OperationMode/" + "?codes=" + codes);
+    }
+
+    function ShowFailedParts(codes) {
+        $("#newData").load("/Cables/FailedParts/" + "?codes=" + codes);
+    }
+
+    function ShowTypeofMaintenance(codes) {
+        $("#newData").load("/Cables/TypeofMaintenance/" + "?codes=" + codes);
+    }
+
+    function ShowTestType(codes) {
+        $("#newData").load("/Cables/TestType/" + "?codes=" + codes);
+    }
+</script>
+
+<script type="text/javascript">
+    function AjaxdocumentFormSubmit() {
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+
+        var formData = new FormData();
+
+        //Cable id & cable group
+
+        var cableId = $('#CableID').find(":selected").text();
+        formData.append("CableID", cableId);
+
+        var cableGroup = $('#CableIDGroup').find(":selected").text();
+        formData.append("CableIDGroup", cableGroup);
+        //
+
+        formData.append("Owner", $("#Owner").val());
+
+        formData.append("Datefrom", $("#Datefrom").val());
+        formData.append("DateTo", $("#DateTo").val());
+        //formData.append("RemainingDesignLifeTime", $("#RemainingDesignLifeTime").val());
+        formData.append("ModeofOperation", $("#ModeofOperation").val());
+        formData.append("FailureDetctionDate", $("#FailureDetctionDate").val());
+        formData.append("FailedParts", $("#FailedParts").val());
+        formData.append("StartDateMaintenance", $("#StartDateMaintenance").val());
+        formData.append("EndDateMaintenance", $("#EndDateMaintenance").val());
+        formData.append("TypeofMaintenancework", $("#TypeofMaintenancework").val());
+        formData.append("TypeofTests", $("#TypeofTests").val());
+
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+            $("#Tabs").load("/Cables/CableReport/");
+        });
+    }
+
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgCourse').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    //$("#CableIDGroup").change(function () {
+
+    //    debugger;
+    //    $("#CableID").empty();
+    //    $.getJSON("/Cables/GetSubGroups/" + $("#CableIDGroup :selected").val(),
+    //        function (data) {
+
+    //            $.each(data,
+    //                function () {
+    //                    $("#CableID").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+    //                });
+
+    //        });
+
+
+    //});
+
+</script>

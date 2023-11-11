@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.CableLocation>
+@{
+    ViewData["Title"] = "Location";
+    Layout = null;
+}
+
+<h2>Location</h2>
+
+<table cellpadding="3" cellspacing="0">
+    <tbody>
+        <tr>
+            <td>
+                <label style="margin:10px">
+
+                    <a class="btn-defaults-equip" onclick="CreatingOwner()">
+                        Back
+                    </a>
+
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="iContent">
+    <div id="tab1" class="tab-item" style="display: block;">
+        <div id="newPage">
+            <div id="newAgeingMechanism">
+                <div>
+
+
+                    <a class="btn-new-equip" style="cursor:pointer" onclick="CreateNewLocation()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myOwnerTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th>
+                                    <b>Location Title</b>
+                                </th>
+
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.LocationId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.LocationTitle
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditLocation(@item.LocationId)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#myOwnerTable").DataTable();
+    });
+
+
+
+    function CreatingOwner() {
+        $("#newPage").load("/Cables/CreateGeneralCables/");
+    }
+
+    function CreateNewLocation() {
+        $("#newAgeingMechanism").load("/Cables/CreateLocation/");
+    }
+
+
+
+    function EditLocation(id) {
+        $("#newAgeingMechanism").load("/Cables/EditLocation/" + id);
+
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Cables/DeleteLocation",
+                data: { "locationId": selectedIDs },
+
+                success: function (response) {
+                    $("#newData").load("/Cables/Location/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+    });
+</script>
+
+
+
+

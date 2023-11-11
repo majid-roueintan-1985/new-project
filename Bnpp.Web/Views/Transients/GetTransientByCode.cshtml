@@ -1,0 +1,112 @@
+﻿@model IEnumerable< Bnpp.DataLayer.Entities.Transients>
+@{
+	ViewData["Title"] = "GetTransientByCode";
+	Layout = null;
+}
+
+<div class="bevel-box">
+	<p>
+		<input type="button" onclick="showPage3();" class="btn-delete-equip" value="Back">
+	</p>
+
+	<table id="searchByCodeTable" cellpadding="3" cellspacing="0" class="show-table">
+		<thead>
+			<tr role="row">
+
+				<th>
+					<b>Code </b>
+				</th>
+				<th>
+					<b>Name</b>
+				</th>
+				<th>
+					<b>Transient Date</b>
+				</th>
+				<th>
+					<b>Transient Time</b>
+				</th>
+				<th>
+					<b>Description</b>
+				</th>
+				<th>
+					<b>Document</b>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr role="row">
+					<td>
+						@item.Code
+					</td>
+					<td>
+						@item.Name
+					</td>
+					<td>
+						@item.TransientDate.ToString("yyyy/MM/dd")
+					</td>
+					<td>
+						@item.TransientTime
+					</td>
+					<td>
+						@item.Description
+					</td>
+					<td>
+						<a href="/Transients/ShowTransientDocument/@item.TransientsId" target="_blank">
+							Transient Document
+						</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<link href="/css/bootstrap-modal1.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/datatables.min.css" rel="stylesheet" />
+<link href="/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="/css/select.dataTables.min.css" rel="stylesheet" />
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script src="/js/dataTables.buttons.min.js"></script>
+<script src="/js/jszip.min.js"></script>
+<script src="/js/pdfmake.min.js"></script>
+<script src="/js/vfs_fonts.js"></script>
+<script src="/js/buttons.html5.min.js"></script>
+<script src="/js/buttons.print.min.js"></script>
+
+
+<script src="/js/dataTables.select.min.js.download.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<script>
+	//$(document).ready(function () {
+	//    $('#searchByCodeTable').DataTable({
+	//        dom: 'Bfrtip',
+	//        buttons: [
+
+	//            'excel',
+
+	//        ],
+	//        select: true
+	//    });
+	//});
+
+	$(document).ready(function () {
+		$("#searchByCodeTable").DataTable({
+			"info": false,
+			searching: false,
+			paging: false
+		});
+	});
+
+	function showPage3() {
+		$("#Tabs").load("/Transients/Results/");
+	}
+</script>

@@ -1,0 +1,273 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.DamageabilityReport>
+@{
+    ViewData["Title"] = "Search";
+    Layout = null;
+}
+
+@{
+    int rowCount = 1;
+}
+
+
+<table id="myTable" cellpadding="3" cellspacing="0" aria-describedby="example_info" class="display dataTable">
+    <thead>
+        <tr role="row">
+            <th data-orderable="false">
+                <input type="checkbox" id="checkAll" onchange="selectAll()" />
+            </th>
+            <th data-orderable="false">
+
+            </th>
+            <th>
+                <b>AKZ</b>
+            </th>
+            <th data-orderable="false">
+                <b>Date</b>
+            </th>
+            <th data-orderable="false">
+                <b>Location of the checkpoint</b>
+            </th>
+            <th data-orderable="false">
+                <b>Action period of equipment (years)</b>
+            </th>
+            <th data-orderable="false">
+                <b>Life time of equipment in design (years)</b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Life time of equipment per RALDS (years)
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Damageability per coiled cycles
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Damageability per uncoiled cycles
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Total damageability of equipment
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable CUF
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable Remaining Life Time
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Changing Ratio
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    Allowable Changing Ratio
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+                    File Date
+                </b>
+            </th>
+            <th data-orderable="false">
+                <b>
+
+                </b>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody id="myBody">
+
+        @foreach (var item in Model)
+        {
+            <tr role="row">
+                <td>
+                    <input type="checkbox" class="checkBox" onchange="selected()" value="@item.ID" />
+                </td>
+                <td>
+                    @rowCount
+                </td>
+                <td>
+                    @item.Akz
+                </td>
+                <td>
+                    @item.ReportDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    @item.Locationofthecheckpoint
+                </td>
+                <td>
+                    @item.Actionperiodofequipment
+                </td>
+                <td>
+                    @item.Lifetimeofequipmentindesign
+                </td>
+
+                @if ((Convert.ToDecimal(item.LifetimeofequipmentperRALDS)) <= (Convert.ToDecimal(item.AllowableLifeTime)))
+                {
+                    <td style="background-color:red;">
+                        @item.LifetimeofequipmentperRALDS
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.LifetimeofequipmentperRALDS
+                    </td>
+                }
+
+                <td>
+                    @item.Damageabilitypercoiledcycles
+                </td>
+                <td>
+                    @item.Damageabilityperuncoiledcycles
+                </td>
+
+                @if ((Convert.ToDecimal(item.Totaldamageabilityofequipment)) >= (Convert.ToDecimal(item.AllowableCUF)))
+                {
+                    <td style="background-color:red;">
+                        @item.Totaldamageabilityofequipment
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.Totaldamageabilityofequipment
+                    </td>
+                }
+
+                <td>
+                    @item.AllowableCUF
+                </td>
+
+                <td>
+                    @item.AllowableLifeTime
+                </td>
+
+                @if ((Convert.ToDecimal(item.AllowableChangingRatio)) <= (Convert.ToDecimal(item.ChangingRatio)))
+                {
+                    <td style="background-color:red;">
+                        @item.ChangingRatio
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.ChangingRatio
+                    </td>
+                }
+
+                <td>
+                    @item.AllowableChangingRatio
+                </td>
+
+                <td>
+                    @item.CreateDate.ToString("yyyy/MM/dd")
+                </td>
+                <td>
+                    <a class="btn-edit-equip" href="/Import/EditDamageabilityReport/@item.ID">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+            rowCount++;
+        }
+    </tbody>
+
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('tbody tr[role="row"]').hide();
+    });
+
+    $(document).ready(function () {
+        var groupColumn = 2;
+        var table = $('#myTable').DataTable({
+
+
+            columnDefs: [{ visible: false, targets: groupColumn }],
+            order: [[groupColumn, 'asc']],
+
+
+            // hide "Showing 1 of N Entries" with the dataTables.js library
+            "info": false,
+
+
+
+            //colReorder: {
+            //    order: [ 5,6]
+            //},
+
+            //"ordering": true,
+            //columnDefs: [{
+            //    orderable: false,
+            //    targets: "no-sort"
+            //}],
+            //displayLength: 1000,
+            paging: false,
+
+            //lengthMenu: [
+            //    [-1, 10, 25, 50,75],
+            //    ['All', 10, 25, 50,75],
+            //],
+
+
+            drawCallback: function (settings) {
+
+
+                var api = this.api();
+                var rows = api.rows({ page: 'current' }).nodes();
+
+
+
+                var last = null;
+
+                api
+                    .column(groupColumn, { page: 'current' })
+                    .data()
+                    .each(function (group, i) {
+
+
+                        if (last !== group) {
+                            $(rows)
+                                .eq(i)
+                                .before('<tr class="group" id="' + i + '" style="background-color: rgba(0, 0, 0, 0.15);"><td class="dt-control"></td><td colspan="16">' + group + '</td></tr>');
+
+                            last = group;
+
+                        }
+                    });
+            },
+        });
+
+
+        //Add parameter to class  class="group'+i+'"
+        // Order by the grouping
+        $('#myTable tbody').on('click', 'tr.group', function () {
+
+
+
+
+
+            $($(this)).nextUntil(".group").filter('tr[role="row"]').toggle();
+
+
+        });
+
+
+    });
+</script>
+
+
+

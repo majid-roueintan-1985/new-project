@@ -1,0 +1,313 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.OperationalDatas.Operational>
+@{
+	ViewData["Title"] = "Environmental";
+	Layout = null;
+}
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b><a class="breadcumb2-link" href="/Equipments">Mechanical Equipments</a></b>
+					</td>
+					<td style="">
+						» @ViewBag.EquipName <b id="subTitle22a"></b>
+					</td>
+
+
+					<td style="">
+						» <label>
+							<select required="required" onchange="location = this.value;" name="EventLevel" aria-controls="myTable" class="">
+
+								<option value="/Operational/@ViewBag.MechanicalId">Operational Data</option>
+
+								<option value="/Technical/@ViewBag.MechanicalId">BasicData</option>
+								<option value="/Documents/@ViewBag.MechanicalId">Documents</option>
+								<option value="/AgeingMechanism/@ViewBag.MechanicalId">Ageing Mechanism</option>
+								<option value="/Installation/@ViewBag.MechanicalId">Installation & Commissioning</option>
+
+								<option value="/Events/@ViewBag.MechanicalId">Events</option>
+								<option value="/OnOffData/@ViewBag.MechanicalId">On-Off Data</option>
+								<option value="/Maintenance/@ViewBag.MechanicalId">Maintenance</option>
+								<option value="/Inspection/@ViewBag.MechanicalId">Inspection Data</option>
+							</select>
+						</label>
+					</td>
+					<td>
+						» <b style="color: #ff0000;" id="subTitle22">
+							Environmental Data
+						</b>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width: 48px;" class="imgHelp">
+		</a>
+	</div>
+
+	<h1 id="iH1">
+		Operational Data
+	</h1>
+	<div id="iContent">
+
+		<div class="tab-buttons">
+			<ul>
+				<li id="tab-button1" class="tab-buttons-li" @*style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;"*@ @*style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;"*@>
+					<a id="tab-button-a1"
+					   onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+						Sensors Data
+					</a>
+				</li>
+				<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Water Chemical Data
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+					<a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Environmental Data
+					</a>
+				</li>
+			</ul>
+
+			<div style="clear:both;"></div>
+		</div>
+
+		<div id="tab1" class="tab-item" style="display: block;">
+
+			<h1 id="iH1">
+				Environmental Data
+			</h1>
+
+			<div class="bevel-box">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<form method="post" asp-controller="Operational" asp-action="ExportEnvironmental" asp-route-id="@ViewBag.MechanicalId">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+									<input type="submit" onclick="refreshPage()" value="Export Excel" />
+								</form>
+							</td>
+							<td>
+								<form method="post" asp-controller="Operational" asp-action="ImportEnvironmental" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="file" name="FormFile" />
+									<input type="submit" onclick="refreshPage()" value="Import Excel" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="newPage">
+				<div>
+
+					<div id="iLoading22" style="display: none;">
+						<img src="/images/loading.gif">
+					</div>
+
+
+					<a class="btn-new-equip" style="cursor:pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+					<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+					<br />
+					@{
+						int rowCount = 1;
+					}
+					<table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+						<thead>
+							<tr role="row">
+								<th>
+									<input type="checkbox" id="checkAll" />
+								</th>
+								<th></th>
+								<th>
+									<b>Parameter Name</b>
+								</th>
+								<th>
+									<b>AKZ</b>
+								</th>
+								<th>
+									<b>Unit</b>
+								</th>
+
+								<th>
+									<b>Minimum</b>
+								</th>
+
+								<th>
+									<b>	Maximum</b>
+								</th>
+								<th>
+									<b>	Normal Value</b>
+								</th>
+								<th>
+									<b>No. Allowable Transient Events</b>
+								</th>
+								<th>
+									<b>Actions</b>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr role="row">
+									<td>
+										<input type="checkbox" class="checkBox" value="@item.OperationalId" />
+									</td>
+									<td>
+										@rowCount
+									</td>
+									<td>
+										@item.ParameterName
+									</td>
+									<td>
+										@item.AKZ
+									</td>
+									<td>
+										@item.Unit
+									</td>
+									<td>
+										@item.MinimumValue
+									</td>
+									<td>
+										@item.MaximumValue
+									</td>
+									<td>
+										@item.NormalValue
+									</td>
+									<td>
+										@item.TransientEvents
+									</td>
+									<td>
+										<a class="btn-edit-equip" onclick="Edit(@item.OperationalId)">
+											Edit
+										</a>
+									</td>
+								</tr>
+								rowCount++;
+							}
+						</tbody>
+					</table>
+
+
+
+					<br>
+					@* <input type="button" value="Sensor Positions" onclick="EnvironmentalSensorDocument()" class="butn-sensor-position" style="direction: ltr; text-align: left;"> *@
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+<script>
+	$(document).ready(function () {
+		$("#myTable").DataTable();
+	});
+</script>
+<script>
+
+	function Create(mechanicalId) {
+		$("#newPage").load("/Operational/CraeteEnvironmental/" + mechanicalId);
+	}
+
+	function Edit(id) {
+		$("#newPage").load("/Operational/EditEnvironmental/" + id);
+	}
+
+
+	function showPage1() {
+		$("#Tabs").load("/Operational/Sensors/@ViewBag.MechanicalId");
+	}
+
+	function showPage2() {
+		$("#Tabs").load("/Operational/ChemicalWater/@ViewBag.MechanicalId");
+
+	}
+
+	function showPage3() {
+		$("#Tabs").load("/Operational/Environmental/@ViewBag.MechanicalId");
+	}
+
+
+	$("#checkAll").click(function () {
+		$(".checkBox").prop('checked',
+			$(this).prop('checked'));
+	});
+
+	$("#delete").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+				type: "POST",
+				url: "/Operational/DeleteEnvironmental/@ViewBag.MechanicalId",
+				data: { "environmentalId": selectedIDs },
+
+				success: function (response) {
+					$("#Tabs").load("/Operational/Environmental/@ViewBag.MechanicalId");
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+
+	function EnvironmentalSensorDocument() {
+		$("#newPage").load("/Operational/EnvironmentalSensor/");
+	}
+
+	$('input:checkbox.checkBox').change(function () {
+		var selectedIDs = new Array();
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		$('#exportSelectedData').val(selectedIDs);
+
+	});
+
+	function refreshPage() {
+		// Your delay in milliseconds
+		var delay = 2000;
+		setTimeout(function () { $("#Tabs").load("/Operational/Environmental/@ViewBag.MechanicalId"); }, delay);
+	}
+</script>
+
+
+
+

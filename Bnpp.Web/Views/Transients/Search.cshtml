@@ -1,0 +1,121 @@
+﻿@using Bnpp.DataLayer.Entities
+@model IEnumerable<Bnpp.DataLayer.Entities.TransientGroups>
+@{
+    ViewData["Title"] = "Search";
+    Layout = null;
+}
+
+<h1 id="iH1">
+    Results For Code Search
+</h1>
+
+<table id="codeSearch" cellpadding="3" cellspacing="0" aria-describedby="example_info" class="cell-border">
+    <thead>
+        <tr role="row">
+            <th>
+                <b>
+                    Code
+                </b>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody id="searchForCode">
+        @{
+            List<TransientGroups> Names = ViewBag.Names as List<TransientGroups>;
+        }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.GroupTitle
+                </td>
+                <td>
+                    @if (Names.Any(g => g.ParentId == item.GroupId))
+                    {
+                        <table id="nestedTable" aria-describedby="example_info" class="cell-border">
+                            <thead>
+                                <tr role="row">
+                                    <th data-orderable="false">
+                                        <b>
+                                            Name
+                                        </b>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var subGroup in Names.Where(g => g.ParentId == item.GroupId))
+                                {
+                                    <tr>
+                                        <td>
+                                            @subGroup.GroupTitle
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#codeSearch").DataTable({
+            "info": false,
+            searching: false
+        });
+    });
+
+    $("#searchForCode td").click(function () {
+        var vlues = $(this).text();
+        //alert(vlues);
+        vlues = vlues.replace(/\s/g, '');
+
+        $("#transientCode").val("");
+        $("#transientCode").val(vlues);
+        //alert($("#transientCode").val());
+        $('#transientCode').trigger('change');
+    });
+
+    
+
+
+
+    $(function () {
+        $("#transientCode").on("change paste keyup", function () {
+            var groupTitle = $("#transientCode").val();
+            //alert(typeof groupTitle);
+            $.ajax({
+                type: "POST",
+                url: "/Transients/GetSubGroups",
+                data: { "title": groupTitle },
+
+                success: function (response) {
+                    $.each(response,
+                        function () {
+                            $("#Name").empty();
+                            $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                    $("#Name").empty();
+                }
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,334 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.Events>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b><a class="breadcumb2-link" href="/Equipments">Mechanical Equipments</a></b>
+					</td>
+					<td style="">
+						» @ViewBag.EquipName <b id="subTitle22a"></b>
+					</td>
+
+
+					<td style="">
+						» <label>
+							<select required="required" onchange="location = this.value;" name="EventLevel" aria-controls="myTable" class="">
+
+								<option value="/Events/@ViewBag.MechanicalId">Events</option>
+
+								<option value="/Technical/@ViewBag.MechanicalId">BasicData</option>
+								<option value="/Documents/@ViewBag.MechanicalId">Documents</option>
+								<option value="/AgeingMechanism/@ViewBag.MechanicalId">Ageing Mechanism</option>
+								<option value="/Installation/@ViewBag.MechanicalId">Installation & Commissioning</option>
+								<option value="/Operational/@ViewBag.MechanicalId">Operational Data</option>
+
+								<option value="/OnOffData/@ViewBag.MechanicalId">On-Off Data</option>
+								<option value="/Maintenance/@ViewBag.MechanicalId">Maintenance</option>
+								<option value="/Inspection/@ViewBag.MechanicalId">Inspection Data</option>
+							</select>
+						</label>
+					</td>
+					<td style="">
+						»
+						<a class="breadcumb2-link" href="/Events/@ViewBag.MechanicalId">Events</a>
+
+						<b id="subTitle22a"></b>
+					</td>
+					<td>
+						<b style="color: #ff0000;" id="subTitle22"></b>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width: 48px;" class="imgHelp">
+		</a>
+	</div>
+
+	<h1 id="iH1">
+		Internal Events
+	</h1>
+
+	<div id="iContent">
+		<div id="tab1" class="tab-item" style="display: block;">
+			<div class="bevel-box">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<form method="post" asp-controller="Events" asp-action="ExportEvents" asp-route-id="@ViewBag.MechanicalId">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+									<input type="submit" onclick="refreshPage()" value="Export Excel" />
+								</form>
+							</td>
+							<td>
+								<form method="post" asp-controller="Events" asp-action="ImportEvents" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="file" name="FormFile" />
+									<input type="submit" onclick="refreshPage()" value="Import Excel" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="newPage">
+				<div>
+
+					<div id="iLoading22" style="display: none;">
+						<img src="/images/loading.gif">
+					</div>
+
+
+					<a class="btn-new-equip" style="cursor:pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+					<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+					<br />
+					@{
+						int rowCount = 1;
+					}
+					<table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+						<thead>
+							<tr role="row">
+								<th>
+									<input type="checkbox" id="checkAll" />
+								</th>
+								<th></th>
+								<th>
+									<b>Event Name</b>
+								</th>
+								<th>
+									<b>Event Level</b>
+								</th>
+								<th>
+									<b>Event Date</b>
+								</th>
+								<th>
+									<b>Event Time</b>
+								</th>
+								<th>
+									<b>Report Date</b>
+								</th>
+								<th>
+									<b>Report No.</b>
+								</th>
+								<th>
+									<b>Responsible Unit</b>
+								</th>
+								<th>
+									<b>Event Location</b>
+								</th>
+								<th>
+									<b>Related Ageing Mechanism</b>
+								</th>
+								<th>
+									<b>Description</b>
+								</th>
+								<th>
+									<b>Modefied/Created Date</b>
+								</th>
+								<th>
+									<b>Attached Files</b>
+								</th>
+								<th></th>
+								<th></th>
+								<th style="width: 120px">
+									<b>Actions</b>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr role="row">
+									<td>
+										<input type="checkbox" class="checkBox" value="@item.EventsId" />
+									</td>
+									<td>
+										@rowCount
+									</td>
+
+									<td>
+										@item.EventName
+									</td>
+									<td>
+										@item.EventLevel
+									</td>
+									<td>
+										@item.EventDate.ToString("yyyy/MM/dd")
+									</td>
+									<td>
+										@item.EventTime
+									</td>
+									<td>
+										@item.ReportDate.ToString("yyyy/MM/dd")
+									</td>
+									<td>
+										@item.ReportNo
+									</td>
+									<td>
+										@item.ResponsibleUnit
+									</td>
+									<td>
+										@item.EventLocation
+									</td>
+									<td>
+										@item.RelatedAgeingMechanism
+									</td>
+									<td>
+										@item.Description
+									</td>
+									<td>
+										@item.CreateDate.ToString("yyyy/MM/dd HH:MM")
+									</td>
+
+									<td>
+										<a href="/DocumentImage/@item.EventsImage" target="_blank">
+											@item.Filename
+										</a>
+									</td>
+									<td>
+										<a onclick="ShowStatusbeforeEvent(@item.EventsId)">
+											Status before Event
+										</a>
+									</td>
+									<td>
+										<a onclick="ShowStatusFterEvent(@item.EventsId)">
+											Status after Event
+										</a>
+									</td>
+									<td>
+										<a class="btn-edit-equip" onclick="Edit(@item.EventsId)">
+											Edit
+										</a>
+									</td>
+								</tr>
+								rowCount++;
+							}
+						</tbody>
+					</table>
+
+
+					<br>
+					<div style="clear: both;">
+					</div>
+					<br>
+					<br>
+					<iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+@section Scripts
+	{
+
+	<script src="/js/jquery.min.js"></script>
+
+	<script src="/js/datatables.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$("#myTable").DataTable();
+		});
+	</script>
+	<script>
+
+		function Create(mechanicalId) {
+			$("#newPage").load("/Events/CraeteEvents/" + mechanicalId);
+		}
+
+		function Edit(id) {
+			$("#newPage").load("/Events/EditEvents/" + id);
+		}
+
+
+		function ShowStatusbeforeEvent(id) {
+			$("#newPage").load("/Events/BeforeStatus/" + id + "?mechanicalId=" + @ViewBag.MechanicalId);
+		}
+
+
+		function ShowStatusFterEvent(id) {
+			$("#newPage").load("/Events/AfterStatus/" + id + "?mechanicalId=" + @ViewBag.MechanicalId);
+		}
+
+
+
+		$("#checkAll").click(function () {
+			$(".checkBox").prop('checked',
+				$(this).prop('checked'));
+		});
+
+		$("#delete").click(function () {
+			var selectedIDs = new Array();
+
+			$('input:checkbox.checkBox').each(function () {
+				if ($(this).prop('checked')) {
+					selectedIDs.push($(this).val());
+				}
+			});
+
+
+			var result = confirm("are you sure you want to delete?");
+			if (result) {
+				$.ajax({
+					type: "POST",
+					url: "/Events/DeleteEvents/@ViewBag.MechanicalId",
+					data: { "eventId": selectedIDs },
+
+					success: function (response) {
+						window.location.href = "/Events/InternalEvents/@ViewBag.MechanicalId";
+					},
+					failure: function (response) {
+						alert(response.responseText);
+					},
+					error: function (response) {
+						alert(response.responseText);
+					}
+
+				});
+			}
+
+
+
+		});
+
+		$('input:checkbox.checkBox').change(function () {
+			var selectedIDs = new Array();
+			$('input:checkbox.checkBox').each(function () {
+				if ($(this).prop('checked')) {
+					selectedIDs.push($(this).val());
+				}
+			});
+
+			$('#exportSelectedData').val(selectedIDs);
+
+		});
+
+		function refreshPage() {
+			// Your delay in milliseconds
+			var delay = 2000;
+			setTimeout(function () { window.location.href = "/Events/InternalEvents/@ViewBag.MechanicalId"; }, delay);
+		}
+	</script>
+
+
+}
+

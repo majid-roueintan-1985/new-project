@@ -1,0 +1,362 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.InspectionData.InspectionDocument>
+@{
+	ViewData["Title"] = "UltrasonicForm";
+	Layout = null;
+}
+
+
+<div id="tab1" class="tab-item" style="display: block;">
+	<h1 id="iH1">Inspection Results</h1>
+
+	<div class="tab-buttons">
+		<ul>
+			<li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;" @*style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;"*@>
+				<a id="tab-button-a1"
+				   onclick="showsubPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+					Visual Control
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Leakage Test of Weld
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Liquid Penetrated Test
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage4()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Magnetic Powder test
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage5()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Radiographics Test
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage6()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Ultrasonic Tests
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage7()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Metal thickness ultrasonic measurement
+				</a>
+			</li>
+
+			<li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-button-a1"
+				   onclick="showsubPage8()" style="cursor:pointer;color: rgb(0, 113, 158);">
+					Visual Inspection Form
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage9()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Leakage Test Form
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage10()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Liquid Penetration Test Form
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage11()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Magnetic Powder Test Form
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage12()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Radiographics Test Form
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+				<a id="tab-buttona2" onclick="showsubPage13()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Ultrasonic Test Form
+				</a>
+			</li>
+			<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+				<a id="tab-buttona2" onclick="showsubPage14()" style="cursor:pointer;color: rgb(110, 110, 255);">
+					Metal thickness ultrasonic Test Form
+				</a>
+			</li>
+		</ul>
+
+		<div style="clear:both;"></div>
+	</div>
+
+	<div>
+		<div id="newPage">
+			<div class="bevel-box">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<form method="post" asp-controller="Inspection" asp-action="ExportUltrasonicForm" asp-route-id="@ViewBag.MechanicalId">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+									<input type="submit" onclick="refreshPage()" value="Export Excel" />
+								</form>
+							</td>
+							<td>
+								<form method="post" asp-controller="Inspection" asp-action="ImportUltrasonicForm" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+									<input type="file" name="FormFile" />
+									<input type="submit" onclick="refreshPage()" value="Import Excel" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="iLoading22" style="display: none;">
+				<img src="/images/loading.gif">
+			</div>
+
+			<h1>Ultrasonic Test Form</h1>
+
+			<a class="btn-new-equip" style="cursor:pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+			<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+			<br />
+			@{
+				int rowCount = 1;
+			}
+			<table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+				<thead>
+					<tr role="row">
+						<th>
+							<input type="checkbox" id="checkAll" />
+						</th>
+						<th></th>
+						<th style="width: 150px">
+							<b>Form No</b>
+						</th>
+						<th style="width: 250px">
+							<b>	Form Name</b>
+						</th>
+						<th style="width: 250px">
+							<b>File Name</b>
+						</th>
+						<th style="width: 120px">
+							<b>Date</b>
+						</th>
+						<th style="width: 120px">
+							<b>		Remarks</b>
+						</th>
+
+
+						<th style="width: 120px">
+							<b>Actions</b>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr role="row">
+							<td>
+								<input type="checkbox" class="checkBox" value="@item.InspectionId" />
+							</td>
+							<td>
+								@rowCount
+							</td>
+
+							<td>
+								@item.FormName
+							</td>
+							<td>
+								@item.FormNo
+							</td>
+							<td>
+								@item.Filename
+							</td>
+							<td>
+								@item.InspectionDate.ToString("yyyy/MM/dd")
+							</td>
+							<td>
+								@item.Description
+							</td>
+							<td>
+								<a class="btn-edit-equip" onclick="Edit(@item.InspectionId)">
+									Edit
+								</a>
+							</td>
+						</tr>
+						rowCount++;
+					}
+				</tbody>
+			</table>
+
+
+			<br>
+			<div style="clear: both;">
+			</div>
+			<br>
+			<br>
+			<iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+
+
+<script>
+	$(document).ready(function () {
+		$("#myTable").DataTable();
+	});
+</script>
+<script>
+
+	function Create(mechanicalId) {
+		$("#newPage").load("/Inspection/CraeteUltrasonicForm/" + mechanicalId);
+	}
+
+	function Edit(id) {
+		$("#newPage").load("/Inspection/EditUltrasonicForm/" + id);
+	}
+
+
+
+	function showPage1() {
+		$("#Tabs").load("/Inspection/InspectionReports/@ViewBag.MechanicalId");
+	}
+
+	function showPage2() {
+		$("#Tabs").load("/Inspection/InspectionInstructions/@ViewBag.MechanicalId");
+	}
+
+	function showPage3() {
+		$("#Tabs").load("/Inspection/InspectionPrograms/@ViewBag.MechanicalId");
+	}
+
+	function showPage4() {
+		$("#Tabs").load("/Inspection/InspectionResults/@ViewBag.MechanicalId");
+	}
+
+	//SUB MENU
+
+	function showsubPage1() {
+		//$("#newPage").load("/Inspection/WorkingPrograms/");
+		$("#Tabs").load("/Inspection/InspectionResults/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage2() {
+		$("#submenu").load("/Inspection/LeakageTest/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage3() {
+		$("#submenu").load("/Inspection/LiquidPenetrated/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage4() {
+		$("#submenu").load("/Inspection/MagneticPowder/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage5() {
+		$("#submenu").load("/Inspection/RadiographicsTest/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage6() {
+		$("#submenu").load("/Inspection/UltrasonicTests/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage7() {
+		$("#submenu").load("/Inspection/MetalThickness/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage8() {
+		$("#submenu").load("/Inspection/VisualForm/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage9() {
+		$("#submenu").load("/Inspection/LeakageForm/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage10() {
+		$("#submenu").load("/Inspection/PenetrationForm/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage11() {
+		$("#submenu").load("/Inspection/MagneticForm/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage12() {
+		$("#submenu").load("/Inspection/RadiographicsForm/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage13() {
+		$("#submenu").load("/Inspection/UltrasonicForm/@ViewBag.MechanicalId");
+	}
+
+	function showsubPage14() {
+		$("#submenu").load("/Inspection/MetalForm/@ViewBag.MechanicalId");
+	}
+
+
+	$("#checkAll").click(function () {
+		$(".checkBox").prop('checked',
+			$(this).prop('checked'));
+	});
+
+	$("#delete").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+				type: "POST",
+				url: "/Inspection/DeleteUltrasonicForm/@ViewBag.MechanicalId",
+				data: { "sonicId": selectedIDs },
+
+				success: function (response) {
+					$("#submenu").load("/Inspection/UltrasonicForm/@ViewBag.MechanicalId");
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+
+	$('input:checkbox.checkBox').change(function () {
+		var selectedIDs = new Array();
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		$('#exportSelectedData').val(selectedIDs);
+
+	});
+
+	function refreshPage() {
+		// Your delay in milliseconds
+		var delay = 2000;
+		setTimeout(function () { $("#submenu").load("/Inspection/UltrasonicForm/@ViewBag.MechanicalId"); }, delay);
+	}
+
+</script>

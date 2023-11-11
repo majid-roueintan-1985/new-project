@@ -1,0 +1,71 @@
+﻿@model Bnpp.DataLayer.Entities.ONOFF.ChangeState
+@using Bnpp.DataLayer.Entities.ONOFF
+@{
+	ViewData["Title"] = "CreateOnOffData";
+	Layout = null;
+	List<States> permissions = ViewData["States"] as List<States>;
+}
+
+<div id="normal">
+	<form id="designForm" asp-action="CreateOnOffData" method="post">
+		<input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+
+
+				<tr>
+					<td>
+						Date of change state:
+					</td>
+					<td>
+						<input name="Dateofchangestate" id="Dateofchangestate" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+
+				@foreach (var stte in permissions)
+				{
+					<li>
+						<input type="checkbox" name="SelectedStates" value="@stte.StateId" /> @stte.StateTitle
+					</li>
+				}
+
+				<tr>
+					<td>
+						Description:
+					</td>
+					<td>
+						<input asp-for="Description" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Description"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" @*onclick="AjaxdocumentFormSubmit()"*@ value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick="location='/OnOffData/@ViewBag.MechanicalId'" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+
+	$("#Dateofchangestate").kendoDateTimePicker(
+		{
+			format: "yyyy/MM/dd hh:mm:ss"
+		});
+
+</script>
+

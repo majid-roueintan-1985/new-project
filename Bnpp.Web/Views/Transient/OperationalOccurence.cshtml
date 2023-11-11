@@ -1,0 +1,436 @@
+﻿@using Bnpp.DataLayer.Entities.InspectionData
+@model IEnumerable<Bnpp.Core.ViewModels.OccuranceListViewModel>
+
+@{
+    ViewData["Title"] = "OperationalOccurence";
+    Layout = null;
+
+}
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="">
+                        <b><a class="breadcumb2-link" href="#">Mechanical Equipments</a></b>
+                    </td>
+                    <td style="">
+                        » <b id="subTitle22a">Transients</b>
+                    </td>
+                    <td>
+                        » <b style="color: #ff0000;" id="subTitle22">Operational Occurence</b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+            <img src="/images/help.png" style="width: 48px;" class="imgHelp">
+        </a>
+    </div>
+
+    <h1 id="iH1">Operational Data</h1>
+    <div id="iContent">
+
+        <div class="tab-buttons">
+            <ul>
+                <li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;" >
+                    <a id="tab-button-a1"
+                       onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                        Normal Operations
+                    </a>
+                </li>
+                <li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                    <a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Operational Occurances
+                    </a>
+
+                </li>
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Design Basis accidents
+                    </a>
+                </li>
+            </ul>
+
+            <div style="clear:both;"></div>
+        </div>
+
+        <div id="tab1" class="tab-item" style="display: block;">
+
+            <h1 id="iH1">Operational Occurances</h1>
+
+            <div class="bevel-box">
+                <table cellpadding="3" cellspacing="0">
+                    <tbody>
+                        <tr>
+                           
+                           @* <td>
+                                <input type="file" name="uploadedFile" id="uploadedFile" style="direction: ltr; text-align: left;">
+                                <input onclick="__doPostBack('upload','')" name="upload" type="button" id="upload" value="Import Excel" style="direction: ltr; text-align: left;">
+                            </td>*@
+
+                            <td>
+                                <form method="post" asp-controller="Transient" asp-action="ExportOperationalOccurence">
+                                    <input type="submit" value="Export" />
+                                </form>
+                            </td>
+                             <td>
+                                <form method="post" asp-controller="Installation" asp-action="ImportExcel" enctype="multipart/form-data">
+
+                                    <input type="file" name="postedFile" />
+                                    <input type="submit" value="Import Excel" />
+
+                                </form>
+                            </td>
+                            <td style="width: 200px;">
+                                <span id="message">
+                                </span>
+                            </td>
+                            <td>
+                                <a href="#" target="_blank">
+                                    <img src="/images/print_printer.png" title="Print">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                @* <table cellpadding="3" cellspacing="0">
+                    <tbody>
+                    <tr>
+                    <td>Sort:</td>
+                    <td>
+                    <select name="iSort" onchange="javascript:setTimeout('__doPostBack(\'iSort\',\'\')', 0)" id="iSort">
+                    <option selected="selected" value="Asc">Asc</option>
+                    <option value="Desc">Desc</option>
+
+                    </select>
+                    </td>
+                    <td>Records to Show:</td>
+                    <td>
+                    <select name="iShowNum" onchange="javascript:setTimeout('__doPostBack(\'iShowNum\',\'\')', 0)" id="iShowNum">
+                    <option value="10">10</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                    <option selected="selected" value="1000">
+                    1000
+                    </option>
+                    </select>
+                    </td>
+                    </tr>
+                    </tbody>
+                    </table>*@
+            </div>
+
+            <div id="newPage">
+                <div>
+
+                    <div id="iLoading22" style="display: none;">
+                        <img src="/images/loading.gif">
+                    </div>
+
+
+                    <a class="btn-new-equip" onclick="Create()" style="cursor: pointer">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                
+                                <th style="width: 250px">
+                                    <b>Name of Conditions</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b>Allowable Num.</b>
+                                </th>
+                                  <th style="width: 150px">
+                                    <b>Date</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b>Occurrances</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.OccuranceId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    
+                                    <td>
+                                        @item.NameOfCondition
+                                    </td>
+                                    <td>
+                                        @item.AllowableNumber
+                                    </td>
+                                     <td>
+                                        @item.Date
+                                    </td>
+                                    <td>
+                                        @item.Occurrances
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="Edit(@item.OccuranceId)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+
+
+                    <br>
+                    <div style="clear: both;">
+                    </div>
+                    <br>
+                    <br>
+                    <hr />
+                    @{
+                        List<InspectionDocument> OccurenceDocuments = ViewData["OccurenceDocuments"] as List<InspectionDocument>;
+                    }
+                    <div id="tab1" class="tab-item" style="display: block;">
+
+                        <h1 id="iH1">Documents</h1>
+
+
+
+
+                        <div>
+
+                            <div id="iLoading22" style="display: none;">
+                                <img src="/images/loading.gif">
+                            </div>
+
+
+                            <a class="btn-new-equip" style="cursor: pointer" onclick="CreateOccurenceDocuments()">New</a>
+                            <input type="button" id="deleteProgram" class="btn-delete-equip" value="Delete">
+                            <br />
+                            @{
+                                int rowCount1 = 1;
+                            }
+                            <table id="myTableDocument" cellpadding="3" cellspacing="0" class="show-table">
+                                <thead>
+                                    <tr role="row">
+                                        <th>
+                                            <input type="checkbox" id="checkAllPrograms" />
+                                        </th>
+                                        <th></th>
+                                        <th style="width: 150px">
+                                            <b>Code</b>
+                                        </th>
+                                        <th style="width: 250px">
+                                            <b>File Name</b>
+                                        </th>
+
+                                        <th style="width: 120px">
+                                            <b>Doc. Name </b>
+                                        </th>
+
+                                        @*<th style="width: 120px">
+                                        <b>	Description</b>
+                                        </th>*@
+                                        @*<th style="width: 120px">
+                                        <b>	Authorized</b>
+                                        </th>*@
+
+                                        <th style="width: 120px">
+                                            <b>Actions</b>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in OccurenceDocuments)
+                                    {
+                                        <tr role="row">
+                                            <td>
+                                                <input type="checkbox" class="checkBoxProgram" value="@item.InspectionId" />
+                                            </td>
+                                            <td>
+                                                @rowCount
+                                            </td>
+
+                                            <td>
+                                                @item.Code
+                                            </td>
+                                            <td>
+                                                @item.Filename
+                                            </td>
+                                            <td>
+                                                @item.DocumentName
+                                            </td>
+                                            <td>
+                                                <a class="btn-edit-equip" onclick="EditOccurenceDocuments(@item.InspectionId)">
+                                                    Edit
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        rowCount1++;
+                                    }
+                                </tbody>
+                            </table>
+
+
+                            <br>
+                            <div style="clear: both;">
+                            </div>
+                            <br>
+                            <br>
+                            <iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+
+    $(document).ready(function () {
+        $("#myTableDocument").DataTable();
+    });
+</script>
+<script>
+
+    function Create() {
+        $("#newPage").load("/Transient/CreateOccurence");
+    }
+
+    function Edit(id) {
+        $("#newPage").load("/Transient/EditOccurence/"+id);
+    }
+
+    function CreateOccurenceDocuments() {
+        $("#newPage").load("/Transient/CreateOccurenceDocument/");
+    }
+
+    function EditOccurenceDocuments(id) {
+        $("#newPage").load("/Transient/EditOccurenceDocument/" + id);
+    }
+
+
+    function showPage1() {
+        $("#Tabs").load("/Transient/NormalOperations/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Transient/OperationalOccurence/");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Transient/DesignBasisAccidents/");
+    }
+
+
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+        $.ajax({
+            type: "POST",
+            url: "/Transient/DeleteOccurence",
+            data: { "occurenceId": selectedIDs },
+
+            success: function (response) {
+                $("#Tabs").load("/Transient/OperationalOccurence/");
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+
+        });
+        }
+
+    });
+
+
+    $("#checkAllPrograms").click(function () {
+        $(".checkBoxProgram").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#deleteProgram").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBoxProgram').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Transient/DeleteOccurenceDocuments",
+                data: { "occurenceId": selectedIDs },
+
+                success: function (response) {
+                    $("#Tabs").load("/Transient/OperationalOccurence/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+
+</script>
+
+

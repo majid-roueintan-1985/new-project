@@ -1,0 +1,62 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+	{
+	<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			$("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId");
+		});
+
+		function showPage1() {
+			$("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId");
+		}
+
+		function showPage2() {
+			$("#Tabs").load("/Technical/DesignData/@ViewBag.MechanicalId");
+		}
+
+		function showPage3() {
+			$("#Tabs").load("/Technical/Documents/@ViewBag.MechanicalId");
+		}
+
+		function showPage4() {
+			$("#Tabs").load("/Technical/Safety/@ViewBag.MechanicalId");
+		}
+
+		function showPage5() {
+			$("#Tabs").load("/Technical/Components/@ViewBag.MechanicalId");
+		}
+
+		function showPage6() {
+			$("#Tabs").load("/Technical/ChemicalNorms/@ViewBag.MechanicalId");
+		}
+
+		function showPage7() {
+			$("#Tabs").load("/Technical/TechnicalPrograms/@ViewBag.MechanicalId");
+		}
+
+		function showPage8() {
+			$("#Tabs").load("/Technical/Sensors/@ViewBag.MechanicalId");
+		}
+
+		function showPage9() {
+			$("#Tabs").load("/Technical/ControlPoints/@ViewBag.MechanicalId");
+		}
+
+		function showPage10() {
+			$("#Tabs").load("/Technical/HForms/@ViewBag.MechanicalId");
+		}
+
+	</script>
+
+}
+
+

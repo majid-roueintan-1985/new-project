@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.GroupedTransients>
+@{
+    ViewData["Title"] = "SearchInGroupedOfTransientCode";
+    Layout = null;
+}
+
+<h2>Results of Code</h2>
+
+<div class="bevel-box">
+
+
+
+    @{
+        int rowCount = 1;
+    }
+
+    <table id="codingSearchTable" cellpadding="3" cellspacing="0" aria-describedby="example_info" class="cell-border">
+        <thead>
+            <tr role="row">
+
+                @* <th>
+                <input type="checkbox" id="checkAll" />
+                </th>*@
+
+                <th>
+                    <b>
+                        Code
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Name
+                    </b>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody id="searchForCode">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @* <td>
+                <input type="checkbox" class="checkBox" value="@item.GroupId" />
+                </td>*@
+                    <td>
+                        @item.Code
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                </tr>
+                rowCount++;
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#codingSearchTable").DataTable({
+            "info": false,
+            searching: false
+        });
+    });
+
+    $("#searchForCode td").click(function () {
+        var vlues = $(this).text();
+        
+        vlues =vlues.trim();
+
+        $("#transientCode").val("");
+        $("#transientCode").val(vlues);
+        //alert($("#transientCode").val());
+        $('#transientCode').trigger('change');
+    });
+
+
+
+
+
+    $(function () {
+        $("#transientCode").on("change paste keyup", function () {
+            var groupTitle = $("#transientCode").val();
+            //alert(typeof groupTitle);
+            $.ajax({
+                type: "POST",
+                url: "/Transients/GetSubGroupsInGroupedTransient",
+                data: { "title": groupTitle },
+
+                success: function (response) {
+                    $.each(response,
+                        function () {
+                            $("#Name").empty();
+                            $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                    $("#Name").empty();
+                }
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,415 @@
+﻿@using Bnpp.DataLayer.Entities.InspectionData
+@model IEnumerable<Bnpp.DataLayer.Entities.InspectionData.WorkingPrograms>
+@{
+    ViewData["Title"] = "WorkingPrograms";
+    Layout = null;
+}
+
+<div id="tab1" class="tab-item" style="display: block;">
+
+    <h1 id="iH1">Inspection Programs</h1>
+    <div class="tab-buttons">
+        <ul>
+            <li id="tab-button1" class="tab-buttons-li" @*style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;"*@ @*style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;"*@>
+                <a id="tab-button-a1"
+                   onclick="showsubPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                    Typical Programs
+                </a>
+            </li>
+            <li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                <a id="tab-buttona2" onclick="showsubPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                    Working Programs
+                </a>
+            </li>
+        </ul>
+
+        <div style="clear:both;"></div>
+    </div>
+
+    <div>
+        <div id="newPage">
+            <div class="bevel-box">
+                <table cellpadding="3" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form method="post" asp-controller="Inspection" asp-action="ExportWorkingPrograms" asp-route-id="@ViewBag.MechanicalId">
+                                    <input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+                                    <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                                    <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" asp-controller="Inspection" asp-action="ImportWorkingPrograms" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+                                    <input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+                                    <input type="file" name="FormFile" />
+                                    <input type="submit" onclick="refreshPage()" value="Import Excel" />
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="iLoading22" style="display: none;">
+                <img src="/images/loading.gif">
+            </div>
+
+            <h1>Working Programs</h1>
+
+            <a class="btn-new-equip" style="cursor:pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+            <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+            <br />
+            @{
+                int rowCount = 1;
+            }
+            <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+                <thead>
+                    <tr role="row">
+                        <th>
+                            <input type="checkbox" id="checkAll" />
+                        </th>
+                        <th></th>
+                        <th style="width: 150px">
+                            <b>No. of W.P</b>
+                        </th>
+                        <th style="width: 150px">
+                            <b>No. of T.P</b>
+                        </th>
+                        <th style="width: 250px">
+                            <b>equip. Code</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>Equip. Name</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>Measuring Type</b>
+                        </th>
+
+                        <th style="width: 120px">
+                            <b>	Material Compositions</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Weld No.</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Control Method</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Control Percent</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Control Standard</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	QC Standard</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Control Results</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Remarks</b>
+                        </th>
+
+                        <th style="width: 120px">
+                            <b>Actions</b>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr role="row">
+                            <td>
+                                <input type="checkbox" class="checkBox" value="@item.WorkingId" />
+                            </td>
+                            <td>
+                                @rowCount
+                            </td>
+                            <td>
+                                @item.WP
+                            </td>
+                            <td>
+                                @item.TP
+                            </td>
+                            <td>
+                                @item.EquipCode
+                            </td>
+                            <td>
+                                @item.EquipName
+                            </td>
+                            <td>
+                                @item.MeasuringType
+                            </td>
+                            <td>
+                                @item.MaterialCompositions
+                            </td>
+
+                            <td> @item.WeldNo</td>
+                            <td> @item.ControlMethod</td>
+                            <td> @item.ControlPercent</td>
+                            <td> @item.ControlStandard</td>
+                            <td> @item.QCStandard</td>
+                            <td> @item.ControlResults</td>
+                            <td> @item.Remarks</td>
+                            <td>
+
+                                <a class="btn-edit-equip" onclick="Edit(@item.WorkingId)">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        rowCount++;
+                    }
+                </tbody>
+            </table>
+
+
+           
+           @*  @{
+                List<InspectionDocument> WorkinggDocuments = ViewData["WorkingDocuments"] as List<InspectionDocument>;
+            }
+            <div id="tab1" class="tab-item" style="display: block;">
+
+                <h1 id="iH1">Documents</h1>
+
+
+
+
+                <div>
+
+                    <div id="iLoading22" style="display: none;">
+                        <img src="/images/loading.gif">
+                    </div>
+
+
+                    <a class="btn-new-equip" style="cursor: pointer" onclick="CreateWorkingyDocument()">New</a>
+                    <input type="button" id="deleteProgram" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount1 = 1;
+                    }
+                    <table id="myTableDocument" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAllPrograms" />
+                                </th>
+                                <th></th>
+                                <th style="width: 150px">
+                                    <b>Code</b>
+                                </th>
+                                <th style="width: 250px">
+                                    <b>File Name</b>
+                                </th>
+
+                                <th style="width: 120px">
+                                    <b>Doc. Name </b>
+                                </th>
+
+                               
+
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in WorkinggDocuments)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBoxProgram" value="@item.InspectionId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+
+                                    <td>
+                                        @item.Code
+                                    </td>
+                                    <td>
+                                        @item.Filename
+                                    </td>
+                                    <td>
+                                        @item.DocumentName
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditWorkingyDocument(@item.InspectionId)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount1++;
+                            }
+                        </tbody>
+                    </table>
+
+
+                    <br>
+                    <div style="clear: both;">
+                    </div>
+                    <br>
+                    <br>
+                    <iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+                </div>
+
+            </div> *@
+
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+</script>
+<script>
+
+    function Create(mechanicalId) {
+        $("#newPage").load("/Inspection/CraeteWorkingPrograms/" + mechanicalId);
+    }
+
+    function Edit(id) {
+        $("#newPage").load("/Inspection/EditWorkingPrograms/" + id);
+    }
+
+
+
+    function showPage1() {
+        $("#Tabs").load("/Inspection/InspectionReports/@ViewBag.MechanicalId");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Inspection/InspectionInstructions/@ViewBag.MechanicalId");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Inspection/InspectionPrograms/@ViewBag.MechanicalId");
+    }
+
+    function showPage4() {
+        $("#Tabs").load("/Inspection/InspectionResults/@ViewBag.MechanicalId");
+    }
+
+    function showsubPage1() {
+        //$("#newPage").load("/Inspection/WorkingPrograms/");
+        $("#Tabs").load("/Inspection/InspectionPrograms/@ViewBag.MechanicalId");
+    }
+
+    function showsubPage2() {
+        $("#submenu").load("/Inspection/WorkingPrograms/@ViewBag.MechanicalId");
+    }
+
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Inspection/DeletWorkingPrograms/@ViewBag.MechanicalId",
+                data: { "workingId": selectedIDs },
+
+                success: function (response) {
+                    $("#submenu").load("/Inspection/WorkingPrograms/@ViewBag.MechanicalId");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+
+    function CreateWorkingyDocument() {
+        $("#newPage").load("/Inspection/CreateWorkingDocument/");
+    }
+
+    function EditWorkingyDocument(id) {
+        $("#newPage").load("/Inspection/EditWorkingDocument/" + id);
+    }
+
+    $("#checkAllPrograms").click(function () {
+        $(".checkBoxProgram").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#deleteProgram").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBoxProgram').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Inspection/DeletWorkingDocument",
+                data: { "workingsId": selectedIDs },
+
+                success: function (response) {
+                    $("#submenu").load("/Inspection/WorkingPrograms/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+
+    $('input:checkbox.checkBox').change(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        $('#exportSelectedData').val(selectedIDs);
+
+    });
+
+    function refreshPage() {
+        // Your delay in milliseconds
+        var delay = 2000;
+        setTimeout(function () { $("#submenu").load("/Inspection/WorkingPrograms/@ViewBag.MechanicalId"); }, delay);
+    }
+
+</script>

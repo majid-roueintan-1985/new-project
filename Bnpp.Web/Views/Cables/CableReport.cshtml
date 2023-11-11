@@ -1,0 +1,366 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.CableReport>
+@{
+    ViewData["Title"] = "CableReport";
+    Layout = null;
+}
+
+
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="">
+                        <b>
+                            <a class="breadcumb2-link" href="/DataEntry">Main</a>
+                        </b>
+                    </td>
+                    <td style=""> » <b style="color: #ff0000;"><a class="breadcumb2-link" href="/Electrical">Electrical Equipments</a></b></td>
+                </tr>
+            </tbody>
+        </table><a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();"><img src="/images/help.png" style="width: 48px;" class="imgHelp"></a>
+    </div>
+
+    <h1 id="iH1">
+        Cables
+    </h1>
+    <div id="iContent">
+
+        <div class="tab-buttons">
+            <ul>
+                <li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a1"
+                       onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                        General Data
+                    </a>
+                </li>
+                <li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Operating  Data
+                    </a>
+                </li>
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Maintenance  Data
+                    </a>
+                </li>
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                    <a id="tab-button-a3" onclick="showPage4()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Cable Report
+                    </a>
+                </li>
+
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a3" onclick="showPage5()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Cable deposits
+                    </a>
+                </li>
+            </ul>
+
+            <div style="clear:both;"></div>
+        </div>
+
+        <div id="tab1" class="tab-item" style="display: block;">
+
+            <h1 id="iH1">
+                Cable Report
+            </h1>
+
+            <div class="bevel-box">
+                <table cellpadding="3" cellspacing="0">
+                    <tbody>
+                        <tr>
+
+                            <td>
+                                <form method="post" asp-controller="Cables" asp-action="ExportCableReport">
+                                    <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                                    <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                                </form>
+                            </td>
+
+                            <td>
+                                <form method="post" asp-controller="Cables" asp-action="ImportCableReportExcelFile" enctype="multipart/form-data">
+                                    <input type="file" name="FormFile" />
+                                    <input type="submit" value="Import Excel" />
+                                </form>
+                            </td>
+
+                            <td style="width: 200px;">
+                                <span id="message">
+                                </span>
+                            </td>
+                            <td>
+                                <a href="#" target="_blank">
+                                    <img src="/images/print_printer.png" title="Print">
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="newPage">
+                <div>
+                    <div id="iLoading22" style="display: none;">
+                        <img src="/images/loading.gif">
+                    </div>
+                    <a class="btn-new-equip" style="cursor: pointer" onclick="Create()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="mycablereportTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th>
+                                    <b>Cable ID</b>
+                                </th>
+                                <th>
+                                    <b>Cable ID Group</b>
+                                </th>
+                                <th>
+                                    <b>Owner</b>
+                                </th>
+                                <th>
+                                    <b>
+                                        Date from
+                                    </b>
+                                </th>
+                                <th>
+                                    <b>Date To</b>
+                                </th>
+                                <th>
+                                    <b>Remaining design life time</b>
+                                </th>
+                                <th>
+                                    <b>Mode of operation</b>
+                                </th>
+                                <th>
+                                    <b>Failure Detction Date</b>
+                                </th>
+                                <th>
+                                    <b>Failed parts</b>
+                                </th>
+                                <th>
+                                    <b>Start date of maintenance</b>
+                                </th>
+                                <th>
+                                    <b>End date of maintenance</b>
+                                </th>
+                                <th>
+                                    <b>
+                                        Type of Maintenance
+                                        work
+                                    </b>
+                                </th>
+                                <th>
+                                    <b>Type of Tests</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b></b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.ID" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>@item.CableID</td>
+                                    <td>@item.CableIDGroup</td>
+                                    <td>@item.Owner</td>
+
+                                    <td>@item.Datefrom.ToString("yyyy/MM/dd")</td>
+                                    <td>@item.DateTo.ToString("yyyy/MM/dd")</td>
+
+
+                                    @if (Convert.ToDecimal(item.RemainingDesignLifeTime) < 5)
+                                    {
+                                        <td style="background-color:red">
+                                            @item.RemainingDesignLifeTime
+                                        </td>
+                                    }
+                                    else if (Convert.ToDecimal(item.RemainingDesignLifeTime) < 15)
+                                    {
+                                        <td style="background-color:yellow">
+                                            @item.RemainingDesignLifeTime
+                                        </td>
+                                    }
+
+                                    <td>@item.ModeofOperation</td>
+                                    <td>@item.FailureDetctionDate.ToString("yyyy/MM/dd")</td>
+                                    <td>@item.FailedParts</td>
+                                    <td>@item.StartDateMaintenance.ToString("yyyy/MM/dd")</td>
+                                    <td>@item.EndDateMaintenance.ToString("yyyy/MM/dd")</td>
+                                    <td>@item.TypeofMaintenancework</td>
+                                    <td>@item.TypeofTests</td>
+
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="Edit(@item.ID)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<script src="/js/jquery.unobtrusive-ajax.min.js"></script>*@
+
+
+
+
+<link href="/css/datatables.min.css" rel="stylesheet" />
+<link href="/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="/css/select.dataTables.min.css" rel="stylesheet" />
+
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script src="/js/dataTables.buttons.min.js"></script>
+<script src="/js/jszip.min.js"></script>
+<script src="/js/pdfmake.min.js"></script>
+<script src="/js/vfs_fonts.js"></script>
+<script src="/js/buttons.html5.min.js"></script>
+<script src="/js/buttons.print.min.js"></script>
+
+
+<script src="/js/dataTables.select.min.js.download.js"></script>
+
+
+<script>
+    //$(document).ready(function () {
+    //    $('#mycablereportTable').DataTable({
+    //        dom: 'Bfrtip',
+    //        buttons: [
+
+    //            'excel',
+
+    //        ],
+    //        select: true,
+    //        title: ''
+           
+    //    });
+    //});
+
+    $(document).ready(function () {
+        $("#mycablereportTable").DataTable();
+    });
+</script>
+<script>
+
+    function Create() {
+        $("#newPage").load("/Cables/CreateCablereport/");
+    }
+
+    function Edit(id) {
+        $("#newPage").load("/Cables/EditCableReport/" + id);
+    }
+
+
+    function showPage1() {
+        $("#Tabs").load("/Cables/GeneralData/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Cables/OperatingData/");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Cables/MaintenanceData/");
+    }
+
+    function showPage4() {
+        $("#Tabs").load("/Cables/CableReport/");
+    }
+
+    function showPage5() {
+        $("#Tabs").load("/Cables/CableDeposits/");
+    }
+
+
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Cables/DeleteCablereport",
+                data: { "reportId": selectedIDs },
+
+                success: function (response) {
+
+                    $("#Tabs").load("/Cables/CableReport/");
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+
+
+    $('input:checkbox.checkBox').change(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        $('#exportSelectedData').val(selectedIDs);
+
+
+        //alert(selectedIDs);
+    });
+
+    function refreshPage() {
+        // Your delay in milliseconds
+        var delay = 2000;
+        setTimeout(function () { $("#Tabs").load("/Cables/CableReport/"); }, delay);
+    }
+
+</script>
+
+

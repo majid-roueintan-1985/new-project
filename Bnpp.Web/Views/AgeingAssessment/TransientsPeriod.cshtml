@@ -1,0 +1,238 @@
+﻿@{
+    ViewData["Title"] = "TransientsReport";
+    Layout = null;
+}
+
+
+
+
+<div id="tab1" class="tab-item" style="display: block;">
+
+    @*<h1 id="iH1">Inspection Programs</h1>*@
+
+
+    <div class="tab-buttons">
+        <ul>
+            <li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                <a id="tab-button-a1"
+                   onclick="showsubPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                    All Transients
+                </a>
+            </li>
+            <li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                <a id="tab-buttona2" onclick="showsubPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                    Transients in a Period
+                </a>
+            </li>
+        </ul>
+
+        <div style="clear:both;"></div>
+    </div>
+
+
+    <div id="newPage">
+       @* <div class="bevel-box">
+            <table cellpadding="3" cellspacing="0">
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <input type="file" name="uploadedFile" id="uploadedFile" style="direction: ltr; text-align: left;">
+
+                        </td>
+
+
+                        <td>
+                            <form method="post" asp-controller="Inspection" asp-action="ExportInspectionPrograms">
+                                <input type="submit" value="Export Excel" />
+                            </form>
+                        </td>
+
+                        <td style="width: 200px;">
+                            <span id="message">
+                            </span>
+                        </td>
+                        <td>
+                            <a href="#" target="_blank">
+                                <img src="/images/print_printer.png" title="Print">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>*@
+        <div>
+
+            <div id="iLoading22" style="display: none;">
+                <img src="/images/loading.gif">
+            </div>
+
+            <h1>Transients in a Period</h1>
+
+            <div class="bevel-box">
+                <form action="/SACOR-446" method="get">
+                    <table cellpadding="3" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Date From:
+                                </td>
+                                <td>
+                                    <input name="searchDateFrom" id="searchDateFrom" @*onchange="GetDateFrom();"*@ style="direction: ltr; text-align: left;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    To:
+                                </td>
+                                <td>
+                                    <input name="searchDateTo" id="searchDateTo" @*onchange="GetDateTo();"*@ >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @* <input type="file" name="fileReport" style="direction: ltr; text-align: left;">*@
+                                    <input type="button" onclick="SearchInTransients();" value="Search" style="direction: ltr; text-align: left;">
+                                    <input type="button" onclick="transientsPeriod();" @*onclick="location='/Ageing Assessment'"*@ class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div id="transientList">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+
+
+    $("#reportDate").kendoDatePicker();
+
+    $("#searchfileDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("#schDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+    $("#searchDateFrom").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+    $("#searchDateTo").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+
+    $("input#searchDateFrom").prop('disabled', true);
+
+    $("input#searchDateTo").prop('disabled', true);
+
+    function showPage1() {
+        $("#Tabs").load("/AgeingAssessment/SACORReport/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/AgeingAssessment/TransientsReport/");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/AgeingAssessment/WaterChemistryReport/");
+    }
+
+
+    function showsubPage1() {
+        //$("#newPage").load("/Inspection/WorkingPrograms/");
+        $("#Tabs").load("/AgeingAssessment/TransientsReport/");
+    }
+
+    function showsubPage2() {
+        $("#submenu").load("/AgeingAssessment/TransientsPeriod/");
+    }
+
+    function transientsPeriod() {
+        $("#submenu").load("/AgeingAssessment/TransientsPeriod/");
+    }
+
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+
+
+    function CreateTypicalyDocument() {
+        $("#newPage").load("/Inspection/CreateTypicalDocument/");
+    }
+
+    function EditTypicalyDocument(id) {
+        $("#newPage").load("/Inspection/EditTypicalDocument/" + id);
+    }
+
+    $("#checkAllPrograms").click(function () {
+        $(".checkBoxProgram").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    function SearchInTransients() {
+
+        var dateFrom = $('#searchDateFrom').val();
+        var dateTo = $('#searchDateTo').val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/AgeingAssessment/SearchTramsients",
+            data: {
+
+                "dateFrom": dateFrom,
+                "dateTo": dateTo,
+            },
+            success:
+                function (response) {
+
+                    $("#transientList").html(response);
+
+                },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+
+</script>
+
+

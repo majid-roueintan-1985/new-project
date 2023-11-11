@@ -1,0 +1,695 @@
+﻿@model Bnpp.DataLayer.Entities.BasicData.Components
+@{
+	ViewData["Title"] = "EditComponents";
+	Layout = null;
+}
+
+<div id="normal">
+	<form id="DesignDocumentForm" asp-action="EditComponents" method="post" enctype="multipart/form-data">
+		<input type="hidden" asp-for="ComponentId" />
+		<input type="hidden" asp-for="ComponentsImage" />
+		<input type="hidden" asp-for="MechanicalId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td>
+						Item Name:
+					</td>
+					<td>
+						<input asp-for="Item" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Item"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Designation:
+					</td>
+					<td>
+						<input asp-for="Designation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Designation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Serial:
+					</td>
+					<td>
+						<input asp-for="Serial" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Serial"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Diameter:
+					</td>
+					<td>
+						<input asp-for="Diameter" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Diameter"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Thickness:
+					</td>
+					<td>
+						<input asp-for="Thickness" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Thickness"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Length:
+					</td>
+					<td>
+						<input asp-for="Length" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Length"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Material Grade:
+					</td>
+					<td>
+						<input asp-for="MaterialGrade" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="MaterialGrade"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Class of safety:
+					</td>
+					<td>
+						<input asp-for="ClassofSafety" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="ClassofSafety"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Classification designation:
+					</td>
+					<td>
+						<input asp-for="ClassificationDesignation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="ClassificationDesignation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Group:
+					</td>
+					<td>
+						<input asp-for="Group" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Group"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Seismic category:
+					</td>
+					<td>
+						<input asp-for="SeismicCategory" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="SeismicCategory"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						File Name:
+					</td>
+
+					<td>
+						<input asp-for="Filename" type="text" value="" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Filename"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Select File:
+					</td>
+					<td>
+						<input type="file" name="imgComponentUp" id="imgComponentUp" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h3>Mechanical Properties</h3>
+					</td>
+
+				</tr>
+				<tr>
+					<td>
+						Temperature:
+					</td>
+					<td>
+						<input asp-for="MechanicalTemperature" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="MechanicalTemperature"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Young Module:
+					</td>
+					<td>
+						<input asp-for="YoungModule" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="YoungModule"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Yield Strength:
+					</td>
+					<td>
+						<input asp-for="YieldStrength" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="YieldStrength"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Ultimate Strength:
+					</td>
+					<td>
+						<input asp-for="UltimateStrength" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="UltimateStrength"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Specific Elongation:
+					</td>
+					<td>
+						<input asp-for="SpecificElongation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="SpecificElongation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Reduction Area:
+					</td>
+					<td>
+						<input asp-for="ReductionArea" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="ReductionArea"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Impact Toughness j/cm2:
+					</td>
+					<td>
+						<input asp-for="ImpactToughness" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="ImpactToughness"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Hardness:
+					</td>
+					<td>
+						<input asp-for="Hardness" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Hardness"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<h3>Physical Properties</h3>
+					</td>
+
+				</tr>
+				<tr>
+					<td>
+						Temperature:
+					</td>
+					<td>
+						<input asp-for="PhysicalTemperature" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="PhysicalTemperature"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Coefficient of Linear Expension:
+					</td>
+					<td>
+						<input asp-for="LinearExpension" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="LinearExpension"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Heat Capacity:
+					</td>
+					<td>
+						<input asp-for="HeatCapacity" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="HeatCapacity"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Heat conductivity Factor:
+					</td>
+					<td>
+						<input asp-for="ConductivityFactor" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="ConductivityFactor"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Normal Radiation Emissitivity:
+					</td>
+					<td>
+						<input asp-for="NormalRadiation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NormalRadiation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Poisson's Ratio:
+					</td>
+					<td>
+						<input asp-for="PoissonRatio" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="PoissonRatio"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Density:
+					</td>
+					<td>
+						<input asp-for="Density" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Density"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<h3>Chemical Component</h3>
+					</td>
+
+				</tr>
+				<tr>
+					<td>
+						C:
+					</td>
+					<td>
+						<input asp-for="C" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="C"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Si:
+					</td>
+					<td>
+						<input asp-for="Si" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Si"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Mn:
+					</td>
+					<td>
+						<input asp-for="Mn" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Mn"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Cr:
+					</td>
+					<td>
+						<input asp-for="Cr" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Cr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Ni:
+					</td>
+					<td>
+						<input asp-for="Ni" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Ni"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Mo:
+					</td>
+					<td>
+						<input asp-for="Mo" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Mo"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						V:
+					</td>
+					<td>
+						<input asp-for="V" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="V"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Ti:
+					</td>
+					<td>
+						<input asp-for="Ti" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Ti"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Cu:
+					</td>
+					<td>
+						<input asp-for="Cu" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Cu"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						S:
+					</td>
+					<td>
+						<input asp-for="S" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="S"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						P:
+					</td>
+					<td>
+						<input asp-for="P" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="P"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AS :
+					</td>
+					<td>
+						<input asp-for="As" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="As"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Co:
+					</td>
+					<td>
+						<input asp-for="Co" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Co"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						NB:
+					</td>
+					<td>
+						<input asp-for="NB" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NB"></span>
+					</td>
+				</tr>
+
+
+				<tr>
+					<td>
+						<h3>Heat Treatment</h3>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Temperature:
+					</td>
+					<td>
+						<input asp-for="TreatmentTemperature" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="TreatmentTemperature"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Dates:
+					</td>
+					<td>
+						<input asp-for="TimesOfHeating" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Heat Operation:
+					</td>
+					<td>
+						<input asp-for="HeatsOperation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="HeatsOperation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Cooling Method:
+					</td>
+					<td>
+						<input asp-for="CoolingMethod" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="CoolingMethod"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						No. Heat Operations:
+					</td>
+					<td>
+						<input asp-for="NoOfHeatOperations" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NoOfHeatOperations"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Document No.:
+					</td>
+					<td>
+						<input asp-for="DocumentNo" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="DocumentNo"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick="showPage5()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+	$("#TimesOfHeating").kendoDateTimePicker(
+		{
+			format: "yyyy/MM/dd hh:mm:ss"
+		});
+	function AjaxdocumentFormSubmit() {
+		//Set the URL.
+		var url = $("#DesignDocumentForm").attr("action");
+		//Add the Field values to FormData object.
+		var formData = new FormData();
+		formData.append("Item", $("#Item").val());
+		formData.append("Designation", $("#Designation").val());
+		formData.append("Serial", $("#Serial").val());
+		formData.append("Diameter", $("#Diameter").val());
+		formData.append("Thickness", $("#Thickness").val());
+		formData.append("Length", $("#Length").val());
+		formData.append("MaterialGrade", $("#MaterialGrade").val());
+		formData.append("ClassofSafety", $("#ClassofSafety").val());
+		formData.append("ClassificationDesignation", $("#ClassificationDesignation").val());
+		formData.append("Group", $("#Group").val());
+		formData.append("SeismicCategory", $("#SeismicCategory").val());
+		formData.append("Filename", $("#Filename").val());
+		formData.append("ComponentId", $("#ComponentId").val());
+		formData.append("ComponentsImage", $("#ComponentsImage").val());
+		formData.append("MechanicalId", $("#MechanicalId").val());
+		formData.append("fileComponents", $("#imgComponentUp")[0].files[0]);
+
+		//Mechanical Properties
+		formData.append("MechanicalTemperature", $("#MechanicalTemperature").val());
+		formData.append("YoungModule", $("#YoungModule").val());
+		formData.append("YieldStrength", $("#YieldStrength").val());
+		formData.append("UltimateStrength", $("#UltimateStrength").val());
+		formData.append("SpecificElongation", $("#SpecificElongation").val());
+		formData.append("ReductionArea", $("#ReductionArea").val());
+		formData.append("ImpactToughness", $("#ImpactToughness").val());
+		formData.append("Hardness", $("#Hardness").val());
+
+		//Physical Properties
+		formData.append("PhysicalTemperature", $("#PhysicalTemperature").val());
+		formData.append("LinearExpension", $("#LinearExpension").val());
+		formData.append("HeatCapacity", $("#HeatCapacity").val());
+		formData.append("ConductivityFactor", $("#ConductivityFactor").val());
+		formData.append("NormalRadiation", $("#NormalRadiation").val());
+		formData.append("PoissonRatio", $("#PoissonRatio").val());
+		formData.append("Density", $("#Density").val());
+
+		//Chemical Component
+		formData.append("C", $("#C").val());
+		formData.append("Si", $("#Si").val());
+		formData.append("Mn", $("#Mn").val());
+		formData.append("Cr", $("#Cr").val());
+		formData.append("Ni", $("#Ni").val());
+		formData.append("Mo", $("#Mo").val());
+		formData.append("V", $("#V").val());
+		formData.append("Ti", $("#Ti").val());
+		formData.append("Cu", $("#Cu").val());
+		formData.append("S", $("#S").val());
+		formData.append("P", $("#P").val());
+		formData.append("As", $("#As").val());
+		formData.append("Co", $("#Co").val());
+		formData.append("NB", $("#NB").val());
+
+		//Heat Treatment
+		formData.append("TreatmentTemperature", $("#TreatmentTemperature").val());
+		formData.append("HeatsOperation", $("#HeatsOperation").val());
+		formData.append("CoolingMethod", $("#CoolingMethod").val());
+		formData.append("NoOfHeatOperations", $("#NoOfHeatOperations").val());
+		formData.append("DocumentNo", $("#DocumentNo").val());
+		formData.append("TimesOfHeating", $("#TimesOfHeating").val());
+
+		var result = confirm("Are You Sure ?");
+		if (result) {
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: formData,
+				processData: false,
+				contentType: false
+			}).done(function () {
+				$("#Tabs").load("/Technical/Components/@Model.MechanicalId");
+			});
+		}
+	}
+
+
+
+	function readURL(input) {
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#imgCourse').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgCourseUp").change(function () {
+		readURL(this);
+	});
+
+	$('input[type=file]').change(function () {
+
+		$('#Filename').attr('value', this.files[0].name);
+	});
+</script>
+

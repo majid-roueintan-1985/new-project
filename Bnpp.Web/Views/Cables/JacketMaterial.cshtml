@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.JacketMaterial>
+@{
+    ViewData["Title"] = "JacketMaterial";
+    Layout = null;
+}
+
+<h2>Jacket Material</h2>
+
+<table cellpadding="3" cellspacing="0">
+    <tbody>
+        <tr>
+            <td>
+                <label style="margin:10px">
+
+                    <a class="btn-defaults-equip" onclick="CreatingOwner()">
+                        Back
+                    </a>
+
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="iContent">
+    <div id="tab1" class="tab-item" style="display: block;">
+        <div id="newPage">
+            <div id="newAgeingMechanism">
+                <div>
+
+
+                    <a class="btn-new-equip" style="cursor:pointer" onclick="CreateNewJacketMaterial()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myOwnerTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th>
+                                    <b>Jacket Material Title</b>
+                                </th>
+
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.JacketMaterialId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.JacketMaterialTitle
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditJacketMaterial(@item.JacketMaterialId)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#myOwnerTable").DataTable();
+    });
+
+
+
+    function CreatingOwner() {
+        $("#newPage").load("/Cables/CreateGeneralCables/");
+    }
+
+    function CreateNewJacketMaterial() {
+        $("#newAgeingMechanism").load("/Cables/CreateJacketMaterial/");
+    }
+
+
+
+    function EditJacketMaterial(id) {
+        $("#newAgeingMechanism").load("/Cables/EditJacketMaterial/" + id);
+
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Cables/DeleteJacketMaterial",
+                data: { "jacketId": selectedIDs },
+
+                success: function (response) {
+                    $("#newData").load("/Cables/JacketMaterial/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+    });
+</script>

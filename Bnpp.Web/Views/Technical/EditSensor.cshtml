@@ -1,0 +1,115 @@
+﻿@model Bnpp.DataLayer.Entities.BasicData.Sensors
+@{
+	ViewData["Title"] = "EditSensor";
+	Layout = null;
+}
+
+<div id="normal">
+	<form id="sensorForm" asp-action="EditSensor" method="post">
+		<input type="hidden" asp-for="SensorId" />
+		<input type="hidden" asp-for="MechanicalId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td>
+						Parameter to measure:
+					</td>
+					<td>
+						<input asp-for="Parametertomeasure" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Parametertomeasure"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						AKZ:
+					</td>
+					<td>
+						<input asp-for="AKZ" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="AKZ"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						No. of signals:
+					</td>
+					<td>
+						<input asp-for="Numberofsignals" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Numberofsignals"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						KKS:
+					</td>
+					<td>
+						<input asp-for="KKS" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="KKS"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Quantity:
+					</td>
+					<td>
+						<input asp-for="Quantity" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="Quantity"></span>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<input type="button" onclick="submitSensor()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick="showPage8()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+	function submitSensor() {
+		var data = $("#sensorForm").serialize();
+		var url = $("#sensorForm").attr("action");
+
+		var result = confirm("Are You Sure ?");
+		if (result) {
+			$.ajax({
+				type: 'POST',
+				url: url,
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+				data: data,
+				success: function () {
+					$("#Tabs").load("/Technical/Sensors/@Model.MechanicalId");
+				},
+
+				error: function () {
+					//alert('Failed to receive the Data');
+					//console.log('Failed ');
+				}
+			});
+		}
+
+	}
+
+</script>

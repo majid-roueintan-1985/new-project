@@ -1,0 +1,50 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="Tabs">
+	
+</div>
+
+@section Scripts
+	{
+	<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+	<script>
+
+		$(document).ready(function () {
+			$("#Tabs").load("/AgeingMechanism/Mechanism/@ViewBag.MechanicalId");
+		});
+
+		function showPage1() {
+			$("#Tabs").load("/AgeingMechanism/Mechanism/@ViewBag.MechanicalId");
+		}
+
+		function showPage2() {
+			$("#Tabs").load("/AgeingMechanism/Documents/@ViewBag.MechanicalId");
+
+		}
+
+						// function showPage1() {
+						// 	$("#Tabs").load("/AgeingMechanism/Documents/@ViewBag.MechanicalId");
+						// }
+
+						// function showPage2() {
+						// 	$("#Tabs").load("/ManagementDocuments/OtherDocuments/@ViewBag.MechanicalId");
+
+						// 	$("li").css({ "background-color": "yellow", "padding": "25px", "width": "200px" });
+
+						// }
+
+						// function showPage3() {
+						// 	$("#Tabs").load("/ManagementDocuments/ManagementReviews/");
+						// }
+
+	</script>
+
+}
+
+
+
+

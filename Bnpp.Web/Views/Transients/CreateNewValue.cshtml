@@ -1,0 +1,89 @@
+﻿@model Bnpp.DataLayer.Entities.TransientGroups
+@{
+    Layout = null;
+}
+
+
+<form id="designForm" method="post" asp-controller="Transients" asp-action="Create">
+    <input type="hidden" asp-for="ParentId" value="@Model.ParentId" />
+    <table cellpadding="3" cellspacing="0">
+        <tbody>
+            <tr>
+                <td id="modalTitle">
+                    Value:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="number" asp-for="GroupTitle" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    @*<input type="text" asp-for="GroupTitle"   />*@
+    @*<input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" />*@
+</form>
+
+
+
+
+<link href="/css/bootstrap-modal1.css" rel="stylesheet" type="text/css" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script type="text/javascript">
+    function AjaxdocumentFormSubmit() {
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+        var formData = new FormData();
+        formData.append("GroupTitle", $("#GroupTitle").val());
+        formData.append("ParentId", $("#ParentId").val());
+
+        $.ajax({
+
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+
+
+            $("#newList").load("/Transients/TransientsList");
+
+            $("#myModal").trigger("click");
+        });
+
+    }
+
+    function CancelCreate() {
+        $("#newPage").load("/Transients/TransientsList/");
+    }
+
+    function CreateValue(parentId) {
+        $.get("/Transients/CreateNewValue/" + parentId,
+            function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("");
+                $("#myModalBody").html(result);
+            }
+        );
+
+    }
+
+    function ShowList() {
+        $("#newPage").load("/Transients/TransientsList/");
+    }
+
+</script>

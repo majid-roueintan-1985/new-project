@@ -1,0 +1,68 @@
+﻿@model Bnpp.DataLayer.Entities.MechanicalEquipment
+@{
+    ViewData["Title"] = "EditEquipment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dcontent">
+
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cccccc; background-color: #f0f0f0;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Equip. Type:
+                    </td>
+                    <td style="width: 300px;">
+                        <b>Mechanical Equipments</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1>Edit Equipment</h1>
+
+    <div id="iError"></div>
+    <form asp-action="EditEquipment" method="post">
+        <input type="hidden" asp-for="MechanicalId"/>
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+            <tr>
+                <td>Equipment Name:</td>
+                <td><input type="text" asp-for="Name" id="iName" style="direction: ltr; text-align: left;"></td>
+            </tr>
+            <tr>
+                <td>AKZ:</td>
+                <td><input type="text" asp-for="Azk" id="iAZK" style="direction: ltr; text-align: left;"></td>
+            </tr>
+            <tr>
+                <td>
+                        <input class="btn-edit-equip" type="submit" onclick="if(confirm('Are You sure ?')){}else{return false;};" name="Button1" value="Edit" id="Button1" style="direction: ltr; text-align: left;">
+                        <input type="submit"  name="Button2" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    function clicked() {
+        if (confirm('Do you want to submit?')) {
+            yourformelement.submit();
+        } else {
+            return false;
+        }
+    }
+
+</script>

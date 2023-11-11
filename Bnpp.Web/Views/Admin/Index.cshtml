@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="full-wrapper" style="margin-top:-5px;">
+    <div class="dcenter">
+       @* <div id="dsidebar" style="display: none;">
+
+            <h3 class="box-title">Equipments</h3>
+            <div class="box-menu">
+
+                <ul id="menu-sidebar">
+
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/admin/equipments/?s1=تجهیزات مکانیک">
+                            Mechanical Equipments
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/soft2/admin/electronics/">Electrical Equipments</a>
+                    </li>
+                    <li>
+                        <a href="/soft2/admin/equipments/?s1=ساختمان و سازه">Structures</a>
+                    </li>
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/admin/equipments/details/transients/?s1=تجهیزات مکانیک&amp;id=-2&amp;tb=0">Transients</a>
+                    </li>
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/admin/equipments/details/mechanism2/?s1=تجهیزات مکانیک&amp;id=-1">
+                            Ageing Management Documents
+                        </a>
+                    </li>
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <h3 class="box-title">Navigation</h3>
+            <div class="box-menu">
+                <ul id="menu-sidebar">
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/admin/">
+                            Home
+                        </a>
+                    </li>
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/admin/settings/">Settings</a>
+                    </li>
+                    <li style="background-color: #f1f6fc;">
+                        <a href="/soft2/admin/logs/">
+                            Logs
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>*@
+        <div class="dcontent" style="margin-left:auto;margin-right:auto;float:inherit;width:366px;padding-top:120px;">
+
+            <div class="shadow" style="width:  874px;border: solid 1px #b1b1b1;padding: 15px;border-radius: 3px;background-color: rgba(192, 192, 192, 0.5);margin-left:-142px;">
+                <h1 style="color:#4d5b6e;">Bushehr Nuclear Power Plant<br>Aging Management Data Bank</h1>
+                <table cellpadding="3" cellspacing="0" class="icon-table-admin" align="center">
+                    <tbody>
+                        <tr>
+                            <td><a href="/DataEntry">DATA ENTRY</a></td>
+                            <td><a href="/SACOR-446">SACOR-446</a></td>
+                            <td><a href="/Chemistry">Chemistry</a></td>
+                            <td><a href="/Transients">Transient</a></td>
+                            <td><a href="/Ageing Assessment">Ageing Assessment</a></td>
+                            <td><a href="/Reports">REPORTS</a></td>
+                            <td><a href="/Backup">Database Backup</a></td>
+                            <td><a href="/Restore">Restore Database</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="position:relative;" class="icon-table-admin">
+                <a href="Logout" style="position:absolute;top:22px; right:-396px;">LOGOUT</a>
+            </div>
+
+        </div><div style="clear:both;"></div>
+    </div>
+</div>
+

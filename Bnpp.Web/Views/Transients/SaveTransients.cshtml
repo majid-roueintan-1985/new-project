@@ -1,0 +1,502 @@
+﻿@using Bnpp.DataLayer.Entities
+@{
+    ViewData["Title"] = "SaveTransients";
+    Layout = null;
+}
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="">
+                        <b><a class="breadcumb2-link" href="/Admin">Main</a></b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+            <img src="/images/help.png" style="width: 48px;" class="imgHelp">
+        </a>
+    </div>
+
+    <h1 id="iH1"></h1>
+    <div id="iContent">
+
+        <div class="tab-buttons">
+            <ul>
+                <li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a1"
+                       onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                        Create Transients
+                    </a>
+                </li>
+                <li id="tab-button2" style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                    <a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Save Transients
+                    </a>
+
+                </li>
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Results
+                    </a>
+                </li>
+            </ul>
+
+            <div style="clear:both;"></div>
+        </div>
+
+        <div id="tab1" class="tab-item" style="display: block;">
+
+            <h1 id="iH1">
+                Save Transients
+            </h1>
+
+            <div class="bevel-box">
+                <table cellpadding="3" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form method="post" asp-controller="Transients" asp-action="ExportSaveTransients">
+                                    <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                                    <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" asp-controller="Transients" asp-action="ImportSaveTransients" enctype="multipart/form-data">
+                                    <input type="file" name="FormFile" />
+                                    <input type="submit" value="Import Excel" />
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="newPage">
+
+                <div class="bevel-box">
+                    <form action="/SACOR-446" method="get">
+                        <table cellpadding="3" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Code:
+                                    </td>
+                                    <td>
+                                        <input name="code" id="code" type="text" style="direction: ltr; text-align: left;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="button" onclick="codeSearch();" value="Search" style="direction: ltr; text-align: left;">
+                                        <input type="button" onclick="cancelSearch();" class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+
+                <div class="bevel-box">
+                    <form action="/SACOR-446" method="get">
+                        <table cellpadding="3" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Name:
+                                    </td>
+                                    <td>
+                                        <input name="transientName" id="transientName" type="text" style="direction: ltr; text-align: left;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="button" onclick="nameSearch();" value="Search" style="direction: ltr; text-align: left;">
+                                        <input type="button" onclick="cancelSearch();" class="butn-cancel" style="direction: ltr; text-align: center;margin-bottom:-7px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="bevel-box">
+                    <div id="result">
+                    </div>
+                </div>
+
+
+                <a class="btn-new-equip" onclick="CreateNewTransient()" style="cursor:pointer">Create New Transient</a>
+                <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                <div id="newTransient"></div>
+
+                <div class="bevel-box">
+
+                    @{
+                        List<Transients> savedTransient = ViewBag.SavedTransient as List<Transients>;
+                    }
+
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="savedTransient" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th>
+
+                                </th>
+                                <th>
+                                    <b>Code </b>
+                                </th>
+                                <th>
+                                    <b>Name</b>
+                                </th>
+                                <th>
+                                    <b>Transient Date</b>
+                                </th>
+                                <th>
+                                    <b>Transient Time</b>
+                                </th>
+                                <th>
+                                    <b>Description</b>
+                                </th>
+                                <th>
+                                    <b>Document</b>
+                                </th>
+                                <th>
+
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in savedTransient)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.TransientsId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.Code
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @item.TransientDate.ToString("yyyy/MM/dd")
+                                    </td>
+                                    <td>
+                                        @item.TransientTime
+                                    </td>
+                                    <td>
+                                        @item.Description
+                                    </td>
+                                    <td>
+                                        <a href="/Transients/ShowTransientDocument/@item.TransientsId" target="_blank">
+                                            Transient Document
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditTransient(@item.TransientsId)">
+                                            Edit
+                                        </a>
+                                    </td>
+
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            </div>
+                            <div class="modal-body" id="myModalBody">
+                                ...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<link href="/css/bootstrap-modal1.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/datatables.min.css" rel="stylesheet" />
+<link href="/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="/css/select.dataTables.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script src="/js/dataTables.buttons.min.js"></script>
+<script src="/js/jszip.min.js"></script>
+<script src="/js/pdfmake.min.js"></script>
+<script src="/js/vfs_fonts.js"></script>
+<script src="/js/buttons.html5.min.js"></script>
+<script src="/js/buttons.print.min.js"></script>
+
+<script src="/js/dataTables.select.min.js.download.js"></script>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<script>
+
+    function showPage1() {
+        $("#Tabs").load("/Transients/CreateTransientGroups/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Transients/SaveTransients/");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Transients/Results/");
+    }
+
+    function CreateNewTransient() {
+        $("#newTransient").load("/Transients/CreateTransient/");
+    }
+
+    function EditTransient(id) {
+        $("#newTransient").load("/Transients/EditTransients/" + id);
+    }
+
+    function CancelCreate() {
+        $("#newTransient").html("");
+    }
+
+    $(document).ready(function () {
+        $("#savedTransient").DataTable();
+    });
+
+    //$(document).ready(function () {
+    //    $('#savedTransient').DataTable({
+    //        dom: 'Bfrtip',
+    //        buttons: [
+
+    //            'excel',
+
+    //        ],
+    //        select: true
+    //    });
+    //});
+
+    $(document).ready(function () {
+        $("#nameSearch").DataTable();
+    });
+
+    $(document).ready(function () {
+        $("#codeSearch").DataTable();
+    });
+
+
+    //function codeSearch() {
+    //    var code = $('#code').val();
+    //    if (code != "") {
+    //        $.ajax({
+
+    //            type: "POST",
+    //            url: "/Transients/Search",
+    //            data: {
+    //                "code": code,
+
+    //            },
+    //            success:
+    //                function (response) {
+    //                    $("#result").html(response);
+
+
+    //                },
+    //            failure: function (response) {
+    //                alert(response.responseText);
+    //            },
+    //            error: function (response) {
+    //                alert(response.responseText);
+    //            }
+    //        });
+    //    }
+    //}
+
+    function codeSearch() {
+        var code = $('#code').val();
+        if (code != "") {
+            $.ajax({
+
+                type: "POST",
+                url: "/Transients/SearchInGroupedOfTransientCode",
+                data: {
+                    "code": code,
+                },
+                success:
+                    function (response) {
+                        $("#result").html(response);
+                    },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    }
+
+
+    //function nameSearch() {
+
+    //    var transientName = $('#transientName').val();
+    //    if (transientName != "") {
+    //        $.ajax({
+
+    //            type: "POST",
+    //            url: "/Transients/nameSearch",
+    //            data: {
+
+    //                "transientName": transientName
+    //            },
+    //            success:
+    //                function (response) {
+    //                    $("#result").html(response);
+    //                    //selectedRow.after(response);
+    //                },
+    //            failure: function (response) {
+    //                alert(response.responseText);
+    //            },
+    //            error: function (response) {
+    //                alert(response.responseText);
+    //            }
+    //        });
+    //    }
+    //}
+
+
+    function nameSearch() {
+
+        var transientName = $('#transientName').val();
+        if (transientName != "") {
+            $.ajax({
+
+                type: "POST",
+                url: "/Transients/SearchInGroupedOfTransientName",
+                data: {
+
+                    "transientName": transientName
+                },
+                success:
+                    function (response) {
+                        $("#result").html(response);
+                        //selectedRow.after(response);
+                    },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    }
+
+    function cancelSearch() {
+        $("#result").html("");
+
+        $("#transientName").val("");
+        $("#code").val("");
+    }
+
+    function Create(parentId) {
+        $.get("/Transients/Create/" + parentId,
+            function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("");
+                $("#myModalBody").html(result);
+            });
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(
+
+        function () {
+            var selectedIDs = new Array();
+
+            $('input:checkbox.checkBox').each(function () {
+                if ($(this).prop('checked')) {
+                    selectedIDs.push($(this).val());
+                }
+            });
+
+            var result = confirm("are you sure you want to delete?");
+            if (result) {
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Transients/DeleteTransients",
+                    data: { "transientsId": selectedIDs },
+
+                    success: function (response) {
+                        //window.location.href = "/Cables";
+                        $("#Tabs").load("/Transients/SaveTransients/");
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+
+                });
+            }
+
+        });
+
+    $(function () {
+        $("#code").change(function () {
+            $("#transientCode").val($(this).val());
+        });
+    })
+
+
+    $('input:checkbox.checkBox').change(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        $('#exportSelectedData').val(selectedIDs);
+
+    });
+
+    function refreshPage() {
+        // Your delay in milliseconds
+        var delay = 2000;
+        setTimeout(function () { $("#Tabs").load("/Transients/SaveTransients/"); }, delay);
+    }
+</script>
+

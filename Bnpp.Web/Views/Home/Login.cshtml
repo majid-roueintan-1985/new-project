@@ -1,0 +1,121 @@
+﻿@model Bnpp.Core.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xml:lang="en-gb" lang="en-gb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>
+        EDB
+    </title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/CustomCss.css" rel="stylesheet" />
+
+
+    <link href="/css/datatables.min.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body style="background-image: url(/images/Picture1.png);
+             background-size: 100% 100%; background-position: center;
+             background-repeat: no-repeat; min-height: 768px;">
+
+    <div id="iHeader" style="background-image:url(/images/header2.gif);
+                             background-repeat:no-repeat;
+                             background-position:center center;
+                             border-bottom:solid 3px #fc6868;min-height:107px;">
+        <img src="/images/bnpp-logo.png" width="100" style="float:left;
+                                                            margin:3px; margin-left:100px;margin-top:19px;" />
+        <img src="/images/logo/logo-english.jpg" width="100" style="border: solid 1px #d0dede;float:right; margin:3px;margin-top:15px;width:85px;background-color: #f3fbf8;border-radius: 5px;" />
+
+
+        <img src="/images/tavana.png" width="100" style="border: solid 1px #d0dede;float:right; margin:3px; margin-right:3px;margin-top:15px;width:65px;background-color: #f3fbf8;border-radius: 5px;" />
+
+        <div style="width:500px;float:left; margin:0px; padding:0px;margin-left:20px;color:#ffffff;">
+            <h2 style="margin-bottom:0px;color:#ffe535;">
+                Bushehr Nuclear Power Plant - 1
+            </h2>
+            <span style="font-size:16px;">
+                Ageing Management Data Bank
+            </span>
+        </div>
+        <div id="help" style="display: none;">
+        </div>
+        <div style="clear:both;">
+        </div>
+    </div>
+    <div id="full-wrapper">
+        <div class="dcenter">
+
+                <div class="dcontent">
+                    @if (ViewBag.IsSuccess != null)
+                    {
+                        <script>
+                            // Your delay in milliseconds
+                            var delay = 1000;
+                            setTimeout(function () { window.location = "/Admin"; }, delay);
+
+                        </script>
+                    }
+
+                    <h1>login</h1>
+                    <div id="iError"></div>
+                    <form asp-action="Login" method="post">
+                        <table cellpadding="3" cellspacing="0">
+
+                            <tbody>
+                            <tr>
+                                <td>
+                                    UserName:
+                                </td>
+                                <td>
+                                    <input asp-for="UserName" type="text" style="direction: ltr; text-align: left;">
+                                </td>
+                                <td>
+                                    <span asp-validation-for="UserName"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password:
+                                </td>
+                                <td>
+                                    <input asp-for="Password" type="password" style="direction: ltr; text-align: left;">
+                                </td>
+                                <td>
+                                    <span asp-validation-for="Password"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" value="Login" style="direction: rtl; text-align: right;">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+
+                <div style="clear: both;">
+                </div>
+            </div>
+       
+
+
+        <div style="clear:both;">
+        </div>
+
+        <script src="~/js/jquery.min.js"></script>
+        <script src="~/js/script.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/jquery.validate.min.js"></script>
+        <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+    </div>
+</body>
+</html>
+
+

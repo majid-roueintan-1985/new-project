@@ -1,0 +1,173 @@
+﻿@model IEnumerable< Bnpp.DataLayer.Entities.TransientDocuments>
+@{
+    ViewData["Title"] = "EditDocument";
+    Layout = null;
+}
+
+<h2>Edit Document</h2>
+
+@*<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">*@
+
+
+@*<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">*@
+
+@*<link rel="stylesheet" type="text/css" href="/css/carousel.css">
+<link rel="stylesheet" type="text/css" href="/css/owl.carousel.css">*@
+@*<script src="/js/jquery-v1.11.3.js"></script>
+<script src="/js/modernizr.js"></script>*@
+
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-rtl.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+
+
+
+
+<section class="single-page">
+
+    <article>
+
+        <!-- Gallery -->
+        <div class="col-md-6  pull-right product-gallery">
+           
+            <div class="thumbnails-image">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-3 col-sm-3 col-xs-4 border-radius">
+
+                            @{
+                                var extn = item.Filename.Split(".").Last();
+                            }
+                            @if (extn == "png" || extn == "jpeg" || extn == "jpg")
+                            {
+                                <img id="@item.TransientDocumentsId" class="border-radius" onclick="ChangeImage(this.id)" alt="@item.Filename" src="/transientFiles/@item.TransientDocumentsImage">
+                            }
+                            else
+                            {
+                                <p>
+                                    <a href="/transientFiles/@item.TransientDocumentsImage">@item.Filename</a>
+                                </p>
+                            }
+
+                            <input type="button" onclick="DeleteDocument(@item.TransientDocumentsId)" class="btn-delete-equip" value="Delete">
+                        </div>
+
+                    }
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End Gallery -->
+        <div class="clearfix"></div>
+    </article>
+</section>
+
+<div id="normal">
+    <form id="designForm" asp-action="EditTransientDocument" method="post">
+        <input type="hidden" name="transientsId" id="transientsId" value="@ViewBag.TransientId">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Select File:
+                    </td>
+                    <td>
+                        <input type="file" multiple="multiple" name="imgTrnsientUp" id="imgTrnsientUp" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img id="imgCourse" class="thumbnail" style="max-width: 800px;max-height:800px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="AjaxdocumentFormSubmit()" value="Edit" class="butn-save" style="direction: ltr; text-align: left;">
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div>
+    <input type="button" onclick="location='/Transients/ShowTransientDocument/@ViewBag.TransientId'" class="btn-edit-equip" value="Back To Documents">
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+@*<script src="/js/owl.carousel.min.js"></script>*@
+
+<script src="/js/script.js"></script>
+
+<script>
+
+    function ChangeImage(clicked_id) {
+
+        var imageId = clicked_id;
+
+        var thumbImage = $('#' + imageId).prop('src');
+
+        $('#bigImages').prop("src", thumbImage);
+    }
+
+    function DeleteDocument(id) {
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+
+            $.ajax({
+                type: "POST",
+                url: "/Transients/DeletetransientDocument/" + id,
+
+                success: function (response) {
+
+                   
+                    $("#editDocument").load("/Transients/EditDocument/" + @ViewBag.TransientId);
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    }
+
+    function AjaxdocumentFormSubmit() {
+
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+        var formData = new FormData();
+
+
+        var files = $("#imgTrnsientUp").get(0).files;
+        for (var i = 0; i < files.length; i++) {
+            formData.append("fileTransient", files[i]);
+        }
+
+
+        formData.append("transientsId", $("#transientsId").val());
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function () {
+            $("#editDocument").load("/Transients/EditDocument/" + @ViewBag.TransientId);
+        });
+
+    }
+
+    //Documents
+</script>
+
+
+

@@ -1,0 +1,144 @@
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\refint\Bnpp.Core.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+C:\Users\mohsen\source\New folder\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\mohsen\source\New folder\Bnpp.Core\bin\Debug\net5.0\ref\Bnpp.Core.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\refint\Bnpp.Core.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\refint\Bnpp.Core.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.deps.json
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.json
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.runtimeconfig.dev.json
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.Core.pdb
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.AssemblyReference.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.GeneratedMSBuildEditorConfig.editorconfig
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfoInputs.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.AssemblyInfo.cs
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CoreCompileInputs.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.csproj.CopyComplete
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\refint\Bnpp.Core.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.pdb
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\Bnpp.Core.genruntimeconfig.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.Core\obj\Debug\net5.0\ref\Bnpp.Core.dll

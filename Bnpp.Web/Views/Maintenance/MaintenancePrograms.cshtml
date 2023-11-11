@@ -1,0 +1,463 @@
+﻿@using Bnpp.DataLayer.Entities.Maintenance
+@model IEnumerable<Bnpp.DataLayer.Entities.Maintenance.MaintenancePrograms>
+@{
+	ViewData["Title"] = "MaintenancePrograms";
+	Layout = null;
+}
+
+<div class="dcontent">
+	<div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+		&nbsp;
+	</div>
+
+	<div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td style="">
+						<b><a class="breadcumb2-link" href="/Equipments">Mechanical Equipments</a></b>
+					</td>
+					<td style="">
+						» @ViewBag.EquipName <b id="subTitle22a"></b>
+					</td>
+
+
+					<td style="">
+						» <label>
+							<select required="required" onchange="location = this.value;" name="EventLevel" aria-controls="myTable" class="">
+
+
+								<option value="/Maintenance/@ViewBag.MechanicalId">Maintenance</option>
+								<option value="/Technical/@ViewBag.MechanicalId">BasicData</option>
+								<option value="/Documents/@ViewBag.MechanicalId">Documents</option>
+								<option value="/AgeingMechanism/@ViewBag.MechanicalId">Ageing Mechanism</option>
+								<option value="/Installation/@ViewBag.MechanicalId">Installation & Commissioning</option>
+								<option value="/Operational/@ViewBag.MechanicalId">Operational Data</option>
+								<option value="/Events/@ViewBag.MechanicalId">Events</option>
+								<option value="/OnOffData/@ViewBag.MechanicalId">On-Off Data</option>
+
+								<option value="/Inspection/@ViewBag.MechanicalId">Inspection Data</option>
+							</select>
+						</label>
+					</td>
+					<td>
+						» <b style="color: #ff0000;" id="subTitle22">
+							Maintenance Programs
+						</b>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+			<img src="/images/help.png" style="width: 48px;" class="imgHelp">
+		</a>
+	</div>
+
+	<h1 id="iH1">
+		Maintenance
+	</h1>
+	<div id="iContent">
+
+		<div class="tab-buttons">
+			<ul>
+				<li id="tab-button1" class="tab-buttons-li" @*style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;"*@ style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+					<a id="tab-button-a1"
+					   onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+						Maintenance Programs
+					</a>
+				</li>
+				<li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						List of Defections
+					</a>
+
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Spare Parts List
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage4()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Maintenance Forms
+					</a>
+				</li>
+
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage5()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Controls & Measurements before & after Maintenance
+					</a>
+				</li>
+				<li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+					<a id="tab-button-a3" onclick="showPage6()" style="cursor:pointer;color: rgb(110, 110, 255);">
+						Defection Reports
+					</a>
+				</li>
+
+			</ul>
+
+			<div style="clear:both;"></div>
+		</div>
+
+		<div id="tab1" class="tab-item" style="display: block;">
+
+			<h1 id="iH1">
+				Maintenance Programs
+			</h1>
+
+			<div class="bevel-box">
+				<table cellpadding="3" cellspacing="0">
+					<tbody>
+						<tr>
+							<td>
+								<form method="post" asp-controller="Maintenance" asp-action="ExportMaintenancePrograms" asp-route-id="@ViewBag.MechanicalId">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+
+									<input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+									<input type="submit" onclick="refreshPage()" value="Export Excel" />
+								</form>
+							</td>
+							<td>
+								<form method="post" asp-controller="Maintenance" asp-action="ImportMaintenancePrograms" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+									<input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+
+									<input type="file" name="FormFile" />
+									<input type="submit" value="Import Excel" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="newPage">
+				<div>
+
+					<div id="iLoading22" style="display: none;">
+						<img src="/images/loading.gif">
+					</div>
+
+
+					<a class="btn-new-equip" style="cursor:pointer" onclick="Create(@ViewBag.MechanicalId)">New</a>
+					<input type="button" id="delete" class="btn-delete-equip" value="Delete">
+					<br />
+					@{
+						int rowCount = 1;
+					}
+					<table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+						<thead>
+							<tr role="row">
+								<th>
+									<input type="checkbox" id="checkAll" />
+								</th>
+								<th></th>
+								<th style="width: 150px">
+									<b>Maintenance Type</b>
+								</th>
+								<th style="width: 250px">
+									<b>R.R</b>
+								</th>
+								<th style="width: 120px">
+									<b>I.R</b>
+								</th>
+								<th style="width: 120px">
+									<b>OVH</b>
+								</th>
+
+
+								<th style="width: 120px">
+									<b>Actions</b>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var item in Model)
+							{
+								<tr role="row">
+									<td>
+										<input type="checkbox" class="checkBox" value="@item.ProgramsId" />
+									</td>
+									<td>
+										@rowCount
+									</td>
+									<td>
+										@item.MaintenanceType
+									</td>
+									<td>
+										@item.RR
+									</td>
+									<td>
+										@item.IR
+									</td>
+									<td>
+										@item.OVH
+									</td>
+									<td>
+										<a class="btn-edit-equip" onclick="Edit(@item.ProgramsId)">
+											Edit
+										</a>
+									</td>
+								</tr>
+								rowCount++;
+							}
+						</tbody>
+					</table>
+
+
+					
+					
+					@* @{
+						List<ProgramsDocument> maintenanceForms = ViewData["Documents"] as List<ProgramsDocument>;
+					}
+					<div id="tab1" class="tab-item" style="display: block;">
+
+						<h1 id="iH1">Documents</h1>
+
+
+
+
+						<div>
+
+							<div id="iLoading22" style="display: none;">
+								<img src="/images/loading.gif">
+							</div>
+
+
+							<a class="btn-new-equip" style="cursor: pointer" onclick="CreateProgramDocument()">New</a>
+							<input type="button" id="deleteProgram" class="btn-delete-equip" value="Delete">
+							<br />
+							@{
+								int rowCount1 = 1;
+							}
+							<table id="myTableDocument" cellpadding="3" cellspacing="0" class="show-table">
+								<thead>
+									<tr role="row">
+										<th>
+											<input type="checkbox" id="checkAllPrograms" />
+										</th>
+										<th></th>
+										<th style="width: 150px">
+											<b>Code</b>
+										</th>
+										<th style="width: 250px">
+											<b>File Name</b>
+										</th>
+
+										<th style="width: 120px">
+											<b>Doc. Name </b>
+										</th>
+
+										
+
+										<th style="width: 120px">
+											<b>Actions</b>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var item in maintenanceForms)
+									{
+										<tr role="row">
+											<td>
+												<input type="checkbox" class="checkBoxProgram" value="@item.ProgramsDocumentId" />
+											</td>
+											<td>
+												@rowCount
+											</td>
+
+											<td>
+												@item.Code
+											</td>
+											<td>
+												@item.Filename
+											</td>
+											<td>
+												@item.DocumentName
+											</td>
+											<td>
+												<a class="btn-edit-equip" onclick="EditProgramDocument(@item.ProgramsDocumentId)">
+													Edit
+												</a>
+											</td>
+										</tr>
+										rowCount1++;
+									}
+								</tbody>
+							</table>
+
+
+							<br>
+							<div style="clear: both;">
+							</div>
+							<br>
+							<br>
+							<iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+						</div>
+
+					</div> *@
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+<script>
+	$(document).ready(function () {
+		$("#myTable").DataTable();
+	});
+
+
+	$(document).ready(function () {
+		$("#myTableDocument").DataTable();
+	});
+</script>
+<script>
+
+	function Create(mechanicalId) {
+		$("#newPage").load("/Maintenance/CreateMaintenancePrograms/" + mechanicalId);
+	}
+
+	function Edit(id) {
+		$("#newPage").load("/Maintenance/EditMaintenancePrograms/" + id);
+	}
+
+
+	function EditProgramDocument(id) {
+		$("#newPage").load("/Maintenance/EditProgramDocuments/" + id);
+	}
+
+	function showPage1() {
+		$("#Tabs").load("/Maintenance/MaintenancePrograms/@ViewBag.MechanicalId");
+	}
+
+	function showPage2() {
+		$("#Tabs").load("/Maintenance/Defections/@ViewBag.MechanicalId");
+	}
+
+	function showPage3() {
+		$("#Tabs").load("/Maintenance/SpareParts/@ViewBag.MechanicalId");
+	}
+
+	function showPage4() {
+		$("#Tabs").load("/Maintenance/MaintenanceForms/@ViewBag.MechanicalId");
+	}
+
+	function showPage5() {
+		$("#Tabs").load("/Maintenance/Measurements/@ViewBag.MechanicalId");
+	}
+
+	function showPage6() {
+		$("#Tabs").load("/Maintenance/DefectsReport/@ViewBag.MechanicalId");
+	}
+
+
+	$("#checkAll").click(function () {
+		$(".checkBox").prop('checked',
+			$(this).prop('checked'));
+	});
+
+	$("#delete").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+				type: "POST",
+				url: "/Maintenance/DeleteMaintenancePrograms/@ViewBag.MechanicalId",
+				data: { "programId": selectedIDs },
+
+				success: function (response) {
+					$("#Tabs").load("/Maintenance/MaintenancePrograms/@ViewBag.MechanicalId");
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+
+
+
+
+	$("#checkAllPrograms").click(function () {
+		$(".checkBoxProgram").prop('checked',
+			$(this).prop('checked'));
+	});
+
+	$("#deleteProgram").click(function () {
+		var selectedIDs = new Array();
+
+		$('input:checkbox.checkBoxProgram').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		var result = confirm("are you sure you want to delete?");
+		if (result) {
+			$.ajax({
+				type: "POST",
+				url: "/Maintenance/DeleteProgramDocuments",
+				data: { "documentId": selectedIDs },
+
+				success: function (response) {
+					$("#Tabs").load("/Maintenance/MaintenancePrograms/@ViewBag.MechanicalId");
+				},
+				failure: function (response) {
+					alert(response.responseText);
+				},
+				error: function (response) {
+					alert(response.responseText);
+				}
+
+			});
+		}
+
+	});
+
+	function CreateProgramDocument() {
+		$("#newPage").load("/Maintenance/CreateProgramDocuments/");
+	}
+
+	$('input:checkbox.checkBox').change(function () {
+		var selectedIDs = new Array();
+		$('input:checkbox.checkBox').each(function () {
+			if ($(this).prop('checked')) {
+				selectedIDs.push($(this).val());
+			}
+		});
+
+		$('#exportSelectedData').val(selectedIDs);
+
+	});
+
+	function refreshPage() {
+		// Your delay in milliseconds
+		var delay = 2000;
+		setTimeout(function () { $("#Tabs").load("/Maintenance/MaintenancePrograms/@ViewBag.MechanicalId"); }, delay);
+	}
+</script>
+
+
+
+

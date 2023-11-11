@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "538e6a0c-266a-4926-8439-555c1aded6d7": {
+      "ProjectGuid": "538e6a0c-266a-4926-8439-555c1aded6d7",
+      "DisplayName": "Bnpp.DataLayer",
+      "ColorIndex": 0
+    },
+    "0667ef5e-ff87-445d-a03f-cc20127a8147": {
+      "ProjectGuid": "0667ef5e-ff87-445d-a03f-cc20127a8147",
+      "DisplayName": "Bnpp.Web",
+      "ColorIndex": 1
+    },
+    "67c98e07-7cb6-4678-9612-ad5da1a1de15": {
+      "ProjectGuid": "67c98e07-7cb6-4678-9612-ad5da1a1de15",
+      "DisplayName": "Bnpp.Core",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

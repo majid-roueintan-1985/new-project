@@ -1,0 +1,161 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.FailedParts>
+@{
+    ViewData["Title"] = "FailedParts";
+    Layout =null;
+}
+
+<h2>Failed Parts</h2>
+
+<table cellpadding="3" cellspacing="0">
+    <tbody>
+        <tr>
+            <td>
+                <label style="margin:10px">
+
+                    <a class="btn-defaults-equip" onclick="CreateOperatingData()">
+                        Back
+                    </a>
+
+                </label>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="iContent">
+    <div id="tab1" class="tab-item" style="display: block;">
+        <div id="newPage">
+            <div id="newAgeingMechanism">
+                <div>
+
+
+                    <a class="btn-new-equip" style="cursor:pointer" onclick="CreateNewFailedParts()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myOwnerTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th>
+                                    <b>Failed Parts Title</b>
+                                </th>
+
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.ID" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.FailedPartsTitle
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="EditFailedParts(@item.ID)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/datatables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $("#myOwnerTable").DataTable();
+    });
+
+
+
+    function CreateOperatingData() {
+        if (@ViewBag.Code== 1) {
+            $("#newPage").load("/Cables/CreateGeneralCables/");
+        }
+        if (@ViewBag.Code== 2) {
+            $("#newPage").load("/Cables/CreateOperatingData/");
+        }
+        if (@ViewBag.Code== 3) {
+            $("#newPage").load("/Cables/CreateMaintenanceData/");
+        }
+        if (@ViewBag.Code== 4) {
+            $("#newPage").load("/Cables/CreateCablereport/");
+        }
+    }
+
+    function CreateNewFailedParts() {
+        $("#newAgeingMechanism").load("/Cables/CreateFailedParts/");
+    }
+
+
+
+    function EditFailedParts(id) {
+        $("#newAgeingMechanism").load("/Cables/EditFailedParts/" + id);
+
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Cables/DeleteFailedParts",
+                data: { "partsId": selectedIDs },
+
+                success: function (response) {
+                    $("#newData").load("/Cables/FailedParts/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+    });
+</script>

@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "TypicalPrograms";
+    Layout = null;
+}
+
+<div class="bevel-box">
+    <div id="newPage">
+        <div>
+
+            <div id="iLoading22" style="display: none;">
+                <img src="/images/loading.gif">
+            </div>
+
+            <h1>Typical Programs</h1>
+
+            <a class="btn-new-equip" onclick="Create()">New</a>
+            <input type="button" @*id="delete"*@ class="btn-delete-equip" value="Delete">
+            <br />
+            @{
+                int rowCount = 1;
+            }
+            <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+                <thead>
+                    <tr role="row">
+                        <th>
+                            <input type="checkbox" id="checkAll" />
+                        </th>
+                        <th></th>
+                        <th style="width: 150px">
+                            <b>Type</b>
+                        </th>
+                        <th style="width: 250px">
+                            <b>Date</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>Frequency</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>Prepaired by</b>
+                        </th>
+
+                        <th style="width: 120px">
+                            <b>	Approved</b>
+                        </th>
+                        <th style="width: 120px">
+                            <b>	Authorized</b>
+                        </th>
+
+                        <th style="width: 120px">
+                            <b>Actions</b>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (var item in Model)
+                    {
+                    <tr role="row">
+                    <td>
+                    <input type="checkbox" class="checkBox" value="@item.OperationalId" />
+                    </td>
+                    <td>
+                    @rowCount
+                    </td>
+                    <td>
+                    @item.CreateDate.ToString("yyyy/MM/dd")
+                    </td>
+                    <td>
+                    @item.NameOfCondition
+                    </td>
+                    <td>
+                    @item.AllowableNumber
+                    </td>
+                    <td>
+                    @item.Occurrances
+                    </td>
+                    <td>
+                    <a class="btn-edit-equip" onclick="Edit(@item.OperationalId)">
+                    Edit
+                    </a>
+                    </td>
+                    </tr>
+                    rowCount++;
+                    }*@
+                </tbody>
+            </table>
+
+
+            <br>
+            <div style="clear: both;">
+            </div>
+            <br>
+            <br>
+            <iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+        </div>
+    </div>
+</div>

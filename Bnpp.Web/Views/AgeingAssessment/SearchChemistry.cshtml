@@ -1,0 +1,618 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.ChemistryTable>
+@{
+    ViewData["Title"] = "SearchChemistry";
+    Layout = null;
+}
+
+@{
+    int rowCount = 1;
+}
+
+<div class="bevel-box">
+    <table cellpadding="3" cellspacing="0">
+        <tbody>
+            <tr>
+                <td>
+                    <form method="post" asp-controller="AgeingAssessment" asp-action="ExportChemistry">
+                        <input type="text" name="system" value="@ViewBag.System" style="display:none" />
+                        <input type="text" name="samplePoint" value="@ViewBag.SamplePoint" style="display:none" />
+                        <input type="text" name="systemState" value="@ViewBag.SystemState" style="display:none" />
+                        <input type="text" name="cycle" value="@ViewBag.Cycle" style="display:none" />
+                        
+                        <input type="text" name="dateAndTime" value="@ViewBag.DateAndTime" style="display:none" />
+                        <input type="text" name="parametr" value="@ViewBag.Parametr" style="display:none" />
+                        <input type="text" name="dateFrom" value="@ViewBag.DateFrom" style="display:none" />
+                        <input type="text" name="dateTo" value="@ViewBag.DateTo" style="display:none" />
+
+                        <input type="submit" value="Export Excel" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<table id="myTable" @*cellpadding="3" cellspacing="0"*@ aria-describedby="example_info" class="display dataTable">
+
+
+    <thead>
+        <tr role="row">
+            <th>
+                <input type="checkbox" id="checkAll" />
+            </th>
+            <th>
+
+            </th>
+            <th>
+                <b>
+                    System
+                </b>
+            </th>
+            <th>
+                <b>
+                    Sampling Point
+                </b>
+            </th>
+            <th>
+                <b>
+                    Building
+                </b>
+            </th>
+            <th>
+                <b>
+                    System State Caption
+                </b>
+            </th>
+            <th>
+                <b>
+                    Circuit Caption
+                </b>
+            </th>
+            <th>
+                <b>
+                    Experiment DateTime
+                </b>
+            </th>
+            <th>
+                <b>
+                    Parameter Caption
+                </b>
+            </th>
+            <th>
+                <b>
+                    Value
+                </b>
+            </th>
+            <th>
+                <b>
+                    Unit Caption
+                </b>
+            </th>
+            <th>
+                <b>
+                    Comparison WithNormal Value Symbol
+                </b>
+            </th>
+            <th>
+                <b>
+                    Max. Value
+                </b>
+            </th>
+            <th>
+                <b>
+                    Comparison WithNormal Value Symbol
+                </b>
+            </th>
+            <th>
+                <b>
+                    Min. Value
+                </b>
+            </th>
+            <th>
+                <b>
+                    Executing Schedule Caption
+                </b>
+            </th>
+            <th>
+                <b>
+                    Note Caption
+                </b>
+            </th>
+            <th>
+                <b>
+                    Deviation
+                </b>
+            </th>
+            @* <th>
+            <b>
+
+            </b>
+            </th>*@
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            string bozorg = ">";
+            string bozorgMosavi = ">=";
+            string kouchak = "<";
+            string kouchakMosavi = "<=";
+
+
+
+            <tr style="background-color:green;" role="row">
+                <td>
+                    <input type="checkbox" class="checkBox" value="@item.ID" />
+                </td>
+                <td>
+                    @rowCount
+                </td>
+                <td>
+                    @item.System
+                </td>
+                <td>
+                    @item.SamplingPoint
+                </td>
+                <td>
+                    @item.Building
+                </td>
+                <td>
+                    @item.SystemStateCaption
+                </td>
+                <td>
+                    @item.CircuitCaption
+                </td>
+
+                <td>
+                    @item.ExperimentDateTime
+                </td>
+
+                <td>
+                    @item.ParameterCaption
+                </td>
+
+                <td>
+                    @item.Value
+                </td>
+
+                <td>
+                    @item.UnitCaption
+                </td>
+
+                <td>
+                    @item.ComparisonWithNormalValueSymbol
+                </td>
+
+                <td>
+                    @item.NormalValue
+                </td>
+
+                <td>
+                    @item.ComparisonWithNormalValueSymbol2
+                </td>
+
+                <td>
+                    @item.NormalValue2
+                </td>
+
+                <td>
+                    @item.ExecutingScheduleCaption
+                </td>
+                <td>
+                    @item.NoteCaption
+                </td>
+
+                @if (item.ComparisonWithNormalValueSymbol == null)
+                {
+                    @if (item.ComparisonWithNormalValueSymbol2 != null && item.NormalValue2 != null)
+                    {
+
+                        @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+                else if (item.ComparisonWithNormalValueSymbol2 == null)
+                {
+                    @if (item.ComparisonWithNormalValueSymbol != null && item.NormalValue != null)
+                    {
+
+                        @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+                else if (item.NormalValue == null)
+                {
+                    @if (item.ComparisonWithNormalValueSymbol2 != null && item.NormalValue2 != null)
+                    {
+
+                        @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+                else if (item.NormalValue2 == null)
+                {
+                    @if (item.ComparisonWithNormalValueSymbol != null && item.NormalValue != null)
+                    {
+
+                        @if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchakMosavi))
+                        {
+
+                            <td style="background-color:green">
+                            </td>
+                        }
+                        else if ((Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg) || (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorgMosavi))
+                        {
+                            <td style="background-color:red">
+                            </td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+                    else
+                    {
+                        <td></td>
+                    }
+                }
+
+                else
+                {
+
+                    @* @if (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg)
+            {
+            <td style="background-color:green">
+            </td>
+
+            }
+            else if (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak)
+            {
+            <td style="background-color:red">
+            </td>
+            }
+            else if (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == bozorg)
+            {
+            <td style="background-color:red">
+            </td>
+            }
+            else if (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue) && item.ComparisonWithNormalValueSymbol.Replace("\r\n", string.Empty) == kouchak)
+            {
+            <td style="background-color:green">
+            </td>
+            }
+            else if (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak)
+            {
+            <td style="background-color:green">
+            </td>
+            }
+            else if (Convert.ToDecimal(item.Value) > Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg)
+            {
+            <td style="background-color:red">
+            </td>
+            }
+            else if (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == bozorg)
+            {
+
+            <td style="background-color:green">
+            </td>
+            }
+            else if (Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue2) && item.ComparisonWithNormalValueSymbol2.Replace("\r\n", string.Empty) == kouchak)
+            {
+            <td style="background-color:red">
+            </td>
+            }
+            else
+            {
+            <td></td>
+            }*@
+
+                    @if (Convert.ToDecimal(item.NormalValue2) < Convert.ToDecimal(item.Value) && Convert.ToDecimal(item.Value) < Convert.ToDecimal(item.NormalValue))
+                    {
+                        <td style="background-color:green">
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="background-color:red">
+                        </td>
+                    }
+
+                }
+
+            </tr>
+
+
+            rowCount++;
+        }
+
+    </tbody>
+</table>
+
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+<link href="/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('tbody tr[role="row"]').hide();
+    });
+
+    $(document).ready(function () {
+        var groupColumn = 2;
+        var table = $('#myTable').DataTable({
+
+
+            columnDefs: [{ visible: false, targets: groupColumn }],
+            order: [[groupColumn, 'asc']],
+
+            // hide "Showing 1 of N Entries" with the dataTables.js library
+            "info": false,
+
+            //colReorder: {
+            //    order: [ 5,6]
+            //},
+
+            //"ordering": true,
+            //columnDefs: [{
+            //    orderable: false,
+            //    targets: "no-sort"
+            //}],
+            //displayLength: 1000,
+
+            //paging: false,
+
+            //lengthMenu: [
+            //    [-1, 10, 25, 50,75],
+            //    ['All', 10, 25, 50,75],
+            //],
+
+
+            drawCallback: function (settings) {
+                var api = this.api();
+                var rows = api.rows({ page: 'current' }).nodes();
+
+                var last = null;
+
+                api
+                    .column(groupColumn, { page: 'current' })
+                    .data()
+                    .each(function (group, i) {
+                        if (last !== group) {
+                            $(rows)
+                                .eq(i)
+                                .before('
+                                    < tr class= "group" id = "' + i + '" style = "background-color: rgba(0, 0, 0, 0.15);" > <td class="dt-control" > </td><td colspan="16">' + group + '</td > </tr>');
+
+                                    last = group;
+
+                        }
+                    });
+            },
+        });
+
+
+        //Add parameter to class  class="group'+i+'"
+        // Order by the grouping
+        $('#myTable tbody').on('click', 'tr.group', function () {
+
+            $($(this)).nextUntil(".group").filter('tr[role="row"]').toggle();
+
+        });
+
+    });
+
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+
+    function showPage1() {
+        $("#Tabs").load("/AgeingAssessment/SACORReport/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/AgeingAssessment/TransientsReport/");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/AgeingAssessment/WaterChemistryReport/");
+    }
+
+    function cancel() {
+        $("#Tabs").load("/AgeingAssessment/WaterChemistryReport/");
+    }
+
+
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#reportDate").kendoDatePicker();
+    $("#searchDate").kendoDatePicker();
+    $("#searchfileDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        }
+    );
+
+    $("#schDate").kendoDatePicker(
+
+        {
+            format: "MM/dd/yyyy"
+        }
+    );
+
+    $("#schDateTo").kendoDatePicker(
+        {
+            format: "MM/dd/yyyy"
+        }
+    );
+
+    $("#schDateFrom").kendoDatePicker(
+        {
+            format: "MM/dd/yyyy"
+        }
+    );
+
+    function GetSearchfromDate() {
+        var date = $('#schDate').val();
+
+        $('#dateAndTime').val(date);
+
+        $('#schDate').val("");
+
+    };
+
+
+    function GetSearchStartDate() {
+        var date = $('#schDateFrom').val();
+
+        $('#dateFrom').val(date);
+
+        $('#schDateFrom').val("");
+
+    };
+
+    function GetSearchEndDate() {
+        var date = $('#schDateTo').val();
+
+        $('#dateTo').val(date);
+
+        $('#schDateTo').val("");
+
+    };
+
+    $("#searchSystem").change(function () {
+        $("#searchSamplepoint").empty();
+        $.getJSON("/Chemistry/GetSubGroups/" + $("#searchSystem :selected").val(),
+            function (data) {
+
+                $.each(data,
+                    function () {
+                        $("#searchSamplepoint").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                    });
+            });
+
+    });
+
+
+    $("#searchSamplepoint").change(function () {
+        $("#parameter").empty();
+        $.getJSON("/Chemistry/GetSecondSubGroups/" + $("#searchSamplepoint :selected").val(),
+            function (data) {
+
+                $.each(data,
+                    function () {
+                        $("#parameter").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                    });
+            });
+
+    });
+
+
+</script>
+

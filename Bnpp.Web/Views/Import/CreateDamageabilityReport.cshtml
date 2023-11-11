@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "CreateDamageabilityReport";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<div id="normal">
+    <form id="DesignDocumentForm" asp-action="CreateMaintenanceForms" method="post" enctype="multipart/form-data">
+
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Select File:
+                    </td>
+                    <td>
+                        <input type="file" name="fileReport" id="imgformsUp" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="showPage4()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+

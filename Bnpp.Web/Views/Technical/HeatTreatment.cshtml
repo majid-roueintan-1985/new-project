@@ -1,0 +1,246 @@
+﻿@model IEnumerable<Bnpp.Core.ViewModels.HeatOperationViewModel>
+@{
+    ViewData["Title"] = "HeatTreatment";
+    Layout = null;
+}
+
+<h1 id="iH1">
+    Heat Treatment
+</h1>
+
+@* <div class="bevel-box">
+    <table cellpadding="3" cellspacing="0">
+        <tbody>
+            <tr>
+                <td>
+                    <form method="post" asp-controller="Technical" asp-action="ExportHeatTreatment" asp-route-id="@ViewBag.MechanicalId">
+                        <input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+                        <input type="text" id="exportSelected" name="reportId" style="display:none" />
+                        <input type="text" value="@ViewData["ComponentId"]" name="componentId" style="display:none" />
+                        <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                    </form>
+                </td>
+                <td>
+                    <form method="post" asp-controller="Technical" asp-action="ImportHeatTreatment" asp-route-id="@ViewBag.MechanicalId" enctype="multipart/form-data">
+                        <input type="number" value="@ViewBag.MechanicalId" name="mechanicalId" style="display:none" />
+                        <input type="text" value="@ViewData["ComponentId"]" name="componentId" style="display:none" />
+                        <input type="file" name="FormFile" />
+                        <input type="submit" onclick="refreshPage()" value="Import Excel" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> *@
+<div id="newPage">
+    <div>
+
+       @*  <a class="btn-new-equip" style="cursor: pointer" onclick="Create(@ViewData["ComponentId"])">New</a>
+        <input type="button" id="delete" class="btn-delete-equip" value="Delete"> *@
+        <input type="button" onclick="showPage5()" value="Back" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+        <br />
+        @{
+            int rowCount = 1;
+        }
+        <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+            <thead>
+                <tr role="row">
+                   @*  <th>
+                        <input type="checkbox" id="checkAll" />
+                    </th> *@
+                    <th></th>
+                    <th>
+                        <b>Temperature</b>
+                    </th>
+                    <th>
+                        <b>Duration</b>
+                    </th>
+
+                    <th>
+                        <b>Heat Operation</b>
+                    </th>
+
+                    <th>
+                        <b>Cooling Method</b>
+                    </th>
+                    <th>
+                        <b>No. Heat Operations</b>
+                    </th>
+                    <th>
+                        <b>	Document No.</b>
+                    </th>
+                   @*  <th>
+                        <b>Actions</b>
+                    </th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr role="row">
+                       @*  <td>
+                            <input type="checkbox" class="checkBox" value="@item.HeatOperationId" />
+                        </td> *@
+                        <td>
+                            @rowCount
+                        </td>
+                        <td>
+                            @item.Temperature
+                        </td>
+                        <td>
+                            @item.TimesOfHeating.ToString("hh:mm")
+                        </td>
+                        <td>
+                            @item.HeatsOperation
+                        </td>
+                        <td>
+                            @item.CoolingMethod
+                        </td>
+                        <td>
+                            @item.NoOfHeatOperations
+                        </td>
+                        <td>
+                            @item.DocumentNo
+                        </td>
+                       
+                      @*   <td>
+                            <a class="btn-edit-equip" onclick="Edit(@item.HeatOperationId)">
+                                Edit
+                            </a>
+                        </td> *@
+                    </tr>
+                    rowCount++;
+                }
+            </tbody>
+        </table>
+
+
+       
+
+    </div>
+</div>
+        
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+</script>
+<script>
+
+    function Create(id) {
+        $("#newPage").load("/Technical/CreateHeatTreatment/" + id + "?mechanicalId=" + @ViewBag.MechanicalId);
+    }
+
+    function Edit(id) {
+        $("#newPage").load("/Technical/EditHeatTreatment/" + id + "?mechanicalId=" + @ViewBag.MechanicalId);
+    }
+
+
+
+    function showPage1() {
+        $("#Tabs").load("/Technical/GeneralData/@ViewBag.MechanicalId");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/Technical/DesignData/@ViewBag.MechanicalId");
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/Technical/Documents/@ViewBag.MechanicalId");
+    }
+
+    function showPage4() {
+        $("#Tabs").load("/Technical/Safety/@ViewBag.MechanicalId");
+    }
+
+    function showPage5() {
+        $("#Tabs").load("/Technical/Components/@ViewBag.MechanicalId");
+    }
+
+    function showPage6() {
+        $("#Tabs").load("/Technical/ChemicalNorms/@ViewBag.MechanicalId");
+    }
+
+    function showPage7() {
+        $("#Tabs").load("/Technical/TechnicalPrograms/@ViewBag.MechanicalId");
+    }
+
+    function showPage8() {
+        $("#Tabs").load("/Technical/Sensors/@ViewBag.MechanicalId");
+    }
+
+    function showPage9() {
+        $("#Tabs").load("/Technical/ControlPoints/@ViewBag.MechanicalId");
+    }
+
+    function showPage10() {
+        $("#Tabs").load("/Technical/HForms/@ViewBag.MechanicalId");
+    }
+
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+        $.ajax({
+            type: "POST",
+                url: "/Technical/DeleteHeatTreatment/@ViewBag.MechanicalId",
+            data: { "heataoperId": selectedIDs },
+
+            success: function (response) {
+                    $("#newPage").load("/Technical/HeatTreatment/@ViewData["ComponentId"]" + "?mechanicalId=" + @ViewBag.MechanicalId);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+
+        });
+        }
+
+    });
+
+    $('input:checkbox.checkBox').change(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        $('#exportSelected').val(selectedIDs);
+
+    });
+
+    function refreshPage() {
+        // Your delay in milliseconds
+        var delay = 2000;
+        setTimeout(function () { $("#newPage").load("/Technical/HeatTreatment/@ViewData["ComponentId"]" + "?mechanicalId=" + @ViewBag.MechanicalId); }, delay);
+    }
+</script>
+
+
+
+

@@ -1,0 +1,286 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.AgeingManagementDocuments.ManagementReviews>
+@{
+    ViewData["Title"] = "ManagementReviews";
+     Layout = null;
+}
+
+<div class="dcontent">
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cea001; background-color: #ffe100;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="">
+                        <b><a class="breadcumb2-link" href="#">Mechanical Equipments</a></b>
+                    </td>
+                    <td style="">
+                        » <b id="subTitle22a"></b>
+                    </td>
+                    <td>
+                        » <b style="color: #ff0000;" id="subTitle22">Ageing Management Reviews (AMR)
+                        </b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a id="iHelp" style="float: right; position: relative; top: -32px;" href="javascript:;" onclick="showHelp();">
+            <img src="/images/help.png" style="width: 48px;" class="imgHelp">
+        </a>
+    </div>
+
+    <h1 id="iH1"></h1>
+    <div id="iContent">
+
+        <div class="tab-buttons">
+            <ul>
+                <li id="tab-button1" class="tab-buttons-li" style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;" @*style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;"*@>
+                    <a id="tab-button-a1"
+                       onclick="showPage1()" style="cursor:pointer;color: rgb(0, 113, 158);">
+                        Methodology (TLAA)
+                    </a>
+                </li>
+                <li id="tab-button2" @*class="tab-buttons-li"*@ style="background-color: rgb(240, 240, 240); border-color: rgb(192, 192, 192); font-weight: normal;">
+                    <a id="tab-buttona2" onclick="showPage2()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Other Documents
+                    </a>
+
+                </li>
+                <li id="tab-button3" class="tab-buttons-li" style="background-color: rgb(208, 208, 208); border-color: rgb(128, 128, 128); font-weight: bold;">
+                    <a id="tab-button-a3" onclick="showPage3()" style="cursor:pointer;color: rgb(110, 110, 255);">
+                        Ageing Management Reviews (AMR)
+                    </a>
+                </li>
+            </ul>
+
+            <div style="clear:both;"></div>
+        </div>
+
+        <div id="tab1" class="tab-item" style="display: block;">
+
+            <h1 id="iH1">
+                Ageing Management Reviews (AMR)
+            </h1>
+
+            <div class="bevel-box">
+                <table cellpadding="3" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form method="post" asp-controller="ManagementDocuments" asp-action="ExportManagementReviews">
+                                    <input type="text" id="exportSelectedData" name="reportId" style="display:none" />
+                                    <input type="submit" onclick="refreshPage()" value="Export Excel" />
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" asp-controller="ManagementDocuments" asp-action="ImportManagementReviews" enctype="multipart/form-data">
+                                    <input type="file" name="FormFile" />
+                                    <input type="submit" value="Import Excel" />
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div  id="newPage">
+                <div>
+
+                    <div id="iLoading22" style="display: none;">
+                        <img src="/images/loading.gif">
+                    </div>
+
+
+                    <a class="btn-new-equip" style="cursor: pointer" onclick="Create()">New</a>
+                    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+                    <br />
+                    @{
+                        int rowCount = 1;
+                    }
+                    <table id="myTable" cellpadding="3" cellspacing="0" class="show-table">
+                        <thead>
+                            <tr role="row">
+                                <th>
+                                    <input type="checkbox" id="checkAll" />
+                                </th>
+                                <th></th>
+                                <th style="width: 150px">
+                                    <b>Type</b>
+                                </th>
+                                <th style="width: 250px">
+                                    <b>Date</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b>Frequency</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b>Prepaired by</b>
+                                </th>
+                                
+                                <th style="width: 120px">
+                                    <b>	Approved</b>
+                                </th>
+                                <th style="width: 120px">
+                                    <b>	Authorized</b>
+                                </th>
+                               
+                                <th style="width: 120px">
+                                    <b>Actions</b>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr role="row">
+                                    <td>
+                                        <input type="checkbox" class="checkBox" value="@item.ReviewsId" />
+                                    </td>
+                                    <td>
+                                        @rowCount
+                                    </td>
+                                    <td>
+                                        @item.Type
+                                    </td>
+                                    <td>
+                                        @item.Date.ToString("yyyy/MM/dd")
+                                    </td>
+                                    <td>
+                                        @item.Frequency
+                                    </td>
+                                    <td>
+                                        @item.Prepared
+                                    </td>
+                                    <td>
+                                        @item.Approved
+                                    </td>
+                                    <td>
+                                        @item.Authorized
+                                    </td>
+                                    <td>
+                                        <a class="btn-edit-equip" onclick="Edit(@item.ReviewsId)">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                rowCount++;
+                            }
+                        </tbody>
+                    </table>
+
+
+                    <br>
+                    <div style="clear: both;">
+                    </div>
+                    <br>
+                    <br>
+                    <iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#myTable").DataTable();
+    });
+</script>
+<script>
+
+    function Create() {
+        $("#newPage").load("/ManagementDocuments/CreateManagementReviews/");
+    }
+
+    function Edit(id) {
+        $("#newPage").load("/ManagementDocuments/EditManagementReviews/"+id);
+    }
+
+    
+
+    function showPage1() {
+        $("#Tabs").load("/ManagementDocuments/Methodology/");
+    }
+
+    function showPage2() {
+        $("#Tabs").load("/ManagementDocuments/OtherDocuments/");
+
+    }
+
+    function showPage3() {
+        $("#Tabs").load("/ManagementDocuments/ManagementReviews/");
+        
+    }
+
+    
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+        $.ajax({
+            type: "POST",
+            url: "/ManagementDocuments/DeleteManagementReviews",
+            data: { "reviewsId": selectedIDs },
+
+            success: function (response) {
+                $("#Tabs").load("/ManagementDocuments/ManagementReviews/");
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+
+        });
+        }
+
+    });
+
+    $('input:checkbox.checkBox').change(function () {
+        var selectedIDs = new Array();
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        $('#exportSelectedData').val(selectedIDs);
+
+    });
+
+    function refreshPage() {
+        // Your delay in milliseconds
+        var delay = 2000;
+        setTimeout(function () { $("#Tabs").load("/ManagementDocuments/ManagementReviews/"); }, delay);
+    }
+
+</script>
+
+
+
+

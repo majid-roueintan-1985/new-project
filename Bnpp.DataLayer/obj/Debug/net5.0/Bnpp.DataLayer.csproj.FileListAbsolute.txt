@@ -1,0 +1,119 @@
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\M.R\source\repos\Core\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\source\repos\Example06\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\payetakht\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\payetakht\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\refint\Bnpp.DataLayer.dll
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\mohsen\Source\Repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\mohsen\source\New folder\Bnpp.DataLayer\bin\Debug\net5.0\ref\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\refint\Bnpp.DataLayer.dll
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+C:\Users\taban\source\repos\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\refint\Bnpp.DataLayer.dll
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+H:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.deps.json
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.json
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.runtimeconfig.dev.json
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\bin\Debug\net5.0\Bnpp.DataLayer.pdb
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.AssemblyReference.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfoInputs.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.AssemblyInfo.cs
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.csproj.CoreCompileInputs.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\refint\Bnpp.DataLayer.dll
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.pdb
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\Bnpp.DataLayer.genruntimeconfig.cache
+G:\SOURCE\Bnpp.28.09.2023\Bnpp\Bnpp.DataLayer\obj\Debug\net5.0\ref\Bnpp.DataLayer.dll

@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="Tabs">
+
+</div>
+
+@section Scripts
+{
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+
+    $( document ).ready(function() {
+            $("#Tabs").load("/Operational/Sensors/@ViewBag.MechanicalId");
+    });
+
+    function showPage1() {
+            $("#Tabs").load("/Operational/Sensors/@ViewBag.MechanicalId");
+    }
+
+    function showPage2() {
+            $("#Tabs").load("/Operational/ChemicalWater/@ViewBag.MechanicalId");
+        
+    }
+
+    function showPage3() {
+            $("#Tabs").load("/Operational/Environmental/@ViewBag.MechanicalId");
+    }
+
+</script>
+
+}
+
+
+
+
+
+

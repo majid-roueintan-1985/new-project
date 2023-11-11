@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.GroupedTransients>
+@{
+    ViewData["Title"] = "GroupedOfTransient";
+    Layout = null;
+}
+
+<div id="newsg">
+</div>
+<div class="bevel-box">
+
+    <a class="btn-new-equip" onclick="Create()" style="cursor:pointer">Create New</a>
+    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+
+    @{
+        int rowCount = 1;
+    }
+
+    <table id="myGroupedTable" cellpadding="3" cellspacing="0" aria-describedby="example_info" class="cell-border">
+        <thead>
+            <tr role="row">
+
+                <th>
+                    <input type="checkbox" id="checkAll" />
+                </th>
+               @* <th>
+
+                </th>*@
+                <th>
+                    <b>
+                        Code
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Name
+                    </b>
+                </th>
+                <th>
+                    <b>
+                        Allowable Number
+                    </b>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkBox" value="@item.GroupId" />
+                    </td>
+                   @* <td>
+                        @rowCount
+                    </td>*@
+                    <td>
+                        @item.Code
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.AllowableNumber
+                    </td>
+                </tr>
+                rowCount++;
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myGroupedTable").DataTable();
+    });
+
+    function ShowList() {
+        $("#newPage").load("/Transients/TransientsList/");
+    }
+
+    
+
+    function Create() {
+        $("#newsg").load("/Transients/CreateGroupedOfTransient/");
+    }
+
+
+    function closeModal() {
+        $('#myModal').modal('hide');
+    }
+
+    $("#checkAll").click(function () {
+        $(".checkBox").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Transients/DeleteGroupedTransients",
+                data: { "groupId": selectedIDs },
+
+
+
+                success: function (response) {
+                    $("#newList").load("/Transients/GroupedOfTransient/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+</script>

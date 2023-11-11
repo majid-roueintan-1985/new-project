@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@if (ViewBag.SuccessImport == 2)
+{
+   
+    <script>
+       
+        // Your delay in milliseconds
+        var delay = 3000;
+        setTimeout(function () {
+            $(document).ready(function () {
+                $("#Tabs").load("/ManagementDocuments/OtherDocuments/");
+                alert(" File Imported and excel data saved into database");
+            });
+
+
+        }, delay);
+       
+    </script>
+}
+
+@if (ViewBag.SuccessImport == 3)
+{
+    <script>
+        // Your delay in milliseconds
+        var delay = 3000;
+        setTimeout(function () { $("#Tabs").load("/ManagementDocuments/ManagementReviews/"); }, delay);
+    </script>
+}
+
+@ViewBag.Majid
+
+<div id="Tabs">
+</div>
+
+@section Scripts
+    {
+    <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#Tabs").load("/ManagementDocuments/Methodology/");
+        });
+
+        function showPage1() {
+            $("#Tabs").load("/ManagementDocuments/Methodology/");
+        }
+
+        function showPage2() {
+            $("#Tabs").load("/ManagementDocuments/OtherDocuments/");
+        }
+
+        function showPage3() {
+            $("#Tabs").load("/ManagementDocuments/ManagementReviews/");
+            
+        }
+
+    </script>
+
+}
+
+

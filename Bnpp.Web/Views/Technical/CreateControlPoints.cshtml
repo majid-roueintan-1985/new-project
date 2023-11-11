@@ -1,0 +1,103 @@
+﻿@model Bnpp.DataLayer.Entities.BasicData.ControlPoints
+@{
+    ViewData["Title"] = "CreateControlPoints";
+     Layout = null;
+}
+
+<div id="normal">
+    <form id="chemicalForm" asp-action="CreateControlPoints" method="post">
+        <input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Parameter:
+                    </td>
+                    <td>
+                        <input asp-for="Parameter" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Parameter"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        No. Check Points:
+                    </td>
+                    <td>
+                        <input asp-for="NumberCheckPoints" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="NumberCheckPoints"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Measurement range:
+                    </td>
+                    <td>
+                        <input asp-for="MeasurementRange" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="MeasurementRange"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Remarks:
+                    </td>
+                    <td>
+                        <input asp-for="Remarks" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+                    </td>
+                    <td>
+                        <span asp-validation-for="Remarks"></span>
+                    </td>
+                </tr>
+
+                
+               
+               
+               
+                <tr>
+                    <td>
+                        <input type="button" onclick="submitChemical()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="showPage9()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+    function submitChemical() {
+        var data = $("#chemicalForm").serialize();
+        var url = $("#chemicalForm").attr("action");
+        $.ajax({
+            type: 'POST',
+            url: url,
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+            data: data,
+            success: function() {
+                $("#Tabs").load("/Technical/ControlPoints/@ViewBag.MechanicalId");
+            },
+
+            error: function() {
+                //alert('Failed to receive the Data');
+                //console.log('Failed ');
+            }
+        });
+
+    }
+
+</script>

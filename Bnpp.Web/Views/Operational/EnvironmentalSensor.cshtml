@@ -1,0 +1,157 @@
+﻿@model IEnumerable<Bnpp.DataLayer.Entities.InspectionData.InspectionDocument>
+@{
+    ViewData["Title"] = "EnvironmentalSensor";
+    Layout =null;
+}
+
+<div id="tab1" class="tab-item" style="display: block;">
+
+    <h1 id="iH1">
+        Operational Data - Environmental - Sensor Positions
+    </h1>
+
+    <div>
+
+        <div id="iLoading22" style="display: none;">
+            <img src="/images/loading.gif">
+        </div>
+
+
+        <a class="btn-new-equip" style="cursor: pointer" onclick="CreateEnvironmentalSensors()">New</a>
+        <input type="button" id="deleteProgram" class="btn-delete-equip" value="Delete">
+        <input type="button" onclick="showPage3()" value="Back" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+        <br />
+        @{
+            int rowCount = 1;
+        }
+        <table id="myTableDocument" cellpadding="3" cellspacing="0" class="show-table">
+            <thead>
+                <tr role="row">
+                    <th>
+                        <input type="checkbox" id="checkAllPrograms" />
+                    </th>
+                    <th></th>
+                    <th style="width: 150px">
+                        <b>Code</b>
+                    </th>
+                    <th style="width: 250px">
+                        <b>File Name</b>
+                    </th>
+
+                    <th style="width: 120px">
+                        <b> Name </b>
+                    </th>
+
+                    @*<th style="width: 120px">
+                    <b>	Description</b>
+                    </th>*@
+                    @*<th style="width: 120px">
+                    <b>	Authorized</b>
+                    </th>*@
+
+                    <th style="width: 120px">
+                        <b>Actions</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr role="row">
+                        <td>
+                            <input type="checkbox" class="checkBoxProgram" value="@item.InspectionId" />
+                        </td>
+                        <td>
+                            @rowCount
+                        </td>
+
+                        <td>
+                            @item.Code
+                        </td>
+                        <td>
+                            @item.Filename
+                        </td>
+                        <td>
+                            @item.DocumentName
+                        </td>
+                        <td>
+                            <a class="btn-edit-equip" onclick="EditEnvironmentalSensors(@item.InspectionId)">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                    rowCount++;
+                }
+            </tbody>
+        </table>
+
+
+        <br>
+        <div style="clear: both;">
+        </div>
+        <br>
+        <br>
+        <iframe style="display: none" id="if_-2_119" src=""></iframe>
+
+    </div>
+
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.unobtrusive-ajax.min.js"></script>
+
+
+<script src="/js/datatables.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $("#myTableDocument").DataTable();
+    });
+</script>
+<script>
+    function CreateEnvironmentalSensors() {
+        $("#newPage").load("/Operational/CreateEnvironmentalSensor/");
+    }
+
+    function EditEnvironmentalSensors(id) {
+        $("#newPage").load("/Operational/EditEnvironmentalSensor/" + id);
+    }
+
+    $("#checkAllPrograms").click(function () {
+        $(".checkBoxProgram").prop('checked',
+            $(this).prop('checked'));
+    });
+
+    $("#deleteProgram").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBoxProgram').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Operational/DeleteEnvironmentalSensor",
+                data: { "environsensorId": selectedIDs },
+
+                success: function (response) {
+                    $("#newPage").load("/Operational/EnvironmentalSensor/");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+</script>
+

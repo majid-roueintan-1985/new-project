@@ -1,0 +1,62 @@
+﻿@model Bnpp.DataLayer.Entities.Cable
+@{
+    ViewData["Title"] = "EditCables";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="dcontent">
+
+    <div style="margin-top: 10px; background-color: #6b8d9e; padding-top: 5px; padding-bottom: 5px; padding-right: 10px; border-radius: 5px; border: solid 1px #cccccc; background: repeating-linear-gradient(-45deg, #7fa1b3, #6b8d9e 1px, #6b8d9e 1px, #6b8d9e 20px);">
+        &nbsp;
+    </div>
+    <div style="border-radius: 5px; margin-top: 5px; margin-bottom: 5px; padding: 15px; border: solid 1px #cccccc; background-color: #f0f0f0;">
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        Equip. Type:
+                    </td>
+                    <td style="width: 300px;">
+                        <b>Electrical Equipments</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1>Edit Cable</h1>
+
+    <div id="iError"></div>
+    <form asp-action="EditCables" method="post">
+        <input type="hidden" asp-for="CableId"/>
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+            <tr>
+                <td>Equipment Name:</td>
+                <td><input type="text" asp-for="Name" id="iName" style="direction: ltr; text-align: left;"></td>
+            </tr>
+            <tr>
+                <td>AKZ:</td>
+                <td><input type="text" asp-for="Azk" id="iAZK" style="direction: ltr; text-align: left;"></td>
+            </tr>
+            <tr>
+                <td>Instalation Position:</td>
+                <td><input type="text" asp-for="Position" id="iAZK" style="direction: ltr; text-align: left;"></td>
+            </tr>
+            <tr>
+                <td>
+                        <input onclick="if(confirm('Are You sure ?')){}else{return false;};" class="btn-edit-equip" type="submit" name="Button1" value="Edit" id="Button1" style="direction: ltr; text-align: left;">
+                    <input type="submit" name="Button2" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+</div>
+

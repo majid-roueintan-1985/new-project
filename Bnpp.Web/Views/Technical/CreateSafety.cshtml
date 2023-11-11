@@ -1,0 +1,112 @@
+﻿@model Bnpp.DataLayer.Entities.BasicData.SeismicCategory
+@{
+	ViewData["Title"] = "CreateSafety";
+	Layout = null;
+}
+
+<div id="normal">
+	<form id="chemicalForm" asp-action="CreateSafety" method="post">
+		<input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+		<table cellpadding="3" cellspacing="0">
+			<tbody>
+				<tr>
+					<td>
+						Name and designation of systems,<br /> equipment, pipelines and components:
+					</td>
+					<td>
+						<input asp-for="NameAndDesignation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="NameAndDesignation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Safety Class
+						<br>according to PNAE G-01-011-97:
+					</td>
+					<td>
+						<input asp-for="SafetyClass" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="SafetyClass"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Classification Designation<br />
+						according to PNAE G-01-011-97:
+					</td>
+					<td>
+						<input asp-for="ClassificationDesignation" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="ClassificationDesignation"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Group
+						according to PNAE G-07-008-89:
+					</td>
+					<td>
+						<input asp-for="CategoryGroup" type="text" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="CategoryGroup"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Seismic category<br />
+						according to PNAE G-5-006-87:
+					</td>
+					<td>
+						<input asp-for="CategorySeismic" type="text" id="iPosition" style="direction: ltr; text-align: left;">
+					</td>
+					<td>
+						<span asp-validation-for="CategorySeismic"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="button" onclick="submitChemical()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+						<input type="button" onclick="showPage4()" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script type="text/javascript">
+	function submitChemical() {
+		var data = $("#chemicalForm").serialize();
+		var url = $("#chemicalForm").attr("action");
+		$.ajax({
+			type: 'POST',
+			url: url,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', // when we use .serialize() this generates the data in query string format. this needs the default contentType (default content type is: contentType: 'application/x-www-form-urlencoded; charset=UTF-8') so it is optional, you can remove it
+			data: data,
+			success: function () {
+				$("#Tabs").load("/Technical/Safety/@ViewBag.MechanicalId");
+			},
+
+			error: function () {
+				//alert('Failed to receive the Data');
+				//console.log('Failed ');
+			}
+		});
+
+	}
+
+</script>

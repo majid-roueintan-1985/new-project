@@ -1,0 +1,340 @@
+﻿@model Bnpp.DataLayer.Entities.Events
+@{
+	ViewData["Title"] = "CraeteEvents";
+	Layout = null;
+}
+
+<div id="related">
+	@* <table cellpadding="3" cellspacing="0">
+	<tbody>
+	<tr>
+	<td>
+	<label style="margin:10px">
+
+	<a class="btn-defaults-equip" onclick="ShowAgeingMechanism()">
+	Related Ageing Mechanism
+	</a>
+
+	</label>
+	</td>
+	</tr>
+	</tbody>
+	</table>*@
+
+	<div id="normal">
+		<form id="designForm" asp-action="CraeteEvents" method="post">
+			<input type="hidden" asp-for="MechanicalId" value="@ViewBag.MechanicalId" />
+			<table cellpadding="3" cellspacing="0">
+				<tbody>
+					<tr>
+						<td>
+							Event Name:
+						</td>
+						<td>
+							<input asp-for="EventName" type="text" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="EventName"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Event Level:
+						</td>
+						<td>
+							<label>
+								<select asp-for="EventLevel" required="required" name="EventLevel" aria-controls="myTable" class="">
+									@* <option value="">Select</option>*@
+									<option value="Accident">Accident</option>
+									<option value="Perturbation">Perturbation</option>
+									<option value="Deviation">Deviation</option>
+									<option value="Low Level">Low Level</option>
+									<option value="Near Miss">Near Miss</option>
+								</select>
+							</label>
+						</td>
+						<td>
+							<span asp-validation-for="EventLevel"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Event Date:
+						</td>
+						<td>
+							<input name="EventDate" asp-for="EventDate" required="required" onkeydown="return false;" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="EventDate"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Event Time:
+						</td>
+						<td>
+							<input name="EventTime" asp-for="EventTime" required="required" onkeydown="return false;" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="EventTime"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Report Date:
+						</td>
+						<td>
+							<input name="ReportDate" asp-for="ReportDate" required="required" onkeydown="return false;" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="ReportDate"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Report No:
+						</td>
+						<td>
+							<input asp-for="ReportNo" type="text" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="ReportNo"></span>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Responsible Unit:
+						</td>
+						<td>
+							<select name="system" asp-for="ResponsibleUnit" asp-items="@ViewBag.ResponsibleUnit as SelectList" aria-controls="myTable" class="">
+							</select>
+						</td>
+						<td>
+							<label>
+								<a class="btn-defaults-equip" onclick="ShowResponsibleUnit()">
+									Responsible Unit
+								</a>
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Event Location:
+						</td>
+						<td>
+							<input asp-for="EventLocation" type="text" required="required" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="EventLocation"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Modefied/Created Date:
+						</td>
+						<td>
+							<input type="text" value="@DateTime.Now" style="direction: ltr; text-align: left;" readonly>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Related Ageing Mechanism:
+						</td>
+						<td>
+							<select name="system" asp-for="RelatedAgeingMechanism" asp-items="@ViewBag.AgeingMechanism as SelectList" aria-controls="myTable" class="">
+							</select>
+						</td>
+						<td>
+							<label>
+								<a class="btn-defaults-equip" onclick="ShowAgeingMechanism()">
+									Related Ageing Mechanism
+								</a>
+							</label>
+						</td>
+
+					</tr>
+					<tr>
+						<td>
+							Description:
+						</td>
+						<td>
+							<input asp-for="Description" required="required" type="text" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="Description"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							File Name:
+						</td>
+
+						<td>
+							<input asp-for="Filename" type="text" value="" style="direction: ltr; text-align: left;">
+						</td>
+						<td>
+							<span asp-validation-for="Filename"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Select File:
+						</td>
+						<td>
+							<input type="file" name="imgEventUp" id="imgEventUp" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" @*onclick="AjaxdocumentFormSubmit()"*@ value="Save" id="btnGet" class="butn-save" style="direction: ltr; text-align: left;">
+							<input type="button" onclick="location='/Events/InternalEvents/@ViewBag.MechanicalId'" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+
+		</form>
+	</div>
+</div>
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.rtl.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+<script src="~/js/jquery-3.5.1.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.web.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+<script src="/js/cdnjs.cloudflare.com_ajax_libs_select2_4.0.0_js_select2.full.min.js"></script>
+
+<!-- Jalali Date Picker -->
+<script src="/js/jalali/fa-IR.js"></script>
+<script src="/js/jalali/JalaliDate.js"></script>
+<script src="/js/jalali/kendo.core.js"></script>
+<script src="/js/jalali/kendo.calendar.js"></script>
+<script src="/js/jalali/kendo.datepicker.js"></script>
+
+<script>
+	// create DatePicker from input HTML element
+	//$("#Dates").kendoTimePicker({
+	//    timeFormat: "HH:mm" //24 hours format
+	//});
+
+	//Search in dropdown
+	//$(function () {
+	//    $("select").select2();
+	//});
+
+	$(document).ready(function () {
+		kendo.culture("fa-IR");
+
+		$('#EventDate').kendoDatePicker({
+			min: new JalaliDate(1350, 1, 1),
+			max: new JalaliDate(1430, 1, 17),
+
+		});
+	});
+
+
+	$(document).ready(function () {
+		kendo.culture("fa-IR");
+
+		$('#ReportDate').kendoDatePicker({
+			min: new JalaliDate(1350, 1, 1),
+			max: new JalaliDate(1430, 1, 17),
+
+		});
+	});
+
+	$("#EventTime").kendoTimePicker({
+		//timeFormat: "kk:mm" //24 hours format
+		format: " HH:mm", parseFormats: ["HH:mm"], timeFormat: "HH:mm"
+	});
+
+
+	function ShowAgeingMechanism() {
+		$("#related").load("/Events/RelatedAgeingMechanism/");
+	}
+
+
+
+	function ShowResponsibleUnit() {
+		$("#related").load("/Events/ResponsibleUnit/");
+	}
+
+</script>
+
+<script type="text/javascript">
+
+	$('#btnGet').click(function () {
+
+		if ($("#designForm").valid()) {
+			AjaxdocumentFormSubmit();
+		}
+		else {
+			return false;
+		}
+	});
+
+	function AjaxdocumentFormSubmit() {
+
+		//Set the URL.
+		var url = $("#designForm").attr("action");
+		//Add the Field values to FormData object.
+
+
+		var formData = new FormData();
+		formData.append("EventName", $("#EventName").val());
+		formData.append("EventLevel", $("#EventLevel").val());
+		formData.append("ReportNo", $("#ReportNo").val());
+		formData.append("ResponsibleUnit", $("#ResponsibleUnit").val());
+		formData.append("EventLocation", $("#EventLocation").val());
+		formData.append("Filename", $("#Filename").val());
+		formData.append("EventDate", $("#EventDate").val());
+		formData.append("EventTime", $("#EventTime").val());
+		formData.append("ReportDate", $("#ReportDate").val());
+		formData.append("RelatedAgeingMechanism", $("#RelatedAgeingMechanism").val());
+		formData.append("Description", $("#Description").val());
+		formData.append("MechanicalId", $("#MechanicalId").val());
+
+		formData.append("fileEvents", $("#imgEventUp")[0].files[0]);
+
+		$.ajax({
+			type: 'POST',
+			url: url,
+			data: formData,
+			processData: false,
+			contentType: false
+		}).done(function () {
+			window.location.href = "/Events/InternalEvents/@ViewBag.MechanicalId";
+		});
+
+	}
+
+
+	function readURL(input) {
+
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function (e) {
+				$('#imgCourse').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$("#imgCourseUp").change(function () {
+		readURL(this);
+	});
+
+	$('input[type=file]').change(function () {
+
+		$('#Filename').attr('value', this.files[0].name);
+	});
+</script>

@@ -1,0 +1,236 @@
+﻿@using Bnpp.DataLayer.Entities
+@model IEnumerable<Bnpp.DataLayer.Entities.TransientGroups>
+@{
+    ViewData["Title"] = "Transients";
+    Layout = null;
+}
+
+<div class="bevel-box">
+
+    <a class="btn-new-equip" onclick="Create()" style="cursor:pointer">Create New Code</a>
+    <input type="button" id="delete" class="btn-delete-equip" value="Delete">
+
+    @{
+        int rowCount = 1;
+        int rowCount1 = 1;
+    }
+
+    <table id="mySavedTable" @*cellpadding="3" cellspacing="0"*@ aria-describedby="example_info" class="cell-border">
+        <thead>
+            <tr role="row">
+
+                <th>
+                    @* <input type="checkbox" id="checkAll" />*@
+                </th>
+
+                <th>
+                    <b>
+                        Code
+                    </b>
+                </th>
+                
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                List<TransientGroups> groups = ViewBag.Groups as List<TransientGroups>;
+            }
+
+            @foreach (var item in groups)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" class="checkBox" value="@item.GroupId" />
+                    </td>
+                    @* <td>
+                @rowCount
+                </td>*@
+                    <td>
+                        @item.GroupTitle
+                    </td>
+                    <td>
+                        @if (Model.Any(g => g.ParentId == item.GroupId))
+                        {
+                            <table id="nestedTable" aria-describedby="example_info" class="cell-border">
+                                <thead>
+                                    <tr role="row">
+                                        <th>
+                                            @*<input type="checkbox" id="checkAll" />*@
+                                        </th>
+                                        <th data-orderable="false">
+                                            <b>
+                                                Name
+                                            </b>
+                                        </th>
+                                        <th data-orderable="false">
+                                            <b>
+                                                Allowable Number
+                                            </b>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var subGroup in Model.Where(g => g.ParentId == item.GroupId))
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="checkBox" value="@subGroup.GroupId" />
+                                            </td>
+                                            <td>
+                                                @subGroup.GroupTitle
+                                            </td>
+                                            <td>
+                                                @if (Model.Any(g => g.ParentId == subGroup.GroupId))
+                                                {
+
+                                                    @foreach (var sub2 in Model.Where(g => g.ParentId == subGroup.GroupId))
+                                                    {
+                                                        @sub2.GroupTitle
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a onclick="CreateValue(@subGroup.GroupId)" class="btn-new-equip" style="cursor:pointer">
+                                                        allowable number
+                                                    </a>
+                                                }
+                                            </td>
+                                        </tr>
+                                        rowCount1++;
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </td>
+                    <td>
+                        @if (!Model.Any(g => g.ParentId == item.GroupId))
+                        {
+                            <a onclick="CreateNewName(@item.GroupId)" class="btn-new-equip" style="cursor:pointer">
+                                Create New Name
+                            </a>
+                        }
+
+                    </td>
+                </tr>
+                rowCount++;
+            }
+        </tbody>
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body" id="myModalBody">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+</div>
+
+
+<link href="/css/bootstrap-modal1.css" rel="stylesheet" type="text/css" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#mySavedTable").DataTable();
+    });
+
+
+    //$(document).ready(function () {
+    //    $("#nestedTable").DataTable({ searching: false, paging: false, info: false });
+
+    //});
+
+    function Create(parentId) {
+
+        $.get("/Transients/Create/" + parentId,
+            function (result) {
+                $("#myModal").modal();
+                //if (parentId == "") { $("#modalTitle").val("zzz"); }
+                $("#myModalLabel").html("");
+                $("#myModalBody").html(result);
+            }
+        );
+
+    }
+
+
+
+    function CreateNewName(parentId) {
+
+        $.get("/Transients/CreateName/" + parentId,
+            function (result) {
+                $("#myModal").modal();
+
+                $("#myModalLabel").html("");
+                $("#myModalBody").html(result);
+            }
+        );
+
+    }
+
+    function CreateValue(parentId) {
+        $.get("/Transients/CreateNewValue/" + parentId,
+            function (result) {
+                $("#myModal").modal();
+                $("#myModalLabel").html("");
+                $("#myModalBody").html(result);
+            }
+        );
+
+    }
+
+    function ShowList() {
+        $("#newPage").load("/Transients/TransientsList/");
+    }
+
+    function closeModal() {
+        $('#myModal').modal('hide');
+    }
+
+    $("#delete").click(function () {
+        var selectedIDs = new Array();
+
+        $('input:checkbox.checkBox').each(function () {
+            if ($(this).prop('checked')) {
+                selectedIDs.push($(this).val());
+            }
+        });
+
+        var result = confirm("are you sure you want to delete?");
+        if (result) {
+            $.ajax({
+                type: "POST",
+                url: "/Transients/DeleteGroup",
+                data: { "groupId": selectedIDs },
+
+
+
+                success: function (response) {
+                    $("#newList").load("/Transients/TransientsList");
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+
+            });
+        }
+
+    });
+</script>

@@ -1,0 +1,415 @@
+﻿@model Bnpp.DataLayer.Entities.Transients
+@{
+    ViewData["Title"] = "CreateTransient";
+    Layout = null;
+}
+
+<style>
+    input[type="file"] {
+        display: block;
+    }
+
+    .imageThumb {
+        max-height: 75px;
+        border: 2px solid;
+        padding: 1px;
+        cursor: pointer;
+    }
+
+    .pip {
+        display: inline-block;
+        margin: 10px 10px 0 0;
+    }
+
+    .remove {
+        display: block;
+        background: #444;
+        border: 1px solid black;
+        color: white;
+        text-align: center;
+        cursor: pointer;
+    }
+
+        .remove:hover {
+            background: white;
+            color: black;
+        }
+</style>
+
+<div id="normal">
+    <form id="designForm" asp-action="CreateTransient" method="post">
+
+        <table cellpadding="3" cellspacing="0">
+            <tbody>
+
+               @* <div class="alert alert-danger">
+                    <p class="text-danger" style="background-color:red;color:white;text-align:center">
+                        Please use the Code and Names registered in the system
+                    </p>
+                </div>*@
+
+                <tr>
+                    <td>
+                        Code:
+                    </td>
+                    <td>
+                        @* <select name="codes" id="transientCode" asp-items="@ViewBag.transientCode as SelectList" aria-controls="myTable" class="">
+                        <option value="">Select</option>
+                        </select>*@
+
+                        <input id="transientCode" class="addressCls" name="title" type="text" style="direction: ltr; text-align: left;">
+
+                    </td>
+
+                    @* <td>
+                    <input asp-for="Code" type="text" style="direction: ltr; text-align: left;">
+                    </td>*@
+                </tr>
+                <tr>
+                    <td>
+                        Name:
+                    </td>
+                    @* <td>
+                    <input asp-for="Name" type="text" style="direction: ltr; text-align: left;">
+                    </td>*@
+                    <td>
+                        <select asp-for="Name" asp-items="@ViewBag.nameOftransient as SelectList" aria-controls="myTable" class="">
+                            <option value="">Select</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transient Date:
+                    </td>
+                    <td>
+                        <input name="TransientDate" id="TransientDate" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Transient Time:
+                    </td>
+                    <td>
+                        <input type="time" asp-for="TransientTime"  style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Description:
+                    </td>
+                    <td>
+                        <input asp-for="Description" type="text" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                @* <tr>
+                <td>
+                File Name:
+                </td>
+
+                <td>
+                <input  type="text" value="" style="direction: ltr; text-align: left;">
+                </td>
+                </tr>*@
+                <tr>
+                    <td>
+                        Select File:
+                    </td>
+                    <td>
+                        <input type="file" multiple="multiple" name="imgTrnsientUp" id="imgTrnsientUp" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img id="imgCourse" class="thumbnail" style="max-width: 800px;max-height:800px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" onclick="AjaxdocumentFormSubmit()" value="Save" class="butn-save" style="direction: ltr; text-align: left;">
+                        <input type="button" onclick="CancelCreate();" value="Cancel" id="Button2" class="butn-cancel" style="direction: ltr; text-align: left;">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+
+<link href="/css/kendo.common.min.css" rel="stylesheet" />
+<link href="/css/kendo.default.min.css" rel="stylesheet" />
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/kendo.all.min.js"></script>
+<script src="~/js/jquery.validate.min.js"></script>
+<script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    $(document).ready(
+        function () {
+
+            var codeValue = $("#code").val();
+            //alert(codeValue);
+            $("#transientCode").val(codeValue);
+        });
+
+
+
+
+    // create DatePicker from input HTML element
+    //$("#TransientTime").kendoTimePicker({
+    //    //timeFormat: "kk:mm" //24 hours format
+
+    //    format: " HH:mm", parseFormats: ["HH:mm"], timeFormat: "HH:mm"
+
+    //});
+
+    $("#datepicker").kendoDateTimePicker({
+        format: "MM/dd/yyyy HH:mm", parseFormats: ["MM/dd/yyyy", "HH:mm"], timeFormat: "HH:mm"
+    });
+
+    $("#TransientDate").kendoDatePicker(
+        {
+            format: "yyyy/MM/dd"
+        });
+    //$("#TransientTime").kendoDateTimePicker(
+    //    {
+    //        format: "yyyy/MM/dd hh:mm:ss"
+    //    });
+</script>
+
+<script type="text/javascript">
+    function AjaxdocumentFormSubmit() {
+
+        var code = $('#transientCode').val();
+
+        var transientnames = $('#Name').find(":selected").text();
+
+        if (transientnames != "Select") {
+            $('#Name option').val(function () {
+                return $(this).text();
+            });
+        } else {
+            transientnames = "";
+        }
+
+        //Set the URL.
+        var url = $("#designForm").attr("action");
+        //Add the Field values to FormData object.
+        var formData = new FormData();
+        formData.append("Code", code);
+        formData.append("Name", transientnames);
+        formData.append("Description", $("#Description").val());
+
+        var files = $("#imgTrnsientUp").get(0).files;
+        for (var i = 0; i < files.length; i++) {
+            formData.append("fileTransient", files[i]);
+        }
+
+        formData.append("TransientDate", $("#TransientDate").val());
+        formData.append("TransientTime", $("#TransientTime").val());
+
+       
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false
+            ,
+
+            success: function (response) {
+
+                $("#Tabs").load("/Transients/SaveTransients/");
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+               
+            }
+        });
+
+    }
+
+    function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgCourse').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    //$("#imgTrnsientUp").change(function () {
+    //    readURL(this);
+    //});
+
+    $('input[type=file]').change(function () {
+
+        $('#Filename').attr('value', this.files[0].name);
+    });
+
+
+
+    //CHANGE DROPDOWN WHEN VALUE OF CODE IS CHANGE
+
+    //$("input").change(
+    //    function () {
+
+    //        var groupTitle = $("#transientCode").val();
+    //        //alert(groupTitle);
+
+    //        $.ajax({
+    //            type: "POST",
+    //            url: "/Transients/GetSubGroups",
+    //            data: { "title": groupTitle },
+
+    //            success: function (response) {
+    //                $.each(response,
+    //                    function () {
+    //                        $("#Name").empty();
+    //                        $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+    //                    });
+
+    //            },
+    //            failure: function (response) {
+    //                alert(response.responseText);
+    //            },
+    //            error: function (response) {
+    //                alert(response.responseText);
+    //                $("#Name").empty();
+    //            }
+    //        });
+    //    }
+
+    //);
+
+    $("input").change(
+        function () {
+
+            var groupTitle = $("#transientCode").val();
+            //alert(groupTitle);
+
+            $.ajax({
+                type: "POST",
+                url: "/Transients/GetSubGroupsInGroupedTransient",
+                data: { "title": groupTitle },
+
+                success: function (response) {
+                    $.each(response,
+                        function () {
+                            $("#Name").empty();
+                            $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                    $("#Name").empty();
+                }
+            });
+        }
+
+    );
+
+
+    //CHANGE DROPDOWN WHEN PAGE IS LOADING
+
+    //$(document).ready(function () {
+
+
+    //    var valueOfCode = $("#code").val();
+
+
+
+    //    if (valueOfCode != "") {
+
+    //        var groupTitle = $("#transientCode").val();
+
+    //        $.ajax({
+    //            type: "POST",
+    //            url: "/Transients/GetSubGroups",
+    //            data: { "title": groupTitle },
+
+    //            success: function (response) {
+    //                $.each(response,
+    //                    function () {
+    //                        $("#Name").empty();
+    //                        $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+    //                    });
+
+    //            },
+    //            failure: function (response) {
+    //                alert(response.responseText);
+    //            },
+    //            error: function (response) {
+    //                alert(response.responseText);
+    //                $("#Name").empty();
+    //            }
+    //        });
+    //    }
+    //});
+
+    $(document).ready(function () {
+
+
+        var valueOfCode = $("#code").val();
+
+
+
+        if (valueOfCode != "") {
+
+            var groupTitle = $("#transientCode").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Transients/GetSubGroupsInGroupedTransient",
+                data: { "title": groupTitle },
+
+                success: function (response) {
+                    $.each(response,
+                        function () {
+                            $("#Name").empty();
+                            $("#Name").append('<option value=' + this.value + '>' + this.text + '</option>');
+
+                        });
+
+                },
+                failure: function (response) {
+                    alert(response.responseText);
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                    $("#Name").empty();
+                }
+            });
+        }
+    });
+
+
+    $(function () {
+        $("#code").change(function () {
+            $("#transientCode").val($(this).val());
+        });
+    })
+
+    $("input#transientCode").prop('disabled', true);
+
+
+
+</script>
+
+
